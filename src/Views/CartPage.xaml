@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStoreApp.Views.CartPage"
+             Title="Your Cart"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="*, Auto">
+        <CollectionView Grid.Row="0" x:Name="CartCollection" BackgroundColor="White">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="15" ColumnDefinitions="Auto, *, Auto, Auto">
+                        <Image Grid.Column="0" Source="{Binding product.imageUrl}" WidthRequest="60" HeightRequest="60"/>
+                        
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0">
+                            <Label Text="{Binding product.name}" FontAttributes="Bold" TextColor="Black" />
+                            <Label Text="{Binding product.price, StringFormat='${0:F2}'}" TextColor="#666666" />
+                        </VerticalStackLayout>
+
+                        <HorizontalStackLayout Grid.Column="2" VerticalOptions="Center" Spacing="5">
+                            <Button Text="-" Clicked="OnDecreaseQuantity" CommandParameter="{Binding .}" WidthRequest="35"/>
+                            <Label Text="{Binding quantity}" TextColor="Black" VerticalOptions="Center" WidthRequest="25" HorizontalTextAlignment="Center"/> 
+                            <Button Text="+" Clicked="OnIncreaseQuantity" CommandParameter="{Binding .}" WidthRequest="35"/>
+                        </HorizontalStackLayout>
+
+                        <Button Grid.Column="3" Text="Remove" Clicked="OnRemoveClicked" CommandParameter="{Binding .}" TextColor="Red" BackgroundColor="Transparent"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Frame Grid.Row="1" BackgroundColor="#F8F9FA" Padding="20" CornerRadius="0" BorderColor="#E0E0E0">
+            <VerticalStackLayout Spacing="15">
+                <Grid ColumnDefinitions="*, Auto">
+                    <Label Text="Total Amount:" TextColor="Black" FontSize="18" VerticalOptions="Center"/>
+                    <Label Grid.Column="1" x:Name="TotalLabel" Text="$0.00" TextColor="Black" FontSize="22" FontAttributes="Bold"/>
+                </Grid>
+                
+                <Button Text="Proceed to Checkout" 
+                        BackgroundColor="Black" 
+                        TextColor="White" 
+                        FontAttributes="Bold"
+                        CornerRadius="8" 
+                        HeightRequest="50"
+                        Clicked="OnCheckoutClicked" />
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
