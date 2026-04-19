@@ -1,5 +1,10 @@
-namespace StoreApp.Models;
+/* Functional Requirements:
+ 
+FR4. View order history
+FR5. Add products to wishlist
+FR13. WishlistFactory association */
 
+namespace StoreApp.Models;
 
 public class Admin : User
 {

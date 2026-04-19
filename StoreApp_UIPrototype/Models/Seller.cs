@@ -1,3 +1,7 @@
+/* Functional Requirements:
+ 
+FR6. Create and update products (role based) */
+
 namespace StoreApp.Models;
 
 public class Seller : User

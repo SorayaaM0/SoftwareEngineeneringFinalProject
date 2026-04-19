@@ -1,5 +1,9 @@
-namespace StoreApp.Models;
+/* Functional Requirements:
+ 
+FR9. Cart creation and item management
+FR10. Cart total calculation */
 
+namespace StoreApp.Models;
 public class ShoppingCart
 {
     public int cartId { get; set; }

@@ -1,3 +1,7 @@
+/* Functional Requirements:
+ 
+FR10. Subtotal Calculations */
+
 using System.Collections.Generic;
 using System.Linq;
 namespace StoreApp.Models;

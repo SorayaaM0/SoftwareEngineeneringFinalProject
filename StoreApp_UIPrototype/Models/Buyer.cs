@@ -1,3 +1,9 @@
+/* Functional Requirements:
+ 
+FR4. View order history
+FR5. Add products to wishlist
+FR13. WishlistFactory association */
+
 namespace StoreApp.Models;
 
 public class Buyer : User

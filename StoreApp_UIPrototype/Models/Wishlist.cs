@@ -1,3 +1,8 @@
+/* Functional Requirements:
+
+FR5. Add/Remove products to wishlist
+FR13. WishlistFactory association */
+
 using System.Collections.Generic;
 namespace StoreApp.Models;
 

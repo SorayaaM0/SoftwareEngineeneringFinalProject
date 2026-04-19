@@ -1,3 +1,9 @@
+/* Functional Requirements:
+ 
+FR1. User registration
+FR2. Login and logout functionality
+FR3. Role based creation using UserFactory*/
+
 namespace StoreApp.Models;
 
 public class User

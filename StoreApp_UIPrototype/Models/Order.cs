@@ -1,4 +1,9 @@
 //This will be the completed purchase
+/* Functional Requirements:
+ 
+FR10. Order total aggregation
+FR11. Place order and update status */
+
 namespace StoreApp.Models;
 
 public class Order

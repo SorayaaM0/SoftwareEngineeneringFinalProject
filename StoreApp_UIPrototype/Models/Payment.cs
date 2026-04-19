@@ -1,3 +1,8 @@
+/* Functional Requirements:
+ 
+FR12. Payment Processing
+FR11. Updates order after payment */
+
 namespace StoreApp.Models;
 
 public class Payment

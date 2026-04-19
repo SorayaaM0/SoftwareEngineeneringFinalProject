@@ -1,3 +1,7 @@
+/* Functional Requirements:
+ 
+FR8. Product Facotry Association */
+
 namespace StoreApp.Models;
 
 public class Product
