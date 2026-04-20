@@ -11,7 +11,7 @@ public partial class LoginPage : ContentPage
 
 	private async void OnLoginClicked(object sender,EventArgs e)
 	{
-		var email = UsernameEntry.Text;
+		var email = EmailEntry.Text;
 		var password = PasswordEntry.Text;
 
 		if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
@@ -34,6 +34,22 @@ public partial class LoginPage : ContentPage
 			//go back to product page
 			await Navigation.PopAsync();
         }
+
+		if (EmailEntry.Text == "admin@testmail.com")
+		{
+			var admin = UserFactory.CreateUser(
+				"admin",
+				0,
+				"Admin User",
+				"admin@testmail.com",
+				"adminpass");
+
+			UserSession.Login(admin, email, password);
+			await Navigation.PushAsync(new AdminPage());
+			return;
+
+		}
+
     }
 
 	private async void OnRegisterClicked(object sender, EventArgs e)

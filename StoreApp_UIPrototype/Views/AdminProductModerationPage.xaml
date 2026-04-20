@@ -1,0 +1,73 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoreApp.Views.AdminProductModerationPage"
+    Title="Product Moderation">
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+
+        <Label
+            Text="Product Moderation"
+            FontSize="24"
+            FontAttributes="Bold" />
+
+        <Label
+            Text="Reported product listings requiring administrative review.
+Actions are simulated for Sprint 1."
+            FontSize="14"
+            TextColor="#555555" />
+
+        <CollectionView x:Name="ProductList">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        BorderColor="#E0E0E0"
+                        CornerRadius="8"
+                        Padding="12"
+                        Margin="0,6">
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label
+                                Text="{Binding Name}"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Text="{Binding SellerEmail}"
+                                FontSize="13"
+                                TextColor="Black" />
+
+                            <Label
+                                Text="{Binding Reports, StringFormat='Reports: {0}'}"
+                                TextColor="Red" />
+
+                            <HorizontalStackLayout Spacing="10">
+
+                                <Button
+                                    Text="Remove Product"
+                                    CommandParameter="{Binding}"
+                                    Clicked="OnRemoveProductClicked" />
+
+                                <Button
+                                    Text="Remove Seller Listings"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    CommandParameter="{Binding}"
+                                    Clicked="OnRemoveSellerClicked" />
+
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <Button
+            Text="Back"
+            Clicked="OnBackClicked" />
+
+    </VerticalStackLayout>
+</ContentPage>

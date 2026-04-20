@@ -6,7 +6,7 @@
 
     <VerticalStackLayout Padding="30" Spacing="15">
 
-        <Entry x:Name="UsernameEntry"
+        <Entry x:Name="EmailEntry"
                Placeholder="Email"
                Keyboard="Email"
                TextColor="Black"/>

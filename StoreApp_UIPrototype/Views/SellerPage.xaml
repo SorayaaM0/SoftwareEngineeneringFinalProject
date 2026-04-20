@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoreApp.Views.SellerPage"
+             Title="Seller Dashboard"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+            <Label x:Name="StoreLabel" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" TextColor="Black" />
+
+            <BoxView HeightRequest="1" Color="LightGray" />
+
+            <Label Text="Your Product Listings" FontSize="18" TextColor="Gray" />
+
+            <CollectionView x:Name="ProductsListView" 
+                            HeightRequest="200"
+                            SelectionMode="Single"
+                            SelectionChanged="OnProductSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Label Text="{Binding name}" TextColor="Black" VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <BoxView HeightRequest="1" Color="LightGray" />
+
+            <Entry x:Name="ProductNameEntry" Placeholder="Product Name" TextColor="Black" />
+            <Entry x:Name="ProductDescEntry" Placeholder="Description" TextColor="Black" />
+            <Entry x:Name="ProductPriceEntry" Placeholder="Price" Keyboard="Numeric" TextColor="Black" />
+            <Entry x:Name="ProductImageEntry" Placeholder="Image Filename" TextColor="Black" />
+            <Entry x:Name="ProductCategoryEntry" Placeholder="Category" TextColor="Black" />
+
+            <Button Text="Create New Product" BackgroundColor="Green" Clicked="OnCreateProductClicked" />
+            <Button Text="Update Selected Product" BackgroundColor="Blue" Clicked="OnUpdateProductClicked" />
+
+            <Button Text="Go To StyleHub" Clicked="OnBackToStoreClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

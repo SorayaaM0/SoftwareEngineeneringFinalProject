@@ -1,0 +1,74 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StoreApp.Views.AdminSecurityLogsPage"
+    Title="Security Logs">
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+
+        <Label
+            Text="Security and Access Logs"
+            FontSize="24"
+            FontAttributes="Bold" />
+
+        <Label
+            Text="Unauthorized access attempts and security events.
+Logging is simulated for Sprint 1."
+            FontSize="14"
+            TextColor="#555555" />
+
+        <CollectionView x:Name="LogList">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        BorderColor="#E0E0E0"
+                        CornerRadius="8"
+                        Padding="12"
+                        Margin="0,6">
+
+                        <VerticalStackLayout Spacing="4">
+
+                            <Label
+                                Text="{Binding Type}"
+                                FontAttributes="Bold"
+                                TextColor="Red"/>
+
+                            <Label
+                                Text="{Binding Email}"
+                                FontSize="13"
+                                TextColor="Black"/>
+
+                            <Label
+                                Text="{Binding Time}"
+                                FontSize="12"
+                                TextColor="Black"/>
+
+                            <Button
+                                Text="View Details"
+                                CommandParameter="{Binding}"
+                                Clicked="OnViewDetailsClicked"
+                                FontSize="12"/>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <HorizontalStackLayout Spacing="10">
+
+            <Button
+                Text="Clear Logs"
+                BackgroundColor="#DDDDDD"
+                Clicked="OnClearLogsClicked"/>
+
+            <Button
+                Text="Back"
+                Clicked="OnBackClicked"/>
+
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
