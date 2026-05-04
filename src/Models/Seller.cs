@@ -1,3 +1,4 @@
+using StoreApp.Models;
 public class Seller : User
 {
     public string storeName { get; set; }

@@ -5,76 +5,76 @@ namespace StoreApp.Views;
 
 public partial class RegisterPage : ContentPage
 {
-	public RegisterPage()
-	{
-		InitializeComponent();
-	}
+    public RegisterPage()
+    {
+        InitializeComponent();
+    }
 
-	private async void OnRegisterClicked(object sender, EventArgs e)
-	{
-		var name = NameEntry.Text;
-		var email = EmailEntry.Text;
-		var password = PasswordEntry.Text;
-		var confirmPassword = ConfirmPasswordEntry.Text;
-		
-		if(string.IsNullOrWhiteSpace(name) ||
-			string.IsNullOrWhiteSpace(email) ||
-			string.IsNullOrWhiteSpace(password))
-		{
-			await DisplayAlert("Error", "Please fill in all fields.", "OK");
-			return;
-		}
+    private async void OnRegisterClicked(object sender, EventArgs e)
+    {
+        var name = NameEntry.Text;
+        var email = EmailEntry.Text;
+        var password = PasswordEntry.Text;
+        var confirmPassword = ConfirmPasswordEntry.Text;
 
-		if (password != confirmPassword)
-		{
-			await DisplayAlert("Error", "Passwords do not match.", "OK");
-			return;
-		}
+        if (string.IsNullOrWhiteSpace(name) ||
+            string.IsNullOrWhiteSpace(email) ||
+            string.IsNullOrWhiteSpace(password))
+        {
+            await DisplayAlert("Error", "Please fill in all fields.", "OK");
+            return;
+        }
 
-		User newUser;
+        if (password != confirmPassword)
+        {
+            await DisplayAlert("Error", "Passwords do not match.", "OK");
+            return;
+        }
 
-		if (IsSellerCheckBox.IsChecked)
-		{
-			var storeName = StoreNameEntry.Text;
-			if (string.IsNullOrWhiteSpace(storeName))
-			{
-				await DisplayAlert("Error", "Sellers must provide a Store Name.", "OK");
-				return;
-			}
+        User newUser;
 
-			newUser = new Seller(
-				userId: new Random().Next(1, 10000),
-				name: name,
-				email: email,
-				passwordHash: "stubbed_hash",
-				storeName: storeName
-			);
-		}
-		else
-		{
-			newUser = new User(
-				userId: new Random().Next(1, 10000),
-				name: name,
-				email: email,
-				passwordHash: "stubbed_hash"
-			);
-		}
+        if (IsSellerCheckBox.IsChecked)
+        {
+            var storeName = StoreNameEntry.Text;
+            if (string.IsNullOrWhiteSpace(storeName))
+            {
+                await DisplayAlert("Error", "Sellers must provide a Store Name.", "OK");
+                return;
+            }
 
-		newUser.register();
+            newUser = new Seller(
+                userId: new Random().Next(1, 10000),
+                name: name,
+                email: email,
+                passwordHash: "stubbed_hash",
+                storeName: storeName
+            );
+        }
+        else
+        {
+            newUser = new User(
+                userId: new Random().Next(1, 10000),
+                name: name,
+                email: email,
+                passwordHash: "stubbed_hash"
+            );
+        }
 
-		// Only change: Pass the stubbed hash to the Login method to ensure the session starts.
-		if (UserSession.Login(newUser, email, "stubbed_hash"))
-		{
-			await DisplayAlert("Success", "Registration successful!", "OK");
+        newUser.register();
 
-			if (newUser is Seller)
-			{
-				await Navigation.PushAsync(new SellerPage());
-			}
-			else
-			{
-				await Navigation.PopToRootAsync();
-			}
-		}
-	}
+        // Only change: Pass the stubbed hash to the Login method to ensure the session starts.
+        if (UserSession.Login(newUser, email, "stubbed_hash"))
+        {
+            await DisplayAlert("Success", "Registration successful!", "OK");
+
+            if (newUser is Seller)
+            {
+                await Navigation.PushAsync(new SellerPage());
+            }
+            else
+            {
+                await Navigation.PopToRootAsync();
+            }
+        }
+    }
 }

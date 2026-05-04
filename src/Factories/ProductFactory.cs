@@ -1,8 +1,9 @@
-public static class ProductFactory
+using StoreApp.Models;
+public class ProductFactory
 {
-    public static ProductFactory CreateProduct(int id, string name, string desc, double price,
+    public Product CreateProduct(int id, string name, string desc, double price,
                                                 string imageUrl, string category)
     {
-        return new ProductFactory(id, name, desc, price, imageUrl, category);
+        return new Product(id, name, desc, price, imageUrl, category);
     }
 }

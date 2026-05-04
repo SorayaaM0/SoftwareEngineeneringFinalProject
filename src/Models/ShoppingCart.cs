@@ -1,3 +1,4 @@
+using StoreApp.Models;
 public class ShoppingCart
 {
     public int cartId { get; set; }
@@ -26,6 +27,11 @@ public class ShoppingCart
         {
             item.quantity = quantity; //update the quantity
         }
+    }
+
+    public void clear()
+    {
+        items.Clear();
     }
 
     public double getTotal()

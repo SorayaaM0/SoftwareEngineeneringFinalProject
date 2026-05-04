@@ -1,8 +1,9 @@
-using MyStoreApp.Models;
+using StoreApp.Models;
+using StoreApp.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace MyStoreApp.Views;
+namespace StoreApp.Views;
 
 public partial class CartPage : ContentPage
 {
@@ -59,7 +60,30 @@ public partial class CartPage : ContentPage
 
     private async void OnCheckoutClicked(object sender, EventArgs e)
     {
-        await DisplayAlert("Checkout", $"Your total is ${_cart.getTotal():F2}. Proceeding to Payment...", "OK");
+        if (UserSession.IsLoggedIn)
+        {
+            await DisplayAlert("Checkout", $"Your total is ${_cart.getTotal():F2}. Proceeding to Payment...", "OK");
+            await Navigation.PushAsync(new CheckoutView(_cart));
+        }
+        else
+        {
+            bool login = await DisplayAlert("Login Required", "You need to be logged in to proceed to checkout. Do you want to log in now?", "Yes", "No");
+            if (login)
+            {
+                await Navigation.PushAsync(new LoginPage());
+            }
+        }
+        
+    }
+
+    private async void OnCartItemTapped(object sender, EventArgs e)
+    {
+        if (sender is Grid grid && 
+            grid.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
+            tap.CommandParameter is CartItem cartItem)
+        {
+            await Navigation.PushAsync(new ProductDetailPage(cartItem.product, _cart));
+        }
     }
 
     private void RefreshUI()

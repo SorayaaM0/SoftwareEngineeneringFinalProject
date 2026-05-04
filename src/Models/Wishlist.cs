@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using StoreApp.Models;
 public class Wishlist
 {
     public int wishlistId { get; set; }

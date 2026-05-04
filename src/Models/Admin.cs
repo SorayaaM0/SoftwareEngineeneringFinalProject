@@ -1,3 +1,5 @@
+namespace StoreApp.Models;
+
 public class Admin : User
 {
     public Admin(int userId, string name, string email, string passwordHash)

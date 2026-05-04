@@ -1,5 +1,5 @@
 //This will be the completed purchase
-
+using StoreApp.Models;
 public class Order
 {
     public int orderId { get; set; }

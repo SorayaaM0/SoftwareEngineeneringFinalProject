@@ -1,9 +1,9 @@
 //Creating an empty shopping cart for the user
 
-public static class ShoppingCartFactory
+public class ShoppingCartFactory
 {
-    public static ShoppingCartFactory CreateCart(int cartId)
+    public ShoppingCart CreateShoppingCart(int id)
     {
-        return new ShoppingCartFactory(cartId);
+        return new ShoppingCart(id);
     }
 }

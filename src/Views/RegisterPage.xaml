@@ -28,14 +28,14 @@
         <HorizontalStackLayout Spacing="10">
             <CheckBox x:Name="IsSellerCheckBox" Color="Blue" VerticalOptions="Center" />
             <Label Text="Register as a Seller?" VerticalOptions="Center" TextColor="Black" />
-         </HorizontalStackLayout>
+        </HorizontalStackLayout>
 
-         <Entry x:Name="StoreNameEntry" 
+        <Entry x:Name="StoreNameEntry" 
                Placeholder="Store Name (Sellers Only)" 
-               TextColor="Black" />     
+               TextColor="Black" />
 
 
-         <Button Text="Create Account"
+        <Button Text="Create Account"
                 Clicked="OnRegisterClicked"/>
 
     </VerticalStackLayout>

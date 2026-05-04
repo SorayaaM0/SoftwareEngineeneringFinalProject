@@ -1,9 +1,9 @@
 //Creates different types of users based on their roles
-
-public static class UserFactory
+using StoreApp.Models;
+public class UserFactory
 {
     
-    public static User CreateUser(string role, int id, string name, string email, string passwordHash)
+    public User CreateUser(string role, int id, string name, string email, string passwordHash)
     {
         return role.ToLower() switch
         {

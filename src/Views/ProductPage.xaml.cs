@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MyStoreApp.Models;
-
-namespace MyStoreApp.Views;
+using StoreApp.Models;
+using StoreApp.Views;
+using StoreApp.Services;
+namespace StoreApp.Views;
 
 public partial class ProductPage : ContentPage
 {
@@ -104,4 +105,46 @@ public partial class ProductPage : ContentPage
     //passes shared objects to the different pages
     private async void OnCartClicked(object sender, EventArgs e) => await Navigation.PushAsync(new CartPage(_cart));
     private async void OnCollectionsClicked(object sender, EventArgs e) => await Navigation.PushAsync(new WishlistPage(_wishlist));
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        UpdateAccountButton();
+    }
+
+    private void UpdateAccountButton()
+    {
+        if(UserSession.IsLoggedIn)
+        {
+            AccountButton.Text = $"My Account";
+            AccountButton.IsEnabled = true;
+        }
+        else
+        {
+            AccountButton.Text = "Login / Register";
+            AccountButton.IsEnabled = true;
+        }
+    }
+
+    private async void OnAccountClicked(object sender, EventArgs e)
+    {
+        if (UserSession.IsLoggedIn)
+        {
+            await Navigation.PushAsync(new AccountPage(_cart));
+        }
+        else
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+    }
+
+    private async void OnProductTapped(object sender, EventArgs e)
+    {
+       if (sender is Frame frame &&
+           frame.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
+           tap.CommandParameter is Product product)
+        {
+            await Navigation.PushAsync(new ProductDetailPage(product,_cart));
+        }
+    }
 }

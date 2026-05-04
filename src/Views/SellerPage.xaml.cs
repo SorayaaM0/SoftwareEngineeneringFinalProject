@@ -13,7 +13,7 @@ public partial class SellerPage : ContentPage
     {
         InitializeComponent();
         ProductsListView.ItemsSource = MyProducts;
-        
+
         if (UserSession.CurrentUser is Seller seller)
         {
             StoreLabel.Text = seller.storeName;
@@ -56,7 +56,7 @@ public partial class SellerPage : ContentPage
 
             seller.createProduct(newProd);
             MyProducts.Add(newProd); // Adds to the visual list so you can select it later
-            
+
             await DisplayAlert("Success", $"{newProd.name} listed!", "OK");
         }
     }

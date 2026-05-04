@@ -1,6 +1,6 @@
-using MyStoreApp.Models;
+using StoreApp.Models;
 
-namespace MyStoreApp.Views;
+namespace StoreApp.Views;
 
 public partial class WishlistPage : ContentPage
 {

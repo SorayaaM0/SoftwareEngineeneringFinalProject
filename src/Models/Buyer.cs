@@ -1,9 +1,11 @@
+using StoreApp.Models;
+
 public class Buyer : User
 {
     public string shippingAddress { get; set; }
     public string billingAddress { get; set; }
 
-    public Buyer(int userId, string email, string passwordHash,
+    public Buyer(int userId, string name, string email, string passwordHash,
                     string shippingAddress, string billingAddress)
                     : base(userId, name, email, passwordHash)
     {
