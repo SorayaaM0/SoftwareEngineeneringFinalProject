@@ -1,6 +1,6 @@
 using System.Linq;
 using Xunit;
-
+using StoreApp.Models;
 public class ShoppingCartTests
 {
     [Fact]

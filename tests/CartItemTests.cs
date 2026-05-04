@@ -1,5 +1,5 @@
 using Xunit;
-
+using StoreApp.Models;
 public class CartItemTests
 {
     [Fact]
