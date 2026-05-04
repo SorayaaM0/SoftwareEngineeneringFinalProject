@@ -7,25 +7,36 @@
     <VerticalStackLayout Padding="30" Spacing="15">
 
         <Entry x:Name="NameEntry"
-           Placeholder="Full Name"
-           TextColor="Black"/>
+               Placeholder="Full Name"
+               TextColor="Black"/>
 
         <Entry x:Name="EmailEntry"
-           Placeholder="Email"
-           Keyboard="Email"
-           TextColor="Black"/>
+               Placeholder="Email"
+               Keyboard="Email"
+               TextColor="Black"/>
 
         <Entry x:Name="PasswordEntry"
-           Placeholder="Password"
-           IsPassword="True"
-           TextColor="Black"/>
+               Placeholder="Password"
+               IsPassword="True"
+               TextColor="Black"/>
 
         <Entry x:Name="ConfirmPasswordEntry"
-           Placeholder="Confirm Password"
-           IsPassword="True"
-           TextColor="Black"/>
+               Placeholder="Confirm Password"
+               IsPassword="True"
+               TextColor="Black"/>
+
+        <HorizontalStackLayout Spacing="10">
+            <CheckBox x:Name="IsSellerCheckBox" Color="Blue" VerticalOptions="Center" />
+            <Label Text="Register as a Seller?" VerticalOptions="Center" TextColor="Black" />
+        </HorizontalStackLayout>
+
+        <Entry x:Name="StoreNameEntry" 
+               Placeholder="Store Name (Sellers Only)" 
+               TextColor="Black" />
+
 
         <Button Text="Create Account"
-            Clicked="OnRegisterClicked"/>
+                Clicked="OnRegisterClicked"/>
+
     </VerticalStackLayout>
 </ContentPage>
