@@ -4,7 +4,7 @@ namespace StoreApp.Services;
 
 public static class UserSession
 {
-    public static User? CurrentUser { get; private set; }
+    public static User? CurrentUser { get; internal set; }
     public static bool IsLoggedIn => CurrentUser != null;
     public static bool Login(User user, string email, string password)
     {

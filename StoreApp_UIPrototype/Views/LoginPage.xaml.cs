@@ -35,21 +35,14 @@ public partial class LoginPage : ContentPage
 			await Navigation.PopAsync();
         }
 
-		if (EmailEntry.Text == "admin@testmail.com")
+		if (EmailEntry.Text == "admin@test.com")
 		{
-			var admin = UserFactory.CreateUser(
-				"admin",
+			UserSession.CurrentUser = new Admin(
 				0,
 				"Admin User",
 				"admin@testmail.com",
-				"adminpass");
-
-			UserSession.Login(admin, email, password);
-			await Navigation.PushAsync(new AdminPage());
-			return;
-
+				"hashedpassword");
 		}
-
     }
 
 	private async void OnRegisterClicked(object sender, EventArgs e)
