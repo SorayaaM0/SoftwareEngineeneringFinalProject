@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Dynamic;
-using StoreApp.Services;
+using StoreApp.src.Services;
 
 namespace StoreApp.Views;
 
@@ -15,7 +15,7 @@ public partial class AdminSellerModerationPage : ContentPage
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-		if(UserSession.CurrentUser is not Models.Admin)
+		if(UserSession.CurrentUser?.UserType != "Admin")
 		{
 			await DisplayAlert(
 				"Access Denied",

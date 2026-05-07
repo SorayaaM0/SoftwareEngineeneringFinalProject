@@ -1,24 +1,42 @@
 using System.Collections.Generic;
 using StoreApp.Models;
+using SQLite;
+[Table("Wishlists")]
 public class Wishlist
 {
-    public int wishlistId { get; set; }
-    public Buyer buyer { get; set; }
-    public List<Product> products { get; set; } = new List<Product>();
+    [PrimaryKey, AutoIncrement]
+    public int WishlistId { get; set; }
+    public int BuyerId { get; set; }
+    public int ProductId { get; set; }
 
-    public Wishlist(int wishlistId, Buyer buyer)
+    public Wishlist() { }
+
+    public void addProduct(int productId)
     {
-        this.wishlistId = wishlistId;
-        this.buyer = buyer;
+        if (productId <= 0)
+        {
+            Console.WriteLine("Invalid product ID.");
+            return;
+        }
+        else
+        {
+            Console.WriteLine($"Adding product {productId} to wishlist.");
+            // Logic to add the product to the wishlist
+        }
+    }
+    public void removeProduct(int productId)
+    {
+        if (productId <= 0)
+        {
+            Console.WriteLine("Invalid product ID.");
+            return;
+        }
+        else
+        {
+            Console.WriteLine($"Removing product {productId} from wishlist.");
+            // Logic to remove the product from the wishlist
+
+        }
     }
 
-    public void addProduct(Product product)
-    {
-        products.Add(product);
-    }
-
-    public void removeProduct(Product product)
-    {
-        products.RemoveAll(p => p.productId == product.productId);
-    }
-}
+   }

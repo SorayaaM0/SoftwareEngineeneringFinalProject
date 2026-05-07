@@ -1,22 +1,23 @@
 using StoreApp.Models;
-using StoreApp.Services;
+using StoreApp.src.Services;
 using System.Threading.Tasks;
 
 namespace StoreApp.Views;
 
 public partial class AdminPage : ContentPage
 {
+	private readonly DatabaseService _db;
 
-
-	public AdminPage()
+    public AdminPage(DatabaseService db)
 	{
 		InitializeComponent();
+        _db = db;
 	}
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
 
-		if(UserSession.CurrentUser is not Admin)
+		if(UserSession.CurrentUser?.UserType != "Admin")
 		{
 			await DisplayAlert(
 				"Access Denied",

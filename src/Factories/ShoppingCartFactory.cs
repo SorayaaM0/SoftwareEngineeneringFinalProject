@@ -1,9 +1,14 @@
 //Creating an empty shopping cart for the user
-
+using StoreApp.src.Services;
 public class ShoppingCartFactory
 {
-    public ShoppingCart CreateShoppingCart(int id)
+    private readonly DatabaseService _db;
+    public ShoppingCartFactory(DatabaseService db)
     {
-        return new ShoppingCart(id);
+        _db = db;
+    }
+    public ShoppingCart CreateShoppingCart()
+    {
+        return new ShoppingCart();
     }
 }

@@ -1,33 +1,66 @@
 using StoreApp.Models;
-
+using StoreApp.src.Services;
 namespace StoreApp.Views;
 
 public partial class WishlistPage : ContentPage
 {
-    private Wishlist _wishlist;
+    private readonly DatabaseService _db;
+    
 
-    public WishlistPage(Wishlist wishlist)
+    public WishlistPage(DatabaseService db)
     {
         InitializeComponent();
-        _wishlist = wishlist;
-        WishlistCollection.ItemsSource = _wishlist.products;
+        _db = db;
+
     }
 
-    private void OnRemoveClicked(object sender, EventArgs e)
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        if (!UserSession.IsLoggedIn)
+        {
+            bool login = await DisplayAlert("Not Logged In", "Please log in to view your wishlist.", "Login", "Cancel");
+            if (login)
+            {
+                await Navigation.PushAsync(new LoginPage(_db));
+            } else
+            {
+                await Navigation.PopAsync();
+            }
+                return;
+        }
+        await LoadWishlistFromDbAsync();
+    }
+
+    private async void OnRemoveClicked(object sender, EventArgs e)
     {
         var product = (Product)((Button)sender).CommandParameter;
-        
-        if (product != null)
+        if (product == null) return;
+
+        // Find and delete the wishlist entry from DB
+        var entry = await _db.GetWishlistEntryAsync(
+            UserSession.CurrentUser.Id, product.ProductId);
+
+        if (entry != null)
+            await _db.DeleteAsync(entry);
+
+        // Reload to reflect removal
+        await LoadWishlistFromDbAsync();
+    }
+
+    public async Task LoadWishlistFromDbAsync()
+    {
+        if (!UserSession.IsLoggedIn) return;
+        var wishlistEntries = await _db.GetWishlistAsync(UserSession.CurrentUser.Id);
+        var products = new List<Product>();
+        foreach (var entry in wishlistEntries)
         {
-            //update the product state
-            product.isWishlisted = false;
-
-            //uses removeProduct method
-            _wishlist.removeProduct(product);
-
-            //refreshes the UI list
-            WishlistCollection.ItemsSource = null;
-            WishlistCollection.ItemsSource = _wishlist.products;
+            var product = await _db.GetByIdAsync<Product>(entry.ProductId);
+            if (product != null)
+            {
+                products.Add(product);
+            }
         }
+        WishlistCollection.ItemsSource = products;
     }
 }

@@ -18,16 +18,16 @@
                         </Grid.GestureRecognizers>
                         
                         
-                        <Image Grid.Column="0" Source="{Binding product.imageUrl}" WidthRequest="60" HeightRequest="60"/>
+                        <Image Grid.Column="0" Source="{Binding ImageUrl}" WidthRequest="60" HeightRequest="60"/>
                         
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0">
-                            <Label Text="{Binding product.name}" FontAttributes="Bold" TextColor="Black" />
-                            <Label Text="{Binding product.price, StringFormat='${0:F2}'}" TextColor="#666666" />
+                            <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black" />
+                            <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="#666666" />
                         </VerticalStackLayout>
 
                         <HorizontalStackLayout Grid.Column="2" VerticalOptions="Center" Spacing="5">
                             <Button Text="-" Clicked="OnDecreaseQuantity" CommandParameter="{Binding .}" WidthRequest="35"/>
-                            <Label Text="{Binding quantity}" TextColor="Black" VerticalOptions="Center" WidthRequest="25" HorizontalTextAlignment="Center"/> 
+                            <Label Text="{Binding Quantity}" TextColor="Black" VerticalOptions="Center" WidthRequest="25" HorizontalTextAlignment="Center"/> 
                             <Button Text="+" Clicked="OnIncreaseQuantity" CommandParameter="{Binding .}" WidthRequest="35"/>
                         </HorizontalStackLayout>
 

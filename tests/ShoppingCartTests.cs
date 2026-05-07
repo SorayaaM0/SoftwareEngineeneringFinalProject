@@ -6,31 +6,31 @@ public class ShoppingCartTests
     [Fact]
     public void AddItem_ShouldAddProduct()
     {
-        var cart = new ShoppingCart(1);
-        var product = new Product(1, "Phone", "Smart phone", 500, "", "Electronics");
+        var cart = new ShoppingCart();
+        var product = new Product();
 
         cart.addItem(product, 2);
 
-        Assert.Single(cart.items);
+        Assert.Single(cart.Items);
     }
 
     [Fact]
     public void RemoveItem_ShouldRemoveProduct()
     {
-        var cart = new ShoppingCart(1);
-        var product = new Product(1, "Phone", "Smart phone", 500, "", "Electronics");
+        var cart = new ShoppingCart();
+        var product = new Product();
 
         cart.addItem(product, 2);
-        cart.removeItem(product);
+        cart.removeItem(product.ProductId);
 
-        Assert.Empty(cart.items);
+        Assert.Empty(cart.Items);
     }
 
     [Fact]
     public void GetTotal_ShouldCalculateCorrectly()
     {
-        var cart = new ShoppingCart(1);
-        var product = new Product(1, "Phone", "Smart phone", 500, "", "Electronics");
+        var cart = new ShoppingCart();
+        var product = new Product();
 
         cart.addItem(product, 2);
 

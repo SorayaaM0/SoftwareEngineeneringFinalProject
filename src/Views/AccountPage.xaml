@@ -3,16 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.AccountPage"
              Title="AccountPage"
-             Background="White">
+             Background="{StaticResource Background}">
     <VerticalStackLayout Spacing="10">
         <HorizontalStackLayout Padding="20" Spacing="15">
             <Image Source="user_placeholder.png" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" VerticalOptions="Center"/>
             <VerticalStackLayout VerticalOptions="Center">
-                <Label x:Name="UserNameLabel" FontSize="20" FontAttributes="Bold" />
-                <Label x:Name="UserEmailLabel" FontSize="14" TextColor="#555555"/>
+                <Label x:Name="UserNameLabel" 
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource Black}"/>
+                <Label x:Name="UserEmailLabel" 
+                       FontSize="14" 
+                       TextColor="{StaticResource Black}"/>
             </VerticalStackLayout>
         </HorizontalStackLayout>
         <!--Account options-->
+        <Button x:Name="DashboardButton"
+            Grid.Column="2"
+            Text="Dashboard"
+            FontAttributes="Bold"
+            TextColor="{StaticResource White}"
+            BackgroundColor="Transparent"
+            Clicked="OnDashboardClicked">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="PointerOver">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+        </Button>
+        <Button Text="My Orders"
+                BackgroundColor="{StaticResource PrimaryDark}"
+                TextColor="{StaticResource PrimaryDarkText}"
+                Clicked="OnMyOrdersClicked"/>
         <Button Text="Log Out" BackgroundColor="Black" TextColor="White" Clicked="OnLogoutClicked" />
     </VerticalStackLayout>
 </ContentPage>

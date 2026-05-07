@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Dynamic;
-using StoreApp.Services;
+using StoreApp.src.Services;
 
 namespace StoreApp.Views;
 

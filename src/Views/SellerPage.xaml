@@ -20,7 +20,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10">
-                            <Label Text="{Binding name}" TextColor="Black" VerticalOptions="Center" />
+                            <Label Text="{Binding Name}" TextColor="Black" VerticalOptions="Center" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -31,11 +31,40 @@
             <Entry x:Name="ProductNameEntry" Placeholder="Product Name" TextColor="Black" />
             <Entry x:Name="ProductDescEntry" Placeholder="Description" TextColor="Black" />
             <Entry x:Name="ProductPriceEntry" Placeholder="Price" Keyboard="Numeric" TextColor="Black" />
-            <Entry x:Name="ProductImageEntry" Placeholder="Image Filename" TextColor="Black" />
             <Entry x:Name="ProductCategoryEntry" Placeholder="Category" TextColor="Black" />
 
-            <Button Text="Create New Product" BackgroundColor="Green" Clicked="OnCreateProductClicked" />
-            <Button Text="Update Selected Product" BackgroundColor="Blue" Clicked="OnUpdateProductClicked" />
+            <Label Text="Product Image" TextColor="{StaticResource Black}" />
+            <Grid ColumnDefinitions="Auto,*, Auto" ColumnSpacing="10">
+                <Entry x:Name="ProductImageEntry"
+                       Grid.Column="0"
+                       Placeholder="Image filename"
+                       TextColor="{StaticResource Black}"
+                       IsReadOnly="True"/>
+                <Button Grid.Column="1" 
+                        Text="Pick Image" 
+                        Clicked="OnPickImageClicked" 
+                        BackgroundColor="#007ACC" 
+                        TextColor="White" />
+            </Grid>
+
+            <Image x:Name="ProductImagePreview" 
+                   HeightRequest="150" 
+                   Aspect="AspectFit" 
+                   IsVisible="False" 
+                   Margin="0,10"/>
+
+
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                <Button Grid.Column="0" Text="Create" 
+                        BackgroundColor="Green" TextColor="White"
+                        Clicked="OnCreateProductClicked"/>
+                <Button Grid.Column="1" Text="Update" 
+                        BackgroundColor="Blue" TextColor="White"
+                        Clicked="OnUpdateProductClicked"/>
+                <Button Grid.Column="2" Text="Delete" 
+                        BackgroundColor="Red" TextColor="White"
+                        Clicked="OnDeleteProductClicked"/>
+            </Grid>
 
             <Button Text="Go To StyleHub" Clicked="OnBackToStoreClicked" />
         </VerticalStackLayout>

@@ -5,18 +5,34 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="PrimaryDark">#ac99ea</Color>
-    <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#9880e5</Color>
+    <!-- Background -->
+    <Color x:Key="Background">#304055</Color>
+
+    <!-- French Blue - main actions -->
+    <Color x:Key="Primary">#2A4494</Color>
+    <Color x:Key="PrimaryDark">#1a2d6e</Color>
+    <Color x:Key="PrimaryDarkText">#FBFFFE</Color>
+
+    <!-- Sunflower Gold - accents -->
+    <Color x:Key="Secondary">#E6AF2E</Color>
+    <Color x:Key="SecondaryDarkText">#E6AF2E</Color>
+    <!-- Tertiary - optional -->
     <Color x:Key="Tertiary">#2B0B98</Color>
 
-    <Color x:Key="White">White</Color>
-    <Color x:Key="Black">Black</Color>
+    <!-- Raspberry Red - destructive actions -->
+    <Color x:Key="Danger">#D81159</Color>
+    <Color x:Key="DangerDark">#a50d42</Color>
+
+    <!-- Evergreen - navbar/header -->
+    <Color x:Key="Surface">#1E2D24</Color>
+    <!-- Warm white -->
+    <Color x:Key="White">#FBFFFE</Color>
+
+    <Color x:Key="Black">#080808</Color>
+    <Color x:Key="OffBlack">#1E2D24</Color>
+    <Color x:Key="MidnightBlue">#2A4494</Color>
+    
     <Color x:Key="Magenta">#D600AA</Color>
-    <Color x:Key="MidnightBlue">#190649</Color>
-    <Color x:Key="OffBlack">#1f1f1f</Color>
 
     <Color x:Key="Gray100">#E1E1E1</Color>
     <Color x:Key="Gray200">#C8C8C8</Color>

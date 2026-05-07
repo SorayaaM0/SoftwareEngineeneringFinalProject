@@ -1,29 +1,27 @@
 //This will be the completed purchase
+using SQLite;
 using StoreApp.Models;
+
+[Table("Orders")]
 public class Order
 {
-    public int orderId { get; set; }
-    public Buyer buyer { get; set; }
-    public List<CartItem> items { get; set; }
-    public double totalAmount { get; set; }
-    public string status { get; set; }
+    [PrimaryKey, AutoIncrement]
+    public int OrderId { get; set; }
+    public int BuyerId { get; set; } //Foreign key to Buyer
 
-    public Order(int orderId, Buyer buyer, List<CartItem> items)
-    {
-        this.orderId = orderId;
-        this.buyer = buyer;
-        this.items = items;
-        this.totalAmount = items.Sum(i => i.getSubtotal());
-        this.status = "Pending..";
-    }
+    public DateTime OrderDate { get; set; }
+    public double TotalAmount { get; set; }
+    public string Status { get; set; }
+
+    public Order() { }
 
     public void placeOrder()
     {
-        status = "Placed";
+        Status = "Placed";
     }
 
     public void updateStatus(string newStatus)
     {
-        status = newStatus;
+        Status = newStatus;
     }
 }

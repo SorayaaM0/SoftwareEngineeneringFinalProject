@@ -1,17 +1,17 @@
 using StoreApp.Models;
+using SQLite;
 
+
+[Table("Buyers")]
 public class Buyer : User
 {
+    [Column("ShippingAddress")]
     public string shippingAddress { get; set; }
+    [Column("BillingAddress")]
     public string billingAddress { get; set; }
 
-    public Buyer(int userId, string name, string email, string passwordHash,
-                    string shippingAddress, string billingAddress)
-                    : base(userId, name, email, passwordHash)
-    {
-        this.shippingAddress = shippingAddress;
-        this.billingAddress = billingAddress;
-    }
+    public Buyer() { }
+
 
     public void viewOrderHistory()
     {
@@ -20,6 +20,7 @@ public class Buyer : User
 
     public void addToWishlist(Product product)
     {
-        Console.WriteLine($"{product.name} added to wishlist");
+        Console.WriteLine($"{product.Name} added to wishlist");
     }
+
 }

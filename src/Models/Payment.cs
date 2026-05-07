@@ -1,24 +1,17 @@
 using StoreApp.Models;
+using SQLite;
+
+[Table("Payments")]
 public class Payment
 {
-    public int paymentId { get; set; }
-    public Order order { get; set; }
-    public double amount { get; set;}
-    public string paymentMethod { get; set; }
-    public string paymentStatus { get; set; }
+    [PrimaryKey, AutoIncrement]
+    public int PaymentId { get; set; }
+    public int OrderId { get; set; }
+    public double Amount { get; set;}
+    public string PaymentMethod { get; set; }
+    public string PaymentStatus { get; set; }
+    public DateTime PaidAt { get; set; }
 
-    public Payment(int paymentId, Order order, string paymentMethod)
-    {
-        this.paymentId = paymentId;
-        this.order = order;
-        this.amount = order.totalAmount;
-        this.paymentMethod = paymentMethod;
-        this.paymentStatus = "Pending";
-    }
+    public Payment() { }
 
-    public void processPayment()
-    {
-        paymentStatus = "Completed";
-        order.updateStatus("Paid");
-    }
 }

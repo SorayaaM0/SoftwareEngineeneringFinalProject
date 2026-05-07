@@ -1,19 +1,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using StoreApp.Models;
+using SQLite;
+
+[Table("CartItems")]
 public class CartItem
 {
-    public Product product { get; set; }
-    public int quantity { get; set; }
+    [PrimaryKey, AutoIncrement]
+    public int CartItemId { get; set; }
+    public int BuyerId { get; set; } //Foreign key to Buyer
+    public int ProductId { get; set; } //Foreign key to Product
+    public int Quantity { get; set; }
+    public double Price { get; set; }
 
-    public CartItem(Product product, int quantity)
-    {
-        this.product = product;
-        this.quantity = quantity;
-    }
+    [Ignore]
+    public string ProductName { get; set; }
+    [Ignore]
+    public string ProductDescription { get; set; }
+    [Ignore]
+    public string ProductImageUrl { get; set; }
+
+    [Ignore]
+    public double ProductPrice { get; set; }
+
+    public CartItem() { }
+
+
 
     public double getSubtotal()
     {
-        return product.price * quantity;
+        // Placeholder for actual product price retrieval
+        double productPrice = Price; // Replace with actual product price retrieval logic
+        return productPrice * Quantity;
     }
 }

@@ -12,10 +12,10 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10" ColumnDefinitions="Auto, *, Auto">
-                        <Image Source="{Binding imageUrl}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit"/>
+                        <Image Source="{Binding ImageUrl}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit"/>
                         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="{Binding name}" FontAttributes="Bold" FontSize="16"/>
-                            <Label Text="{Binding price, StringFormat='${0:F2}'}" TextColor="Gray"/>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                            <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="Gray"/>
                         </VerticalStackLayout>
                         <Button Grid.Column="2" Text="Remove" Clicked="OnRemoveClicked" CommandParameter="{Binding .}" BackgroundColor="Transparent" TextColor="Red"/>
                     </Grid>

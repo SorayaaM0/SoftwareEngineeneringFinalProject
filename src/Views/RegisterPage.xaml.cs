@@ -1,80 +1,92 @@
-using StoreApp.Services;
+using Microsoft.Maui.ApplicationModel.Communication;
 using StoreApp.Models;
+using StoreApp.src.Services;
+using System.Xml.Linq;
 
 namespace StoreApp.Views;
 
 public partial class RegisterPage : ContentPage
 {
-    public RegisterPage()
+    private readonly DatabaseService _db;
+    private readonly UserFactory _userFactory;
+    public RegisterPage(DatabaseService db)
     {
         InitializeComponent();
+        _db = db;
+        _userFactory = new UserFactory(_db);
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        var name = NameEntry.Text;
-        var email = EmailEntry.Text;
-        var password = PasswordEntry.Text;
-        var confirmPassword = ConfirmPasswordEntry.Text;
-
-        if (string.IsNullOrWhiteSpace(name) ||
-            string.IsNullOrWhiteSpace(email) ||
-            string.IsNullOrWhiteSpace(password))
+        var password = PasswordEntry.Text?.Trim() ?? "";
+        if(password.Length < 6 || !password.Any(char.IsDigit) || !password.Any(char.IsUpper))
         {
-            await DisplayAlert("Error", "Please fill in all fields.", "OK");
+            await DisplayAlert("Error", "Password must be at least 6 characters long, contain a number, and an uppercase letter.", "OK");
             return;
         }
-
-        if (password != confirmPassword)
+        if (password != ConfirmPasswordEntry.Text?.Trim())
         {
             await DisplayAlert("Error", "Passwords do not match.", "OK");
             return;
         }
-
-        User newUser;
-
-        if (IsSellerCheckBox.IsChecked)
+        var name = NameEntry.Text?.Trim() ?? "";
+        if (string.IsNullOrEmpty(name))
         {
-            var storeName = StoreNameEntry.Text;
-            if (string.IsNullOrWhiteSpace(storeName))
-            {
-                await DisplayAlert("Error", "Sellers must provide a Store Name.", "OK");
-                return;
-            }
-
-            newUser = new Seller(
-                userId: new Random().Next(1, 10000),
-                name: name,
-                email: email,
-                passwordHash: "stubbed_hash",
-                storeName: storeName
-            );
+            await DisplayAlert("Error", "Name must not be empty", "OK");
+            return;
         }
-        else
+        var email = EmailEntry.Text?.Trim() ?? "";
+        if (string.IsNullOrEmpty(email))
         {
-            newUser = new User(
-                userId: new Random().Next(1, 10000),
-                name: name,
-                email: email,
-                passwordHash: "stubbed_hash"
-            );
+            await DisplayAlert("Error", "Email must not be empty", "OK");
+            return;
         }
-
-        newUser.register();
-
-        // Only change: Pass the stubbed hash to the Login method to ensure the session starts.
-        if (UserSession.Login(newUser, email, "stubbed_hash"))
+        try
         {
-            await DisplayAlert("Success", "Registration successful!", "OK");
-
-            if (newUser is Seller)
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+            
+            if (IsSellerCheckBox.IsChecked)
             {
-                await Navigation.PushAsync(new SellerPage());
+                var storeName = StoreNameEntry.Text?.Trim() ?? "";
+                if (string.IsNullOrEmpty(storeName))
+                {
+                    await DisplayAlert("Error", "Store name must not be empty for sellers.", "OK");
+                    return;
+                }
+
+                var seller = new User
+                {
+                    Name = name,
+                    Email = email,
+                    PasswordHash = passwordHash,
+                    UserType = "Seller",
+                    StoreName = storeName
+                };
+                await _db.AddUserAsync(seller);
+            } else
+            {
+                var buyer = new User
+                {
+                    Name = name,
+                    Email = email,
+                    PasswordHash = passwordHash,
+                    UserType = "Buyer"
+                };
+                await _db.AddUserAsync(buyer);
             }
+            var savedUser = await _db.GetUserByEmailAsync(email);
+            UserSession.Login(savedUser, email, password);
+
+            await DisplayAlert("Success", "Account created!", "OK");
+
+            if (savedUser.UserType == "Seller")
+                await Navigation.PushAsync(new SellerPage(_db));
             else
-            {
                 await Navigation.PopToRootAsync();
-            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
         }
     }
 }

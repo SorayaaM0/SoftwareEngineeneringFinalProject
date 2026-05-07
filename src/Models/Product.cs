@@ -1,27 +1,23 @@
+using SQLite;
 namespace StoreApp.Models;
 
+[Table("Products")]
 public class Product
 {
-    public int productId { get; set; }
-    public string name { get; set; }
-    public string description { get; set; }
-    public double price { get; set; }
-    public string imageUrl { get; set; }
-    public string category { get; set; }
+    [PrimaryKey, AutoIncrement]
+    public int ProductId { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public double Price { get; set; }
+    public string ImageUrl { get; set; }
+    public string Category { get; set; }
 
-    public bool isWishlisted { get; set; }
+    public bool IsWishlisted { get; set; }
 
-    public Product(int productId, string name, string description, double price,
-                    string imageUrl, string category)
-    {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.imageUrl = imageUrl;
-        this.category = category;
-        this.isWishlisted = false;
-    }
+    public int SellerId { get; set; } //FK to Seller
+
+    public Product() { }
+
 
     public void updateDetails()
     {

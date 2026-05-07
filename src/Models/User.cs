@@ -1,17 +1,34 @@
+using SQLite;
+namespace StoreApp.Models;
+
+[Table("Users")]
 public class User
 {
-    public int userId { get; set;}
-    public string name { get; set; }
-    public string email { get; set; }
-    public string passwordHash {get; set; }
+    [PrimaryKey, AutoIncrement]
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string PasswordHash { get; set; }
+    public string UserType { get; set; }
 
-    public User(int userId, string name, string email, string passwordHash)
-    {
-        this.userId = userId;
-        this.name = name;
-        this.email = email;
-        this.passwordHash = passwordHash;
-    }
+    //buyer specific
+    public string ShippingAddress { get; set; }
+    public string BillingAddress { get; set; }
+
+    public string City { get; set; }
+
+    public string Region { get; set; }
+
+    public string PostalCode { get; set; }
+
+    public string Country { get; set; }
+
+    public string Phone { get; set; }
+
+    //seller specific
+
+    public string StoreName { get; set; }
+    public User() { }
 
     public void register()
     {
@@ -22,11 +39,12 @@ public class User
     public bool login(string email, string password)
     {
         //placeholder
-        return this.email == email;
+        return true;
     }
 
     public void logout()
     {
         Console.WriteLine("Logged out");
     }
+
 }

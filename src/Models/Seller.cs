@@ -1,21 +1,11 @@
 using StoreApp.Models;
+using SQLite;
+[Table("Sellers")]
 public class Seller : User
 {
-    public string storeName { get; set; }
+  
+    public string StoreName { get; set; }
 
-    public Seller(int userId, string name, string email, string passwordHash, string storeName)
-                    : base(userId, name, email, passwordHash)
-    {
-        this.storeName = storeName;
-    }
+    public Seller() { }
 
-    public void createProduct(Product p)
-    {
-        Console.WriteLine($"Product {p.name} created");
-    }
-
-    public void updateProduct(Product p)
-    {
-        Console.WriteLine($"Product {p.name} updated");
-    }
 }

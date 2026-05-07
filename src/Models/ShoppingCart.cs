@@ -1,41 +1,60 @@
 using StoreApp.Models;
+using SQLite;
+
+[Table("ShoppingCart")]
 public class ShoppingCart
 {
-    public int cartId { get; set; }
-    public List<CartItem> items { get; set; } = new List<CartItem>();
+    [PrimaryKey]
+    public int CartId { get; set; }
 
-    public ShoppingCart(int cartId)
-    {
-        this.cartId = cartId;
-    }
+    [Ignore]
+    public List<CartItem> Items { get; set; } = new List<CartItem>();
+
+    public ShoppingCart() { }
 
     public void addItem(Product product, int quantity)
     {
-        items.Add(new CartItem(product, quantity));
+        var existingItem = Items.FirstOrDefault(i => i.ProductId == product.ProductId);
+        if (existingItem != null)
+        {
+            existingItem.Quantity += quantity; //if the item is already in the cart, just update the quantity
+            return;
+        }
+        else
+        {
+            Items.Add(new CartItem
+            {
+                ProductId = product.ProductId,
+                Quantity = quantity,
+                Price = product.Price
+
+            });
+
+        }
     }
 
-    public void removeItem(Product product)
+    public void removeItem(int productId)
     {
-        items.RemoveAll( i => i.product.productId == product.productId);
+        Items.RemoveAll(i => i.ProductId == productId);
     }
 
-    public void updateQuantity(Product product, int quantity)
+    public void updateQuantity(int productId, int quantity)
     {
         //looking through the cart to find the matching item
-        var item = items.FirstOrDefault(i => i.product.productId == product.productId);
+        var item = Items.FirstOrDefault(i => i.ProductId == productId);
         if(item != null) //if it exists..
         {
-            item.quantity = quantity; //update the quantity
+            item.Quantity = quantity; //update the quantity
         }
     }
 
     public void clear()
     {
-        items.Clear();
+        Items.Clear();
     }
 
     public double getTotal()
     {
-        return items.Sum( i => i.getSubtotal());
+        return Items.Sum( i => i.Price * i.Quantity);
     }
 }
