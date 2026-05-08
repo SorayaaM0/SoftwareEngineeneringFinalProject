@@ -26,19 +26,19 @@ public partial class CheckoutView : ContentPage
 			return;
 		}
 
-		// 1. Create the Order record
+		//Create the Order record
 		var newOrder = new Order
 		{
 			BuyerId = UserSession.CurrentUser.Id, // Link to the logged-in buyer 
 			OrderDate = DateTime.Now,
-			TotalAmount = (double)_cart.getTotal(), // Match the double type in Order.cs
+			TotalAmount = (double)_cart.getTotal(),
 			Status = "Placed"
 		};
 
-		// 2. Save to the SQLite database
-		await _db.AddOrderAsync(newOrder); // Or use the AddOrderAsync method we defined
+		//Save to the SQLite database
+		await _db.AddOrderAsync(newOrder);
 
-		// 3. Clear the database cart items for this user
+		//Clear the database cart items for this user
 		var cartItems = await _db.GetCartAsync(UserSession.CurrentUser.Id);
 		foreach (var item in cartItems)
 		{
