@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using StoreApp.src.Services;
-using StoreApp.Views;
+using StoreApp.src.Views;
 
 namespace StoreApp;
 

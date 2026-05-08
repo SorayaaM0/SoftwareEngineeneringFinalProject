@@ -10,6 +10,9 @@ public partial class CartPage : ContentPage
 {
     private readonly DatabaseService _db;
     private List<CartItemDisplay> _displayItems = new();
+    
+    // 1. Define the _cart field that was missing
+    private ShoppingCart _cart = new ShoppingCart();
 
     public CartPage(DatabaseService db)
     {
@@ -25,11 +28,12 @@ public partial class CartPage : ContentPage
             if (login)
             {
                 await Navigation.PushAsync(new LoginPage(_db));
-            } else
+            } 
+            else
             {
                 await Navigation.PopAsync();
             }
-                return;
+            return;
         }
         await LoadCartFromDbAsync();
     }
@@ -38,15 +42,18 @@ public partial class CartPage : ContentPage
     {
         if (!UserSession.IsLoggedIn) return;
 
-        // Load cart items from DB
         var items = await _db.GetCartAsync(UserSession.CurrentUser.Id);
         _displayItems.Clear();
+        
+        // 2. Clear the local _cart object so it stays in sync with the DB
+        _cart.clear();
+
         foreach (var item in items)
         {
             var product = await _db.GetByIdAsync<Product>(item.ProductId);
             if (product != null)
             {
-                _displayItems.Add(new CartItemDisplay
+                var display = new CartItemDisplay
                 {
                     CartItem = item,
                     Quantity = item.Quantity,
@@ -54,7 +61,11 @@ public partial class CartPage : ContentPage
                     Description = product.Description,
                     Name = product.Name,
                     Price = product.Price
-                });
+                };
+                _displayItems.Add(display);
+                
+                // 3. Add the item to our _cart object for the CheckoutView
+                _cart.addItem(product, item.Quantity);
             }
         }
         CartCollection.ItemsSource = null;
@@ -70,26 +81,18 @@ public partial class CartPage : ContentPage
 
     private async void OnIncreaseQuantity(object sender, EventArgs e)
     {
-       var display = (CartItemDisplay)((Button)sender).CommandParameter;
-        if (display == null)
-        {
-            return;
-        }
+        var display = (CartItemDisplay)((Button)sender).CommandParameter;
+        if (display == null) return;
 
         display.CartItem.Quantity += 1;
         await _db.UpdateAsync(display.CartItem);
         await LoadCartFromDbAsync();
-
-
     }
 
     private async void OnDecreaseQuantity(object sender, EventArgs e)
     {
         var display = (CartItemDisplay)((Button)sender).CommandParameter;
-        if (display == null || display.CartItem.Quantity <= 1)
-        {
-            return;
-        }
+        if (display == null || display.CartItem.Quantity <= 1) return;
 
         display.CartItem.Quantity -= 1;
         await _db.UpdateAsync(display.CartItem);
@@ -99,10 +102,7 @@ public partial class CartPage : ContentPage
     private async void OnRemoveClicked(object sender, EventArgs e)
     {
         var display = (CartItemDisplay)((Button)sender).CommandParameter;
-        if (display == null) 
-        { 
-            return; 
-        }    
+        if (display == null) return;
 
         await _db.DeleteAsync(display.CartItem);
         await LoadCartFromDbAsync();
@@ -115,23 +115,22 @@ public partial class CartPage : ContentPage
             await DisplayAlert("Empty Cart", "Add items before checking out.", "OK");
             return;
         }
-        await Navigation.PushAsync(new CheckoutView(_db));
 
+        // 4. Now '_cart' is properly defined and populated, so this line will work
+        await Navigation.PushAsync(new CheckoutView(_db, _cart));
     }
 
     private async void OnCartItemTapped(object sender, EventArgs e)
     {
         if (sender is Grid grid && 
             grid.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
-            tap.CommandParameter is CartItem cartItem)
+            tap.CommandParameter is CartItemDisplay displayItem) // Changed to CartItemDisplay to match the UI binding
         {
-            var product = await _db.GetByIdAsync<Product>(cartItem.ProductId);
+            var product = await _db.GetByIdAsync<Product>(displayItem.CartItem.ProductId);
             if (product != null)
             {
-                await Navigation.PushAsync(new ProductDetailPage(product,_db));
+                await Navigation.PushAsync(new ProductDetailPage(product, _db));
             }
         }
     }
-
-
 }

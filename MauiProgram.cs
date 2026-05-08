@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StoreApp.src.Services;
+using StoreApp.src.Views;
 using StoreApp.Views;
 namespace StoreApp;
 

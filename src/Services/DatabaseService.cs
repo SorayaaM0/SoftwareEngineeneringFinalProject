@@ -171,6 +171,23 @@ public class DatabaseService
         return await _db.FindAsync<T>(id);
     }
 
+    // Get order history for a specific buyer
+    public async Task<List<Order>> GetOrdersByBuyerAsync(int buyerId)
+    {
+        await InitAsync();
+        return await _db.Table<Order>()
+                        .Where(o => o.BuyerId == buyerId)
+                        .OrderByDescending(o => o.OrderDate)
+                        .ToListAsync();
+    }
+
+    // Add a new order to the history
+    public async Task AddOrderAsync(Order order)
+    {
+        await InitAsync();
+        await _db.InsertAsync(order);
+    }
+
 }
 
 

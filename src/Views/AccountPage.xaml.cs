@@ -1,6 +1,7 @@
 using StoreApp.Models;
 using StoreApp.src.Services;
-namespace StoreApp.Views;
+using StoreApp.Views;
+namespace StoreApp.src.Views;
 
 public partial class AccountPage : ContentPage
 {
@@ -70,13 +71,14 @@ public partial class AccountPage : ContentPage
 
 	private async void OnMyOrdersClicked(object sender, EventArgs e)
 	{
-		if (UserSession.CurrentUser is Buyer)
+		if (UserSession.CurrentUser != null && UserSession.CurrentUser.UserType == "Buyer")
 		{
-			//await Navigation.PushAsync(new OrderHistoryPage(_db));
+			await Navigation.PushAsync(new OrderHistoryPage(_db));
 		}
 		else
 		{
-			await DisplayAlert("Access Denied", "Only customers can view order history.", "OK");
+			string currentType = UserSession.CurrentUser?.UserType ?? "Null";
+			await DisplayAlert("Access Denied", $"Current UserType is: '{currentType}' Only customers can view order history.", "OK");
 		}
     }
 }

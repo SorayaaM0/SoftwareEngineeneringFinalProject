@@ -3,7 +3,8 @@ using System.Linq;
 using StoreApp.Models;
 using StoreApp.src.Services;
 using System.Threading.Tasks;
-namespace StoreApp.Views;
+using StoreApp.Views;
+namespace StoreApp.src.Views;
 
 public partial class ProductPage : ContentPage
 {
