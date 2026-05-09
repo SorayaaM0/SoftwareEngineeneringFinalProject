@@ -88,4 +88,6 @@
         <Setter Property="NavigationPage.HasNavigationBar" Value="False"/>
     </Style>
 
+    
+
 </ResourceDictionary>

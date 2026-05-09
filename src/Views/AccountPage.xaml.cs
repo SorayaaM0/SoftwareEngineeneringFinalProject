@@ -1,5 +1,6 @@
 using StoreApp.Models;
 using StoreApp.src.Services;
+using StoreApp.src.Views;
 namespace StoreApp.Views;
 
 public partial class AccountPage : ContentPage
@@ -77,7 +78,7 @@ public partial class AccountPage : ContentPage
 	{
 		if (UserSession.CurrentUser.UserType == "Buyer" || UserSession.CurrentUser.UserType == "Seller")
 		{
-			//await Navigation.PushAsync(new OrderHistoryPage(_db));
+			await Navigation.PushAsync(new OrderHistoryPage(_db));
 		}
 		else
 		{
