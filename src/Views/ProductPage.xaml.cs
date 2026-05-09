@@ -9,6 +9,7 @@ public partial class ProductPage : ContentPage
 {
     //data storage
     private List<Product> _allProducts;
+    private bool _sidebarOpen = false;
 
 
     //state management for filtering
@@ -38,6 +39,16 @@ public partial class ProductPage : ContentPage
     private async Task LoadProductsAsync()
     {
         _allProducts = await _db.GetAllAsync<Product>();
+        if (UserSession.IsLoggedIn)
+        {
+            var wishlistEntries = await _db.GetWishlistAsync(UserSession.CurrentUser.Id);
+            var wishlistIds = wishlistEntries.Select(w=>w.ProductId).ToHashSet();
+
+            foreach (var prod in _allProducts)
+            {
+                prod.IsWishlisted = wishlistIds.Contains(prod.ProductId);
+            }
+        }
         ApplyFilters();
     }
 
@@ -60,14 +71,25 @@ public partial class ProductPage : ContentPage
         ProductsCollection.ItemsSource = filtered.ToList();
     }
 
-    private void OnCategorySelected(object sender, EventArgs e)
+    private async void OnCategorySelected(object sender, EventArgs e)
     {
+        string category = "All";
         if (sender is MenuFlyoutItem item)
         {
-            _currentCategory = item.CommandParameter?.ToString() ?? "All";
-            CategoryBtn.Text = $"Category: {_currentCategory}";
-            ApplyFilters(ProductSearchEntry.Text);
+            category = item.CommandParameter?.ToString() ?? "All";
+        } else if (sender is Button btn)
+        {
+            category = btn.CommandParameter?.ToString() ?? "All";
         }
+        _currentCategory = category;
+        CategoryBtn.Text = $"Category: {category}";
+        ApplyFilters(ProductSearchEntry.Text);
+
+        if (_sidebarOpen)
+        {
+            await CloseSidebarAsync();
+        }
+
     }
 
     private void OnSortSelected(object sender, EventArgs e)
@@ -84,21 +106,48 @@ public partial class ProductPage : ContentPage
 
     private async void OnWishlistClicked(object sender, EventArgs e)
     {
+        if (!UserSession.IsLoggedIn)
+        {
+            bool login = await DisplayAlert("Not Logged In",
+                "Please log in to save items.", "Login", "Cancel");
+            if (login) await Navigation.PushAsync(new LoginPage(_db));
+            return;
+        }
+
         var button = (Button)sender;
         var product = (Product)button.CommandParameter;
-        product.IsWishlisted = !product.IsWishlisted;
 
-        if (product.IsWishlisted)
+        var entry = await _db.GetWishlistEntryAsync(
+            UserSession.CurrentUser.Id, product.ProductId);
+
+        if (entry != null)
         {
-            await _db.AddWishlist(new Wishlist { ProductId = product.ProductId, BuyerId = UserSession.CurrentUser.Id});
+            // Already wishlisted — remove it
+            await _db.DeleteAsync(entry);
+            product.IsWishlisted = false;
+            button.Text = "♡";
         }
         else
         {
-            var entry = await _db.GetWishlistEntryAsync(UserSession.CurrentUser.Id, product.ProductId);
-            if (entry != null) { await _db.DeleteAsync(entry); }
-            
+            // Not wishlisted — add it
+            await _db.AddWishlist(new Wishlist
+            {
+                ProductId = product.ProductId,
+                BuyerId = UserSession.CurrentUser.Id
+            });
+            product.IsWishlisted = true;
+            button.Text = "❤️";
         }
-        button.Text = product.IsWishlisted ? "❤️" : "♡";
+
+        RefreshProductList();
+    }
+
+    private void RefreshProductList()
+    {
+        // Reassigning ItemsSource forces CollectionView to re-render
+        var current = ProductsCollection.ItemsSource;
+        ProductsCollection.ItemsSource = null;
+        ProductsCollection.ItemsSource = current;
     }
 
     private async void OnAddToCartClicked(object sender, EventArgs e)
@@ -141,7 +190,22 @@ public partial class ProductPage : ContentPage
 
     private async void OnCartClicked(object sender, EventArgs e) => await Navigation.PushAsync(new CartPage(_db));
 
-    private async void OnCollectionsClicked(object sender, EventArgs e) => await Navigation.PushAsync(new WishlistPage(_db));
+    private async void OnCollectionsClicked(object sender, EventArgs e)
+    {
+        if (!UserSession.IsLoggedIn)
+        {
+            bool login = await DisplayAlert("Not Logged In", "Please log in to save items.", "Login", "Cancel");
+            if (login) await Navigation.PushAsync(new LoginPage(_db));
+            return;
+        } else
+        {
+
+            await Navigation.PushAsync(new WishlistPage(_db));
+        }
+
+
+
+    }
 
     private void UpdateAccountButton()
     {
@@ -171,15 +235,77 @@ public partial class ProductPage : ContentPage
 
     private async void OnProductTapped(object sender, EventArgs e)
     {
-        if (sender is Frame frame &&
-            frame.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
+        if (sender is Border border &&
+            border.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
             tap.CommandParameter is Product product)
         {
             await Navigation.PushAsync(new ProductDetailPage(product, _db));
         }
     }
 
-   
-    
+    private async void OnMenuClicked(object sender, EventArgs e) => await OpenSidebarAsync();
+
+    private async void OnOverlayTapped(object sender, EventArgs e) => await CloseSidebarAsync();
+
+    private async void OnCloseSidebarClicked(object sender, EventArgs e) => await CloseSidebarAsync();
+
+    private async Task OpenSidebarAsync()
+    {
+        if (UserSession.IsLoggedIn)
+        {
+            SidebarUserLabel.Text = $"Hello, {UserSession.CurrentUser.Name}!";
+            SidebarEmailLabel.Text = UserSession.CurrentUser.Email;
+            SidebarLoginBtn.IsVisible = false;
+            SidebarLogoutBtn.IsVisible = true;
+
+        } else
+        {
+            SidebarUserLabel.Text = "Welcome, Guest!";
+            SidebarEmailLabel.Text = "Please log in to access more features.";
+            SidebarLoginBtn.IsVisible = true;
+            SidebarLogoutBtn.IsVisible = false;
+        }
+        SidebarOverlay.IsVisible = true;
+        _sidebarOpen = true;
+
+        await Task.WhenAll(
+            SidebarOverlay.FadeTo(0.5, 250),
+            SidebarPanel.TranslateTo(0, 0, 250, Easing.CubicOut)
+        );
+    }
+
+    private async Task CloseSidebarAsync()
+    {
+        _sidebarOpen = false;
+
+        await Task.WhenAll(
+            SidebarOverlay.FadeTo(0, 200),
+            SidebarPanel.TranslateTo(300, 0, 200, Easing.CubicIn)
+        );
+
+        SidebarOverlay.IsVisible = false;
+    }
+
+    private async void OnSidebarLoginClicked(object sender, EventArgs e)
+    {
+        await CloseSidebarAsync();
+        await Navigation.PushAsync(new LoginPage(_db));
+    }
+
+    private async void OnSidebarLogoutClicked(object sender, EventArgs e)
+    {
+        UserSession.Logout();
+        UpdateAccountButton();
+        await CloseSidebarAsync();
+        await DisplayAlert("Logged Out", "You have been logged out successfully.", "OK");
+    }
+
+    private async void OnHomeClicked(object sender, EventArgs e)
+    {
+        await CloseSidebarAsync();
+        await Navigation.PopToRootAsync();
+    }
+
+
 
 }

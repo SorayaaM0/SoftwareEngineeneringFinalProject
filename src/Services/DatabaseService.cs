@@ -171,6 +171,26 @@ public class DatabaseService
         return await _db.FindAsync<T>(id);
     }
 
+    public async Task<List<Order>> GetOrdersByBuyerAsync(int buyerId)
+    {
+        await InitAsync();
+        return await _db.Table<Order>()
+                        .Where(o => o.BuyerId == buyerId)
+                        .ToListAsync();
+    }
+    public async Task<int> AddOrder(Order order)
+    {
+        await _db.InsertAsync(order);
+        return order.OrderId; // Return the generated OrderId
+    }
+     public async Task AddOrderItem(OrderItem orderItem)
+    {
+        await _db.InsertAsync(orderItem);
+    }
+     public async Task AddPayment(Payment payment)
+    {
+        await _db.InsertAsync(payment);
+    }
 }
 
 

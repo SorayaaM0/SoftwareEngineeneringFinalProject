@@ -7,6 +7,7 @@ public class Order
 {
     [PrimaryKey, AutoIncrement]
     public int OrderId { get; set; }
+    
     public int BuyerId { get; set; } //Foreign key to Buyer
 
     public DateTime OrderDate { get; set; }
@@ -15,10 +16,6 @@ public class Order
 
     public Order() { }
 
-    public void placeOrder()
-    {
-        Status = "Placed";
-    }
 
     public void updateStatus(string newStatus)
     {

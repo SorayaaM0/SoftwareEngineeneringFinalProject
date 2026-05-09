@@ -36,6 +36,16 @@
         <Setter Property="Padding" Value="14,10" />
     </Style>
 
+    <!--Sidebar button -->
+    <Style x:Key="SidebarButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="0,12"/>
+        <Setter Property="BorderWidth" Value="0"/>
+    </Style>
+
     <!-- Product Card Style -->
     <Style x:Key="CardFrame" TargetType="Border">
         <Setter Property="BackgroundColor" Value="{StaticResource White}" />
@@ -67,9 +77,15 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
+
+    <!-- Headers-->
     <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="{StaticResource Surface}" />
-        <Setter Property="BarTextColor" Value="{StaticResource White}" />
+        <Setter Property="BarBackground" Value="{StaticResource Background}"/>
+        <Setter Property="BarTextColor" Value="Transparent"/>
+    </Style>
+
+    <Style TargetType="ContentPage">
+        <Setter Property="NavigationPage.HasNavigationBar" Value="False"/>
     </Style>
 
 </ResourceDictionary>

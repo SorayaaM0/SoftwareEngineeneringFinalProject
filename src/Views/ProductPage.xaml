@@ -2,236 +2,430 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.ProductPage"
-             BackgroundColor="White">
+             Background="{StaticResource BackgroundGradient}">
 
-    <Grid RowDefinitions="Auto, *">
-        <!--NavBar-->
-        <Grid Grid.Row="0"
-              ColumnDefinitions="Auto, *, Auto, Auto, Auto"
-              Padding="20,15"
-              ColumnSpacing="15"
-              BackgroundColor="{StaticResource Surface}">
+    <!-- OUTER Grid — full page overlay support -->
+    <Grid>
 
-            <Label Grid.Column="0"
-                   Text="StyleHub"
-                   FontSize="20"
-                   TextColor="{StaticResource Secondary}"
-                   FontAttributes="Bold"
-                   VerticalOptions="Center"/>   
+        <!-- INNER Grid — normal page layout -->
+        <Grid RowDefinitions="Auto, *">
 
-            <Frame Grid.Column="1"
-                   BackgroundColor="White"
-                   CornerRadius="10"
-                   Padding="10,0"
-                   HasShadow="False"
-                   BorderColor="#E0E0E0">
-                <Entry x:Name="ProductSearchEntry"
-                       Placeholder="Search products..."
-                       PlaceholderColor="{StaticResource Gray400}"
-                       TextColor="Black"
-                       FontSize="13"
-                       HeightRequest="40"
-                       TextChanged="OnSearchTextChanged"/>
-            </Frame>
+            <!--NavBar-->
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="Auto, *, Auto, Auto, Auto, Auto"
+                  Padding="20,15"
+                  ColumnSpacing="15"
+                  BackgroundColor="{StaticResource Background}">
 
-            <Button x:Name="AccountButton"
-                Grid.Column="2"
-                Text="Login / Register"
-                FontAttributes="Bold"
-                TextColor="{StaticResource White}"
-                BackgroundColor="Transparent"
-                Clicked="OnAccountClicked">
+                <!--LOGO-->
+                <Image Grid.Column="0"
+                       Source="stylehub.png"
+                       HeightRequest="36"
+                       WidthRequest="120"
+                       Aspect="AspectFit"
+                       VerticalOptions="Center"/>
+
+                <!--Search bar-->
+                <Border Grid.Column="1"
+                       BackgroundColor="White"
+                       StrokeShape="RoundRectangle 10"
+                       Padding="10,0">
+                    <Entry x:Name="ProductSearchEntry"
+                           Placeholder="Search products..."
+                           PlaceholderColor="{StaticResource Gray400}"
+                           TextColor="Black"
+                           FontSize="13"
+                           HeightRequest="40"
+                           TextChanged="OnSearchTextChanged"/>
+                </Border>
+
+                <Button x:Name="AccountButton"
+                        Grid.Column="2"
+                        Text="Login / Register"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource White}"
+                        BackgroundColor="Transparent"
+                        Clicked="OnAccountClicked">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal"/>
-                            <VisualState x:Name="PointerOver">
-                                <VisualState.Setters>
-                                    <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
                         </VisualStateGroupList>
-                    </VisualStateManager.VisualStateGroups>     
-            </Button>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
 
-            <Button Grid.Column="3"
-                Text="Collections"
-                FontAttributes="Bold"
-                TextColor="{StaticResource White}"
-                BackgroundColor="Transparent"
-                Clicked="OnCollectionsClicked">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal"/>
-                            <VisualState x:Name="PointerOver">
-                                <VisualState.Setters>
-                                    <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
+                <Button Grid.Column="3"
+                        Text="Collections"
+                        FontAttributes="Bold"
+                        TextColor="{StaticResource White}"
+                        BackgroundColor="Transparent"
+                        Clicked="OnCollectionsClicked">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
 
-                    </VisualStateGroupList>
-                </VisualStateManager.VisualStateGroups>
+                <Button Grid.Column="4"
+                        Text="🛒"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource White}"
+                        BorderColor="Transparent"
+                        BorderWidth="1"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        CornerRadius="8"
+                        Clicked="OnCartClicked">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
 
+                <Button Grid.Column="5"
+                        Text="☰"
+                        FontSize="22"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource White}"
+                        BorderColor="Transparent"
+                        BorderWidth="1"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        CornerRadius="8"
+                        Clicked="OnMenuClicked">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
 
-            </Button>
-            <!--Shopping cart-->
-            <Button Grid.Column="4"
-                Text="🛒"
-                BackgroundColor="Transparent"
-                TextColor="{StaticResource White}"
-                BorderColor="Transparent"
-                BorderWidth="1"
-                HeightRequest="40"
-                WidthRequest="40"
-                CornerRadius="8"
-                Clicked="OnCartClicked">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal"/>
-                            <VisualState x:Name="PointerOver">
-                                <VisualState.Setters>
-                                    <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
+            </Grid>
 
-                    </VisualStateGroupList>
-                </VisualStateManager.VisualStateGroups>
+            <!-- Scrollable content -->
+            <ScrollView Grid.Row="1">
+                <VerticalStackLayout Padding="0">
 
-            </Button>
+                    <!-- Banner -->
+                    <Border StrokeThickness="0"
+                           
+                            Padding="0"
+                            Margin="0,0,0,0">
+                        <Image Source="Banner.png"
+                               Aspect="AspectFill"
+                               HorizontalOptions="Center"/>
+                    </Border>
+
+                    <!-- Header -->
+                    <Border BackgroundColor="{StaticResource PrimaryDark}"
+                          Padding="20,14"
+                          Margin="0,10,0,20"
+                          FlexLayout.Grow="1">
+
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Offset="5,5" Radius="10" Opacity="0.5"/>
+                        </Border.Shadow>
+
+                        <Label Grid.Column="0"
+                               Text="Products" 
+                               FontSize="28" 
+                               FontAttributes="Bold" 
+                               TextColor="{StaticResource PrimaryDarkText}"/>
+
+                        
+                    </Border>
+
+                    <VerticalStackLayout Padding="20,0">
+
+                        <!-- Filter and Sort -->
+                        <HorizontalStackLayout Spacing="20" Margin="0,0,0,20">
+                            <Button x:Name="CategoryBtn"
+                                    Text="Select Category"
+                                    WidthRequest="180"
+                                    BackgroundColor="White"
+                                    TextColor="Black"
+                                    BorderColor="#E0E0E0"
+                                    BorderWidth="1">
+                                <FlyoutBase.ContextFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="All" Clicked="OnCategorySelected" CommandParameter="All"/>
+                                        <MenuFlyoutItem Text="Tops" Clicked="OnCategorySelected" CommandParameter="TOPS"/>
+                                        <MenuFlyoutItem Text="Bottoms" Clicked="OnCategorySelected" CommandParameter="BOTTOMS"/>
+                                        <MenuFlyoutItem Text="Outerwear" Clicked="OnCategorySelected" CommandParameter="OUTERWEAR"/>
+                                        <MenuFlyoutItem Text="Dresses" Clicked="OnCategorySelected" CommandParameter="DRESSES"/>
+                                    </MenuFlyout>
+                                </FlyoutBase.ContextFlyout>
+                            </Button>
+
+                            <Button x:Name="SortBtn"
+                                    Text="Sort By Price"
+                                    WidthRequest="180"
+                                    BackgroundColor="White"
+                                    TextColor="Black"
+                                    BorderColor="#E0E0E0"
+                                    BorderWidth="1">
+                                <FlyoutBase.ContextFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="Low to High" Clicked="OnSortSelected" CommandParameter="LowToHigh"/>
+                                        <MenuFlyoutItem Text="High to Low" Clicked="OnSortSelected" CommandParameter="HighToLow"/>
+                                    </MenuFlyout>
+                                </FlyoutBase.ContextFlyout>
+                            </Button>
+                        </HorizontalStackLayout>
+
+                        
+                        
+                            
+
+                        <!-- Product Cards -->
+                        <CollectionView x:Name="ProductsCollection" HeightRequest="460">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BackgroundColor="{StaticResource White}"
+                                           WidthRequest="215"
+                                           StrokeShape="RoundRectangle 12"
+                                           Padding="0"
+                                            Margin="10">
+                                        <Border.Shadow>
+                                            <Shadow Brush="Black" Offset="5,5" Radius="10" Opacity="0.5"/>
+                                        </Border.Shadow>
+
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Tapped="OnProductTapped"
+                                                CommandParameter="{Binding .}"/>
+                                        </Border.GestureRecognizers>
+
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup Name="CommonStates">
+                                                <VisualState Name="Normal"/>
+                                                <VisualState Name="PointerOver">
+                                                    <VisualState.Setters>
+                                                        <Setter TargetName="ProductDescription" Property="Label.Opacity" Value="1"/>
+                                                        <Setter Property="BackgroundColor" Value="#F9F9F9"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+
+                                        <Grid >
+                                            <VerticalStackLayout>
+                                                <Image Source="{Binding ImageUrl}"
+                                                       HeightRequest="180"
+                                                       Aspect="AspectFit"
+                                                       BackgroundColor="#FDFDFD"/>
+                                                <VerticalStackLayout Padding="15">
+                                                    <Label Text="{Binding Name}"
+                                                           FontSize="15"
+                                                           FontAttributes="Bold"
+                                                           TextColor="{StaticResource Black}"/>
+
+                                                    <Label x:Name="ProductDescription"
+                                                           Text="{Binding Description}"
+                                                           FontSize="12"
+                                                           TextColor="{StaticResource Gray500}"
+                                                           Opacity="0"
+                                                           MaxLines="2"
+                                                           LineBreakMode="TailTruncation"
+                                                           Margin="0,5"/>
+
+                                                    <Label Text="{Binding Price, StringFormat='${0:F2}'}"
+                                                           FontSize="17"
+                                                           TextColor="Black"
+                                                           FontAttributes="Bold"/>
+
+                                                    <Button Text="Add to Cart"
+                                                            Clicked="OnAddToCartClicked"
+                                                            CommandParameter="{Binding .}"
+                                                            BackgroundColor="{StaticResource Black}"
+                                                            TextColor="White"
+                                                            CornerRadius="8"
+                                                            Margin="0,10,0,0">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroupList>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Normal"/>
+                                                                    <VisualState x:Name="PointerOver">
+                                                                        <VisualState.Setters>
+                                                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                                                        </VisualState.Setters>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateGroupList>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                    </Button>
+                                                </VerticalStackLayout>
+                                            </VerticalStackLayout>
+
+                                            <!-- Wishlist button -->
+                                            <Button Text="♡"
+                                                    Clicked="OnWishlistClicked"
+                                                    CommandParameter="{Binding .}"
+                                                    BackgroundColor="Transparent"
+                                                    TextColor="{StaticResource Danger}"
+                                                    FontSize="22"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Start"
+                                                    Padding="10">
+                                                <Button.Triggers>
+                                                    <DataTrigger TargetType="Button"
+                                                                 Binding="{Binding IsWishlisted}"
+                                                                 Value="True">  
+                                                        <Setter Property="Text" Value="❤️"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="Button"
+                                                                 Binding="{Binding IsWishlisted}"
+                                                                 Value="False">
+                                                        <Setter Property="Text" Value="♡" />
+                                                    </DataTrigger>
+                                                </Button.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </Grid>
+        <!-- END inner grid -->
+
+        <!-- Overlay  -->
+        <BoxView x:Name="SidebarOverlay"
+                 Color="Black"
+                 Opacity="0"
+                 IsVisible="False"
+                 InputTransparent="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Sidebar panel -->
+        
+        <Grid x:Name="SidebarPanel"
+              WidthRequest="300"
+              HorizontalOptions="End"
+              BackgroundColor="{StaticResource Surface}"
+              TranslationX="300">
+            <ScrollView>
+                <VerticalStackLayout Padding="24" Spacing="8">
+
+                <Button Text="✕"
+                        HorizontalOptions="End"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontSize="18"
+                        Clicked="OnCloseSidebarClicked"
+                        Margin="0,0,0,20"/>
+
+                <Label x:Name="SidebarUserLabel"
+                       Text="Welcome"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       Margin="0,0,0,4"/>
+
+                <Label x:Name="SidebarEmailLabel"
+                       Text=""
+                       FontSize="12"
+                       TextColor="{StaticResource Gray400}"
+                       Margin="0,0,0,20"/>
+
+                <BoxView HeightRequest="1" Color="{StaticResource Gray600}" Margin="0,0,0,20"/>
+
+                <Button Text="🏠  Home"
+                        Style="{StaticResource SidebarButton}"
+                        Clicked="OnHomeClicked"/>
+
+                <Button Text="👤  My Account"
+                        Style="{StaticResource SidebarButton}"
+                        Clicked="OnAccountClicked"/>
+
+                <Button Text="🛒  Cart"
+                        Style="{StaticResource SidebarButton}"
+                        Clicked="OnCartClicked"/>
+
+                <Button Text="♡  Collections"
+                        Style="{StaticResource SidebarButton}"
+                        Clicked="OnCollectionsClicked"/>
+
+                <BoxView HeightRequest="1" Color="{StaticResource Gray600}" Margin="0,10"/>
+
+                <Label Text="CATEGORIES"
+                       FontSize="11"
+                       TextColor="{StaticResource Gray400}"
+                       Margin="0,0,0,8"
+                       CharacterSpacing="2"/>
+
+                <Button Text="All" Style="{StaticResource SidebarButton}"
+                        Clicked="OnCategorySelected" CommandParameter="All"/>
+                <Button Text="Tops" Style="{StaticResource SidebarButton}"
+                        Clicked="OnCategorySelected" CommandParameter="TOPS"/>
+                <Button Text="Bottoms" Style="{StaticResource SidebarButton}"
+                        Clicked="OnCategorySelected" CommandParameter="BOTTOMS"/>
+                <Button Text="Outerwear" Style="{StaticResource SidebarButton}"
+                        Clicked="OnCategorySelected" CommandParameter="OUTERWEAR"/>
+                <Button Text="Dresses" Style="{StaticResource SidebarButton}"
+                        Clicked="OnCategorySelected" CommandParameter="DRESSES"/>
+
+                <BoxView HeightRequest="1" Color="{StaticResource Gray600}" Margin="0,10"/>
+
+                <Button x:Name="SidebarLoginBtn"
+                        Text="Login / Register"
+                        Style="{StaticResource SidebarButton}"
+                        Clicked="OnAccountClicked"/>
+
+                <Button x:Name="SidebarLogoutBtn"
+                        Text="🚪  Logout"
+                        IsVisible="False"
+                        BackgroundColor="Transparent"
+                        TextColor="{StaticResource Danger}"
+                        HorizontalOptions="Start"
+                        Clicked="OnSidebarLogoutClicked"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
         </Grid>
 
-        <ScrollView Grid.Row="1">
-            <VerticalStackLayout Padding="20,20">
-                
-                <HorizontalStackLayout Spacing="20" Margin="0,0,0,20">
-                    
-                    <Button x:Name="CategoryBtn"
-                            Text="Select Category"
-                            WidthRequest="180"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            BorderColor="#E0E0E0"
-                            BorderWidth="1">
-                        <FlyoutBase.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Text="All" Clicked="OnCategorySelected" CommandParameter="All" />
-                                <MenuFlyoutItem Text="Tops" Clicked="OnCategorySelected" CommandParameter="TOPS" />
-                                <MenuFlyoutItem Text="Bottoms" Clicked="OnCategorySelected" CommandParameter="BOTTOMS" />
-                                <MenuFlyoutItem Text="Outerwear" Clicked="OnCategorySelected" CommandParameter="OUTERWEAR" />
-                                <MenuFlyoutItem Text="Dresses" Clicked="OnCategorySelected" CommandParameter="DRESSES" />
-                            </MenuFlyout>
-                        </FlyoutBase.ContextFlyout>
-                    </Button>
-
-                    <Button x:Name="SortBtn"
-                            Text="Sort By Price"
-                            WidthRequest="180"
-                            BackgroundColor="White"
-                            TextColor="Black"
-                            BorderColor="#E0E0E0"
-                            BorderWidth="1">
-                        <FlyoutBase.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Text="Low to High" Clicked="OnSortSelected" CommandParameter="LowToHigh" />
-                                <MenuFlyoutItem Text="High to Low" Clicked="OnSortSelected" CommandParameter="HighToLow" />
-                            </MenuFlyout>
-                        </FlyoutBase.ContextFlyout>
-                    </Button>
-                </HorizontalStackLayout>
-
-                <Label Text="All Products" FontSize="28" FontAttributes="Bold" TextColor="Black"/>
-                <Label Text="The latest arrivals this season" FontSize="14" TextColor="#666666" Margin="0,0,0,25"/>
-
-                <!--Product Cards-->
-                
-                <CollectionView x:Name="ProductsCollection" HeightRequest="460">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="{StaticResource White}" 
-                                   WidthRequest="215" 
-                                   CornerRadius="12" 
-                                   HasShadow="False" 
-                                   BorderColor="{StaticResource Gray200}" 
-                                   Padding="0">
-                                
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                        Tapped="OnProductTapped" 
-                                        CommandParameter="{Binding .}" />
-                                </Frame.GestureRecognizers>
-                                
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal" />
-                                        <VisualState Name="PointerOver">
-                                            <VisualState.Setters>
-                                                <Setter TargetName="ProductDescription" Property="Label.Opacity" Value="1" />
-                                                <Setter Property="BackgroundColor" Value="#F9F9F9" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-
-                                <Grid>
-                                    <VerticalStackLayout>
-                                        <Image Source="{Binding ImageUrl}" HeightRequest="180" Aspect="AspectFit" BackgroundColor="#FDFDFD"/>
-                                        <VerticalStackLayout Padding="15">
-                                            <Label Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource Black}"/>
-                                            
-                                            <Label x:Name="ProductDescription" 
-                                                   Text="{Binding Description}" 
-                                                   FontSize="12" 
-                                                   TextColor="{StaticResource Gray500}" 
-                                                   Opacity="0" 
-                                                   MaxLines="2" 
-                                                   LineBreakMode="TailTruncation"
-                                                   Margin="0,5"/>
-
-                                            <Label Text="{Binding price, StringFormat='${0:F2}'}" FontSize="17" TextColor="Black" FontAttributes="Bold"/>
-                                            <Button 
-                                                Text="Add to Cart" 
-                                                Clicked="OnAddToCartClicked" 
-                                                CommandParameter="{Binding .}" 
-                                                BackgroundColor="{StaticResource Black}" 
-                                                TextColor="White" 
-                                                CornerRadius="8" 
-                                                Margin="0,10,0,0">
-
-                                                <VisualStateManager.VisualStateGroups>
-                                                    <VisualStateGroupList>
-                                                        <VisualStateGroup x:Name="CommonStates">
-                                                            <VisualState x:Name="Normal"/>
-                                                            <VisualState x:Name="PointerOver">
-                                                                <VisualState.Setters>
-                                                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
-                                                                </VisualState.Setters>
-                                                            </VisualState>
-                                                        </VisualStateGroup>
-
-                                                    </VisualStateGroupList>
-                                                </VisualStateManager.VisualStateGroups>
-                                            </Button>
-                                        </VerticalStackLayout>
-                                    </VerticalStackLayout>
-                                    
-                                    <Button Text="♡" Clicked="OnWishlistClicked" CommandParameter="{Binding .}" BackgroundColor="Transparent" TextColor="{StaticResource Danger}" FontSize="22" HorizontalOptions="End" VerticalOptions="Start" Padding="10"/>
-                                </Grid>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-
-            </VerticalStackLayout>
-        </ScrollView>
     </Grid>
+    <!-- END outer grid -->
+
 </ContentPage>

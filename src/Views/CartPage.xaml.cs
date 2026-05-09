@@ -15,6 +15,7 @@ public partial class CartPage : ContentPage
     {
         InitializeComponent();
         _db = db;
+        BindingContext = UserSession.CurrentUser;
     }
 
     protected override async void OnAppearing()
@@ -65,7 +66,7 @@ public partial class CartPage : ContentPage
     private void UpdateTotal()
     {
         double total = _displayItems.Sum(i => i.Price * i.Quantity);
-        TotalLabel.Text = $"${total:F2}";
+        TotalLabel.Text = $"Total: ${total:F2}";
     }
 
     private async void OnIncreaseQuantity(object sender, EventArgs e)
@@ -121,14 +122,14 @@ public partial class CartPage : ContentPage
 
     private async void OnCartItemTapped(object sender, EventArgs e)
     {
-        if (sender is Grid grid && 
-            grid.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
-            tap.CommandParameter is CartItem cartItem)
+        var tappedView = sender as View;
+        if(tappedView?.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap &&
+           tap.CommandParameter is CartItemDisplay display)
         {
-            var product = await _db.GetByIdAsync<Product>(cartItem.ProductId);
+            var product = await _db.GetByIdAsync<Product>(display.CartItem.ProductId);
             if (product != null)
             {
-                await Navigation.PushAsync(new ProductDetailPage(product,_db));
+                await Navigation.PushAsync(new ProductDetailPage(product, _db));
             }
         }
     }

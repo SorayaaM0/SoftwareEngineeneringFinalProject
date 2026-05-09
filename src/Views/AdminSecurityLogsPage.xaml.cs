@@ -19,7 +19,7 @@ public partial class AdminSecurityLogsPage : ContentPage
         base.OnAppearing();
 
         // Admin-only access guard
-        if (UserSession.CurrentUser is not Models.Admin)
+        if (UserSession.CurrentUser?.UserType != "Admin")
         {
             await DisplayAlert(
                 "Access Denied",

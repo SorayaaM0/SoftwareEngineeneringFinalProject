@@ -19,7 +19,7 @@ public partial class AdminProductModerationPage : ContentPage
         base.OnAppearing();
 
         // Admin-only guard
-        if (UserSession.CurrentUser is not Models.Admin)
+        if (UserSession.CurrentUser?.UserType != "Admin")
         {
             await DisplayAlert(
                 "Access Denied",

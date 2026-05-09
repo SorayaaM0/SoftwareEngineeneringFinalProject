@@ -7,9 +7,10 @@ namespace StoreApp;
 public partial class App : Application
 {
     public App(DatabaseService db)
-{
-    InitializeComponent();
-    MainPage = new NavigationPage(new ProductPage(db));
-}
+    {
+        InitializeComponent();
+        MainPage = new NavigationPage(new ProductPage(db));
+        
+    }
 
 }

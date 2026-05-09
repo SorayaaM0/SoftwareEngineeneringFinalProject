@@ -2,27 +2,60 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.LoginPage"
-             BackgroundColor="White">
+             Background="{StaticResource BackgroundGradient}">
 
-    <VerticalStackLayout Padding="30" Spacing="15">
+    <Grid>
 
-        <Entry x:Name="EmailEntry"
-               Placeholder="Email"
-               Keyboard="Email"
-               TextColor="Black"/>
+        <Border WidthRequest="700"
+               HeightRequest="400"
+               StrokeShape="RoundRectangle 20"
+               BackgroundColor="{StaticResource Surface}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Padding="0"
+               Margin="20">
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                    Offset="0,25"
+                    Radius="60"
+                    Opacity="0.80" />
+            </Border.Shadow>
+            <Grid ColumnDefinitions="*,*">
+                <Image Grid.Column="0"
+                       Source="cityspeed.jpg"
+                       Aspect="AspectFill"/>
+                <VerticalStackLayout Grid.Column="1"
+                                     Padding="20"
+                                     Spacing="15"
+                                     VerticalOptions="Center">
+                    <Label Text="Welcome To Stylehub"
+                           TextColor="{StaticResource Black}"
+                           FontSize="20"
+                           FontAttributes="Bold"/>
+                    <Entry x:Name="EmailEntry"
+                           Placeholder="Enter Email"
+                           Keyboard="Email"
+                           TextColor="{StaticResource Black}" />
 
-        <Entry x:Name="PasswordEntry"
-               Placeholder="Password"
-               IsPassword="True"
-               TextColor="Black"/>
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Enter Password"
+                           IsPassword="True"
+                           TextColor="{StaticResource Black}" />
 
-        <Button Text="Login"
-                Clicked="OnLoginClicked"/>
+                    <Button Text="Sign In"
+                            HeightRequest="45"
+                            BackgroundColor="{StaticResource Primary}"
+                            TextColor="White"
+                            Clicked="OnLoginClicked"/>
 
-        <Button Text="Don't have an account? Register"
-                BackgroundColor="Transparent"
-                TextColor="Blue"
-                Clicked="OnRegisterClicked"/>
+                    <Button Text="Don't Have an Account?"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource Primary}"
+                            Clicked="OnRegisterClicked"/>
 
-    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+        
+    </Grid>
 </ContentPage>

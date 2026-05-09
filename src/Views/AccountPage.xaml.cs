@@ -70,7 +70,7 @@ public partial class AccountPage : ContentPage
 
 	private async void OnMyOrdersClicked(object sender, EventArgs e)
 	{
-		if (UserSession.CurrentUser is Buyer)
+		if (UserSession.CurrentUser.UserType == "Buyer" || UserSession.CurrentUser.UserType == "Seller")
 		{
 			//await Navigation.PushAsync(new OrderHistoryPage(_db));
 		}

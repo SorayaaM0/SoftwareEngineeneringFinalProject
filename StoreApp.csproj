@@ -41,8 +41,16 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Resources\Images\Banner.png" />
+      <None Remove="Resources\Images\cityspeed.jpg" />
+      <None Remove="Resources\Images\quietstreet.jpg" />
+      <None Remove="Resources\Images\stylehub.png" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.0" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="12.1.0" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.120" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
         <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
@@ -59,6 +67,10 @@
         <MauiImage Include="Resources/Images/jeans.jpg" />
         <MauiImage Include="Resources/Images/hoodie.jpg" />
         <MauiImage Include="Resources/Images/dress.jpg" />
+        <MauiImage Include="Resources\Images\banner.png" />
+        <MauiImage Include="Resources\Images\cityspeed.jpg" />
+        <MauiImage Include="Resources\Images\quietstreet.jpg" />
+        <MauiImage Include="Resources\Images\stylehub.png" />
     </ItemGroup>
 
     <ItemGroup>
