@@ -31,7 +31,7 @@ public partial class AdminPage : ContentPage
 
     private async void OnModerateListingsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AdminProductModerationPage());
+        await Navigation.PushAsync(new AdminProductModerationPage(_db));
     }
 
     private async void OnManageUsersClicked(object sender, EventArgs e)
@@ -43,5 +43,10 @@ public partial class AdminPage : ContentPage
     {
         await Navigation.PushAsync(new AdminSecurityLogsPage());
     }
+
+	private async void OnBackClicked(object sender, EventArgs e)
+	{
+		await Navigation.PopToRootAsync();
+	}
 
 }

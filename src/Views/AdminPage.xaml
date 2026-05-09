@@ -16,5 +16,8 @@
 
         <Button Text="View Security Logs"
             Clicked="OnUnauthorizedAccessClicked" />
+
+        <Button Text="Back To Stylehub"
+                Clicked="OnBackClicked"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -277,4 +277,32 @@ public partial class ProductDetailPage : ContentPage
             await Navigation.PushAsync(new LoginPage(_db));
     }
 
+    // ProductDetailPage.xaml.cs
+    private async void OnReportProductClicked(object sender, EventArgs e)
+    {
+        if (!UserSession.IsLoggedIn)
+        {
+            await DisplayAlert("Login Required", "Please log in to report a product.", "OK");
+            return;
+        }
+
+        string reason = await DisplayActionSheet(
+            "Report Reason", "Cancel", null,
+            "Inappropriate content",
+            "Counterfeit item",
+            "Wrong description",
+            "Offensive imagery",
+            "Other");
+
+        if (reason == null || reason == "Cancel") return;
+
+        await _db.ReportProductAsync(
+            _product.ProductId,
+            UserSession.CurrentUser.Id,
+            reason);
+
+        await DisplayAlert("Reported",
+            "Thank you — this product has been flagged for admin review.", "OK");
+    }
+
 }

@@ -173,6 +173,16 @@
                                             </VisualStateGroupList>
                                         </VisualStateManager.VisualStateGroups>
                                     </Button>
+                                    
+                                    <Button Text="🚩 Report Product"
+                                            BackgroundColor="Transparent"
+                                            TextColor="{StaticResource Danger}"
+                                            BorderColor="{StaticResource Danger}"
+                                            BorderWidth="1"
+                                            CornerRadius="8"
+                                            HeightRequest="36"
+                                            FontSize="12"
+                                            Clicked="OnReportProductClicked"/>
                                 </VerticalStackLayout>
 
                                 <VerticalStackLayout Grid.Column="1"

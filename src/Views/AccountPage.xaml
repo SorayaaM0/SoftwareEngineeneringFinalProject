@@ -2,47 +2,214 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.AccountPage"
-             Title="AccountPage"
-             Background="{StaticResource Background}">
-    <VerticalStackLayout Spacing="10">
-        <HorizontalStackLayout Padding="20" Spacing="15">
-            <Image Source="user_placeholder.png" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" VerticalOptions="Center"/>
-            <VerticalStackLayout VerticalOptions="Center">
-                <Label x:Name="UserNameLabel" 
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       TextColor="{StaticResource Black}"/>
-                <Label x:Name="UserEmailLabel" 
-                       FontSize="14" 
-                       TextColor="{StaticResource Black}"/>
-            </VerticalStackLayout>
-        </HorizontalStackLayout>
-        <!--Account options-->
-        <Button x:Name="DashboardButton"
-            Grid.Column="2"
-            Text="Dashboard"
-            FontAttributes="Bold"
-            TextColor="{StaticResource White}"
-            BackgroundColor="Transparent"
-            Clicked="OnDashboardClicked">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal"/>
-                            <VisualState x:Name="PointerOver">
-                                <VisualState.Setters>
-                                    <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
+             Background="{StaticResource BackgroundGradient}">
+    <!--Outer Grid-->
+    <Grid>
+        <!--Inner Grid-->
+        <ScrollView>
+            <Grid RowDefinitions="Auto,*">
 
-                    </VisualStateGroupList>
-                </VisualStateManager.VisualStateGroups>
-        </Button>
-        <Button Text="My Orders"
-                BackgroundColor="{StaticResource PrimaryDark}"
-                TextColor="{StaticResource PrimaryDarkText}"
-                Clicked="OnMyOrdersClicked"/>
-        <Button Text="Log Out" BackgroundColor="Black" TextColor="White" Clicked="OnLogoutClicked" />
-    </VerticalStackLayout>
+                <Grid Grid.Row="0"
+                  ColumnDefinitions="Auto, *, Auto"
+                  BackgroundColor="Transparent"
+                  Padding="20,15">
+
+                    <Image Grid.Column="0"
+                       Source="stylehub.png"
+                       HeightRequest="36"
+                       WidthRequest="120"
+                       Aspect="AspectFit"
+                       VerticalOptions="Center"/>
+
+                    <Button Grid.Column="2"
+            Text="☰" FontSize="22"
+            BackgroundColor="{StaticResource Background}"
+            TextColor="{StaticResource White}"
+            HeightRequest="40" WidthRequest="40"
+            CornerRadius="8"
+            Clicked="OnMenuClicked">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroupList>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+                </Grid>
+
+
+
+                <Border Grid.Row="1"
+                    BackgroundColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    StrokeShape="RoundRectangle 15"
+                    HeightRequest="700"
+                    WidthRequest="1000"
+                    Margin="0,20">
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Opacity="0.30"
+                                Offset="0,10"/>
+                    </Border.Shadow>
+                    <Grid ColumnDefinitions="*,*">
+
+                        <Border x:Name="ProfileBorder"
+                            BackgroundColor="{StaticResource Primary}"
+                            Margin="0,25,0,0"
+                            StrokeShape="RoundRectangle 10"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            HeightRequest="200"
+                            WidthRequest="300"
+                            Grid.Column="0">
+                            <Button Text="Profile Settings"
+                                TextColor="{StaticResource Black}"
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                BackgroundColor="Transparent"
+                                Clicked="OnProfileClicked"/>
+
+                            <Border.Shadow>
+                                <Shadow Brush="{StaticResource Black}"
+                                    Offset="0,10"
+                                    Opacity="0.20"/>
+                            </Border.Shadow>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+        <!-- Overlay  -->
+        <BoxView x:Name="SidebarOverlay"
+         Color="Black"
+         Opacity="0"
+         IsVisible="False"
+         InputTransparent="False">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayTapped"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Sidebar panel -->
+
+        <Grid x:Name="SidebarPanel"
+      WidthRequest="300"
+      HorizontalOptions="End"
+      BackgroundColor="{StaticResource Surface}"
+      TranslationX="300">
+            <ScrollView>
+                <VerticalStackLayout Padding="24" Spacing="8">
+
+                    <Button Text="✕"
+                HorizontalOptions="End"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                FontSize="18"
+                Clicked="OnCloseSidebarClicked"
+                Margin="0,0,0,20">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroupList>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+
+                    <Label x:Name="SidebarUserLabel"
+               Text="Welcome"
+               FontSize="18"
+               FontAttributes="Bold"
+               TextColor="White"
+               Margin="0,0,0,4"/>
+
+                    <Label x:Name="SidebarEmailLabel"
+               Text=""
+               FontSize="12"
+               TextColor="{StaticResource Gray400}"
+               Margin="0,0,0,20"/>
+
+                    <BoxView HeightRequest="1" Color="{StaticResource Gray600}" Margin="0,0,0,20"/>
+
+                    <Button Text="🏠  Home"
+                Style="{StaticResource SidebarButton}"
+                Clicked="OnHomeClicked"/>
+
+                    <Button Text="👤  My Account"
+                Style="{StaticResource SidebarButton}"
+                Clicked="OnAccountClicked"/>
+
+                    <Button Text="🛒  Cart"
+                Style="{StaticResource SidebarButton}"
+                Clicked="OnCartClicked"/>
+
+                    <Button Text="♡  Collections"
+                Style="{StaticResource SidebarButton}"
+                Clicked="OnCollectionsClicked"/>
+
+                
+
+                    <BoxView HeightRequest="1" Color="{StaticResource Gray600}" Margin="0,10"/>
+
+                    <Button x:Name="DashboardButton"
+                            Grid.Column="2"
+                            Text="Dashboard"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource White}"
+                            BackgroundColor="Transparent"
+                            Clicked="OnDashboardClicked">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroupList>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Property="TextColor" Value="{StaticResource Secondary}"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                            </VisualStateGroupList>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+
+
+                    <BoxView HeightRequest="1" Color="{StaticResource Gray600}" Margin="0,10"/>
+                    
+                    <Button x:Name="SidebarLoginBtn"
+                Text="Login / Register"
+                Style="{StaticResource SidebarButton}"
+                Clicked="OnAccountClicked"/>
+
+                    <Button x:Name="SidebarLogoutBtn"
+                Text="🚪 Logout"
+                IsVisible="False"
+                BackgroundColor="Transparent"
+                TextColor="{StaticResource Danger}"
+                HorizontalOptions="Start"
+                Clicked="OnSidebarLogoutClicked"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </Grid>
+
+    </Grid>
+ 
 </ContentPage>

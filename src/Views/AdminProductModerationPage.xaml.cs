@@ -1,122 +1,124 @@
-using System.Collections.ObjectModel;
-using System.Dynamic;
+using StoreApp.Models;
 using StoreApp.src.Services;
+using StoreApp.src.Models;
+using System.Collections.ObjectModel;
 
 namespace StoreApp.Views;
 
 public partial class AdminProductModerationPage : ContentPage
 {
-    private ObservableCollection<dynamic> _reportedProducts;
+    private readonly DatabaseService _db;
+    private ObservableCollection<ReportedProductDisplay> _reportedProducts = new();
 
-    public AdminProductModerationPage()
+    public AdminProductModerationPage(DatabaseService db)
     {
         InitializeComponent();
-        LoadStubProducts();
+        _db = db;
+        ProductList.ItemsSource = _reportedProducts;
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
 
-        // Admin-only guard
         if (UserSession.CurrentUser?.UserType != "Admin")
         {
-            await DisplayAlert(
-                "Access Denied",
-                "You are not authorized to view this page.",
-                "OK"
-            );
+            await DisplayAlert("Access Denied",
+                "You are not authorized to view this page.", "OK");
             await Navigation.PopAsync();
+            return;
         }
+
+        await LoadReportedProductsAsync();
     }
 
-    private void LoadStubProducts()
+    private async Task LoadReportedProductsAsync()
     {
-        _reportedProducts = new ObservableCollection<dynamic>
+        var reports = await _db.GetUnresolvedReportsAsync();
+        _reportedProducts.Clear();
+
+        // Group by product so we show report count
+        var grouped = reports.GroupBy(r => r.ProductId);
+
+        foreach (var group in grouped)
         {
-            CreateProduct(
-                "Inappropriate Shirt",
-                "seller1@test.com",
-                4
-            ),
-            CreateProduct(
-                "Fake Brand Shoes",
-                "seller2@test.com",
-                2
-            ),
-            CreateProduct(
-                "Offensive Artwork",
-                "seller3@test.com",
-                6
-            )
-        };
+            var product = await _db.GetByIdAsync<Product>(group.Key);
+            if (product == null) continue;
 
-        ProductList.ItemsSource = _reportedProducts;
-    }
+            var seller = await _db.GetByIdAsync<User>(product.SellerId);
 
-    private dynamic CreateProduct(string name, string sellerEmail, int reports)
-    {
-        dynamic product = new ExpandoObject();
-        product.Name = name;
-        product.SellerEmail = sellerEmail;
-        product.Reports = reports;
-        return product;
+            // Show the most recent report for this product
+            var latestReport = group.OrderByDescending(r => r.ReportedAt).First();
+
+            _reportedProducts.Add(new ReportedProductDisplay
+            {
+                Report = latestReport,
+                Product = product,
+                Seller = seller,
+                ReportCount = group.Count()
+            });
+        }
     }
 
     private async void OnRemoveProductClicked(object sender, EventArgs e)
     {
-        dynamic product = ((Button)sender).CommandParameter;
+        var display = (ReportedProductDisplay)((Button)sender).CommandParameter;
 
-        bool confirm = await DisplayAlert(
-            "Remove Product",
-            $"Remove product:\n{product.Name}?",
-            "Remove",
-            "Cancel"
-        );
+        bool confirm = await DisplayAlert("Remove Product",
+            $"Permanently delete '{display.ProductName}'?", "Remove", "Cancel");
+        if (!confirm) return;
 
-        if (confirm)
+        // Delete the product from DB
+        await _db.DeleteAsync(display.Product);
+
+        // Mark all reports for this product as resolved
+        var reports = await _db.GetReportsForProductAsync(display.Product.ProductId);
+        foreach (var report in reports)
         {
-            _reportedProducts.Remove(product);
-
-            await DisplayAlert(
-                "Product Removed",
-                $"{product.Name} has been removed.",
-                "OK"
-            );
+            report.IsResolved = true;
+            await _db.UpdateAsync(report);
         }
+
+        _reportedProducts.Remove(display);
+        await DisplayAlert("Done", $"'{display.ProductName}' has been removed.", "OK");
     }
 
     private async void OnRemoveSellerClicked(object sender, EventArgs e)
     {
-        dynamic product = ((Button)sender).CommandParameter;
+        var display = (ReportedProductDisplay)((Button)sender).CommandParameter;
 
-        bool confirm = await DisplayAlert(
-            "Remove Seller Listings",
-            $"Remove all listings from:\n{product.SellerEmail}?",
-            "Remove",
-            "Cancel"
-        );
+        bool confirm = await DisplayAlert("Ban Seller",
+            $"Remove all listings from {display.SellerEmail}?", "Remove", "Cancel");
+        if (!confirm) return;
 
-        if (confirm)
+        // Get all products by this seller and delete them
+        var sellerProducts = await _db.GetProductsBySellerAsync(display.Seller.Id);
+        foreach (var product in sellerProducts)
+            await _db.DeleteAsync(product);
+
+        // Resolve all their reports
+        foreach (var item in _reportedProducts
+            .Where(r => r.Seller?.Id == display.Seller.Id).ToList())
         {
-            // Remove all products from this seller
-            var toRemove = _reportedProducts
-                .Where(p => p.SellerEmail == product.SellerEmail)
-                .ToList();
-
-            foreach (var item in toRemove)
-                _reportedProducts.Remove(item);
-
-            await DisplayAlert(
-                "Seller Listings Removed",
-                $"All listings from {product.SellerEmail} removed.",
-                "OK"
-            );
+            _reportedProducts.Remove(item);
         }
+
+        await DisplayAlert("Done",
+            $"All listings from {display.SellerEmail} removed.", "OK");
+    }
+
+    private async void OnMarkResolvedClicked(object sender, EventArgs e)
+    {
+        var display = (ReportedProductDisplay)((Button)sender).CommandParameter;
+
+        display.Report.IsResolved = true;
+        await _db.UpdateAsync(display.Report);
+        _reportedProducts.Remove(display);
+
+        await DisplayAlert("Resolved",
+            $"Report for '{display.ProductName}' marked as resolved.", "OK");
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync();
-    }
+        => await Navigation.PopAsync();
 }

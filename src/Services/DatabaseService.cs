@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SQLite;
+using StoreApp.Models;
+using StoreApp.src.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StoreApp.Models;
-using SQLite;
 namespace StoreApp.src.Services;
 
 public class DatabaseService
@@ -19,7 +20,7 @@ public class DatabaseService
         var dbPath = Path.Combine(FileSystem.AppDataDirectory, "storeapp.db");
         _db = new SQLiteAsyncConnection(dbPath);
         await _db.CreateTableAsync<User>();
-        
+        await _db.CreateTableAsync<ReportedProduct>();
         await _db.CreateTableAsync<Order>();
         await _db.CreateTableAsync<OrderItem>();
         await _db.CreateTableAsync<Payment>();
@@ -191,6 +192,48 @@ public class DatabaseService
     {
         await _db.InsertAsync(payment);
     }
+
+
+    //Admin CRUDS
+
+    // Get all unresolved reports with product and seller info
+    public async Task<List<ReportedProduct>> GetUnresolvedReportsAsync()
+    {
+        await InitAsync();
+        return await _db.Table<ReportedProduct>()
+                        .Where(r => !r.IsResolved)
+                        .ToListAsync();
+    }
+
+    public async Task<List<ReportedProduct>> GetReportsForProductAsync(int productId)
+    {
+        await InitAsync();
+        return await _db.Table<ReportedProduct>()
+                        .Where(r => r.ProductId == productId)
+                        .ToListAsync();
+    }
+
+    public async Task ReportProductAsync(int productId, int reportedByUserId, string reason)
+    {
+        await InitAsync();
+
+        // Prevent duplicate reports from same user
+        var existing = await _db.Table<ReportedProduct>()
+                                .Where(r => r.ProductId == productId
+                                         && r.ReportedByUserId == reportedByUserId)
+                                .FirstOrDefaultAsync();
+        if (existing != null) return;
+
+        await _db.InsertAsync(new ReportedProduct
+        {
+            ProductId = productId,
+            ReportedByUserId = reportedByUserId,
+            Reason = reason,
+            ReportedAt = DateTime.Now,
+            IsResolved = false
+        });
+    }
+
 }
 
 
