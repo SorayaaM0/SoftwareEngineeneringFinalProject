@@ -20,8 +20,8 @@
                 <!--LOGO-->
                 <Image Grid.Column="0"
                        Source="stylehub.png"
-                       HeightRequest="36"
-                       WidthRequest="120"
+                       HeightRequest="55"
+                       WidthRequest="200"
                        Aspect="AspectFit"
                        VerticalOptions="Center"/>
 
