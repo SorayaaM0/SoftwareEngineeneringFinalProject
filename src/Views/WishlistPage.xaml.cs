@@ -63,4 +63,7 @@ public partial class WishlistPage : ContentPage
         }
         WishlistCollection.ItemsSource = products;
     }
+
+    private async void OnBackClicked(object sender, EventArgs e) => await Navigation.PopAsync();
+    
 }

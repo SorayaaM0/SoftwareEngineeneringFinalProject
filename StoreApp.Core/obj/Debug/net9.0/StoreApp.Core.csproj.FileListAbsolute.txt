@@ -1,0 +1,13 @@
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\bin\Debug\net9.0\StoreApp.Core.deps.json
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\bin\Debug\net9.0\StoreApp.Core.dll
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\bin\Debug\net9.0\StoreApp.Core.pdb
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.csproj.AssemblyReference.cache
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.AssemblyInfoInputs.cache
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.AssemblyInfo.cs
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.csproj.CoreCompileInputs.cache
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.sourcelink.json
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.dll
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\refint\StoreApp.Core.dll
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\StoreApp.Core.pdb
+C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\StoreApp.Core\obj\Debug\net9.0\ref\StoreApp.Core.dll

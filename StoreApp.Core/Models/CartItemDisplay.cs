@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreApp.Models
 {
-    class CartItemDisplay
+    public class CartItemDisplay
     {
         public CartItem CartItem { get; set; }
         public Product Product { get; set; }

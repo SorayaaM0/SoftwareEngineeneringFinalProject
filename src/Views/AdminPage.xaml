@@ -2,22 +2,42 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.AdminPage"
-             Title="AdminPage">
-    <VerticalStackLayout Padding="20" Spacing="15">
-        <Label Text="Admin Panel"
-           FontSize="24"
-           FontAttributes="Bold" />
+             Title="AdminPage"
+             Background="{StaticResource BackgroundGradient}"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Border HeightRequest="500"
+                WidthRequest="600"
+                BackgroundColor="{StaticResource White}"
+                Margin="0,20"
+                Padding="5,5,5,5"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                StrokeShape="RoundRectangle 10">
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                        Opacity="0.60"
+                        Offset="-10,10"/>
+            </Border.Shadow>
+            
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <Label Text="Admin Panel"
+                       FontSize="24"
+                       FontAttributes="Bold" 
+                       TextColor="{StaticResource Primary}"/>
 
-        <Button Text="Moderate Listings"
-            Clicked="OnModerateListingsClicked" />
+                <Button Text="Moderate Listings"
+        Clicked="OnModerateListingsClicked" />
 
-        <Button Text="Manage Sellers"
-            Clicked="OnManageUsersClicked" />
+                <Button Text="Manage Sellers"
+        Clicked="OnManageUsersClicked" />
 
-        <Button Text="View Security Logs"
-            Clicked="OnUnauthorizedAccessClicked" />
+                <Button Text="View Security Logs"
+        Clicked="OnUnauthorizedAccessClicked" />
 
-        <Button Text="Back To Stylehub"
-                Clicked="OnBackClicked"/>
-    </VerticalStackLayout>
+                <Button Text="Back To Stylehub"
+            Clicked="OnBackClicked"/>
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
 </ContentPage>

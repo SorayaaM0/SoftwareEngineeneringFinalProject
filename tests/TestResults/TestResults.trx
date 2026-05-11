@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="10721626-54fc-4756-8da0-c8d8d8515f8a" name="djmax@COMETBASE 2026-05-11 14:24:07" runUser="COMETBASE\djmax" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-05-11T14:24:07.2896752-04:00" queuing="2026-05-11T14:24:07.2896753-04:00" start="2026-05-11T14:24:05.8205353-04:00" finish="2026-05-11T14:24:07.3277658-04:00" />
+  <TestSettings name="default" id="2abc52e8-0289-4972-a5f8-fcb9f40f9e5b">
+    <Deployment runDeploymentRoot="djmax_COMETBASE_2026-05-11_14_24_07" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c7164dad-475b-46cc-9487-895b1a4f0fce" testId="73a1b656-b4de-2c49-9665-60622bc53e06" testName="UserTests.User_IsBanned_DefaultShouldBeFalse" computerName="COMETBASE" duration="00:00:00.1576314" startTime="2026-05-11T14:24:07.0694153-04:00" endTime="2026-05-11T14:24:07.2313968-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7164dad-475b-46cc-9487-895b1a4f0fce" />
+    <UnitTestResult executionId="2b86a1cd-f245-4bc8-8daf-51d8027bad29" testId="0195f33f-f3c0-5115-6799-8d98ef715f1e" testName="ShoppingCartTests.GetTotal_ShouldCalculateCorrectly" computerName="COMETBASE" duration="00:00:00.0035000" startTime="2026-05-11T14:24:07.2661561-04:00" endTime="2026-05-11T14:24:07.2698702-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b86a1cd-f245-4bc8-8daf-51d8027bad29" />
+    <UnitTestResult executionId="a170f124-3e4b-4258-b2c1-c77731e2839d" testId="e4e84df3-93ea-5579-4de3-2b8faf820bbd" testName="SecurityLogTests.SecurityLog_NullUserId_ShouldBeAllowed" computerName="COMETBASE" duration="00:00:00.0002542" startTime="2026-05-11T14:24:07.2634821-04:00" endTime="2026-05-11T14:24:07.2645108-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a170f124-3e4b-4258-b2c1-c77731e2839d" />
+    <UnitTestResult executionId="ca31fe78-2495-4c6f-ae5f-6dcfb4c47ffa" testId="106573af-d963-a6b6-2b10-e1363a6a1fe4" testName="BuyerTests.Buyer_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.0000617" startTime="2026-05-11T14:24:07.2629241-04:00" endTime="2026-05-11T14:24:07.2629793-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca31fe78-2495-4c6f-ae5f-6dcfb4c47ffa" />
+    <UnitTestResult executionId="18bb3b26-85d0-4cdb-bdea-46bb009ecbd6" testId="5f15c4ba-4bfa-8005-a4bc-b8f06556135d" testName="ProductTests.Product_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.0000666" startTime="2026-05-11T14:24:07.2596007-04:00" endTime="2026-05-11T14:24:07.2600454-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18bb3b26-85d0-4cdb-bdea-46bb009ecbd6" />
+    <UnitTestResult executionId="35cc86b0-cbca-47be-91ab-6ddc8d03acc5" testId="ea7cca34-9700-f353-1b09-59d6b7c3585a" testName="BuyerTests.Buyer_ShippingAddress_ShouldBeSettable" computerName="COMETBASE" duration="00:00:00.0001722" startTime="2026-05-11T14:24:07.2597022-04:00" endTime="2026-05-11T14:24:07.2627555-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="35cc86b0-cbca-47be-91ab-6ddc8d03acc5" />
+    <UnitTestResult executionId="0f6270d4-ef77-486f-b557-d470d88f8958" testId="d08d1074-c769-2aef-76bd-c5ea834a1f05" testName="OrderTests.Order_ZeroTotal_ShouldBeValid" computerName="COMETBASE" duration="00:00:00.0021662" startTime="2026-05-11T14:24:07.2597455-04:00" endTime="2026-05-11T14:24:07.2657497-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0f6270d4-ef77-486f-b557-d470d88f8958" />
+    <UnitTestResult executionId="ed0bd6fd-1009-463b-98e3-4f697b3dd46f" testId="5fbaea03-72f1-e9d4-f11c-0993fb75c9c2" testName="CartItemTests.CartItem_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.1576415" startTime="2026-05-11T14:24:07.0681563-04:00" endTime="2026-05-11T14:24:07.2342340-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed0bd6fd-1009-463b-98e3-4f697b3dd46f" />
+    <UnitTestResult executionId="a2a68ac4-2f47-4cd0-82f4-af71b235a954" testId="dd0de70a-4494-64f7-ff2d-34d7bdb56cac" testName="ProductTests.Product_NullName_ShouldBeNull" computerName="COMETBASE" duration="00:00:00.1576639" startTime="2026-05-11T14:24:07.0693415-04:00" endTime="2026-05-11T14:24:07.2341237-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a2a68ac4-2f47-4cd0-82f4-af71b235a954" />
+    <UnitTestResult executionId="e4037119-bec7-4019-be89-d6a0468763db" testId="19277c57-5866-c455-23cf-f2d8af5dded3" testName="SecurityLogTests.SecurityLog_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.1576426" startTime="2026-05-11T14:24:07.0694526-04:00" endTime="2026-05-11T14:24:07.2342096-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4037119-bec7-4019-be89-d6a0468763db" />
+    <UnitTestResult executionId="ad82fe9b-c459-4e8f-8502-67519d6bd5e3" testId="02a5b23e-4af9-f90c-3fa6-a5ae4c57319f" testName="CartItemTests.CartItem_DefaultQuantity_ShouldBeZero" computerName="COMETBASE" duration="00:00:00.0000693" startTime="2026-05-11T14:24:07.2668697-04:00" endTime="2026-05-11T14:24:07.2675211-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ad82fe9b-c459-4e8f-8502-67519d6bd5e3" />
+    <UnitTestResult executionId="0ab36feb-f355-451b-abfd-bbd8a0a43602" testId="4abd0c0e-ac92-6fb0-c946-8edffdf34f7a" testName="SecurityLogTests.SecurityLog_ShouldSetProperties" computerName="COMETBASE" duration="00:00:00.0002399" startTime="2026-05-11T14:24:07.2626841-04:00" endTime="2026-05-11T14:24:07.2632554-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0ab36feb-f355-451b-abfd-bbd8a0a43602" />
+    <UnitTestResult executionId="9cf62396-7a0e-4752-ab23-59b327d1e14a" testId="95145357-b060-ca3a-7cf0-da3927bbd5d1" testName="ShoppingCartTests.AddItem_ShouldIncrementQuantityIfAlreadyInCart" computerName="COMETBASE" duration="00:00:00.0007381" startTime="2026-05-11T14:24:07.2647324-04:00" endTime="2026-05-11T14:24:07.2656533-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9cf62396-7a0e-4752-ab23-59b327d1e14a" />
+    <UnitTestResult executionId="8dea59b2-cf04-4f03-a680-18aee1c383cd" testId="45b70144-826d-ea0b-600f-933dfdbae623" testName="ShoppingCartTests.GetTotal_EmptyCart_ShouldBeZero" computerName="COMETBASE" duration="00:00:00.0000601" startTime="2026-05-11T14:24:07.2709935-04:00" endTime="2026-05-11T14:24:07.2710427-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8dea59b2-cf04-4f03-a680-18aee1c383cd" />
+    <UnitTestResult executionId="9b398d1d-b9d5-4b35-b852-f86951633c33" testId="e0cc4205-f480-c547-e8c6-4fe49a672a43" testName="SecurityLogTests.SecurityLog_DefaultIsRead_ShouldBeFalse" computerName="COMETBASE" duration="00:00:00.0001080" startTime="2026-05-11T14:24:07.2596796-04:00" endTime="2026-05-11T14:24:07.2612748-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b398d1d-b9d5-4b35-b852-f86951633c33" />
+    <UnitTestResult executionId="b33c27ff-d3f8-45dd-9731-5954b082a9fb" testId="4af39800-5e65-75a0-588c-ff403445a051" testName="ShoppingCartTests.UpdateQuantity_NonExistentProduct_ShouldNotThrow" computerName="COMETBASE" duration="00:00:00.0000958" startTime="2026-05-11T14:24:07.2711666-04:00" endTime="2026-05-11T14:24:07.2712166-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b33c27ff-d3f8-45dd-9731-5954b082a9fb" />
+    <UnitTestResult executionId="b22e759b-7d4f-49ba-8e09-e0861e115c4a" testId="afb96855-416b-1933-a492-becf7ca49d83" testName="BuyerTests.Buyer_DefaultShippingAddress_ShouldBeNull" computerName="COMETBASE" duration="00:00:00.0000632" startTime="2026-05-11T14:24:07.2631158-04:00" endTime="2026-05-11T14:24:07.2631704-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b22e759b-7d4f-49ba-8e09-e0861e115c4a" />
+    <UnitTestResult executionId="b9d56aab-3a50-4671-bd9c-582f3824a7bf" testId="55cfd9f7-f096-ae68-567f-aa0651d062f4" testName="ProductTests.UpdateDetails_ShouldRunWithoutException" computerName="COMETBASE" duration="00:00:00.0017724" startTime="2026-05-11T14:24:07.2697173-04:00" endTime="2026-05-11T14:24:07.2697696-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b9d56aab-3a50-4671-bd9c-582f3824a7bf" />
+    <UnitTestResult executionId="8e12f31d-2a32-41ff-8081-cab1762be4e4" testId="54fea671-a3ed-f477-4fd4-81bd1b77c8d9" testName="WishlistTests.Wishlist_ShouldSetBuyerAndProduct" computerName="COMETBASE" duration="00:00:00.0001096" startTime="2026-05-11T14:24:07.2671242-04:00" endTime="2026-05-11T14:24:07.2685963-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e12f31d-2a32-41ff-8081-cab1762be4e4" />
+    <UnitTestResult executionId="bba09a9a-2a77-41d4-a359-45fafedcb4a4" testId="96758cd2-40a0-ea9b-3739-b81191bfd39e" testName="ProductTests.Product_IsWishlisted_DefaultShouldBeFalse" computerName="COMETBASE" duration="00:00:00.0000725" startTime="2026-05-11T14:24:07.2670471-04:00" endTime="2026-05-11T14:24:07.2677234-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bba09a9a-2a77-41d4-a359-45fafedcb4a4" />
+    <UnitTestResult executionId="edb62730-ddb5-4734-841e-d579198b779f" testId="caced11f-66a5-8260-7ec6-0aa530fa83af" testName="UserTests.User_CanBeBanned" computerName="COMETBASE" duration="00:00:00.0000831" startTime="2026-05-11T14:24:07.2674407-04:00" endTime="2026-05-11T14:24:07.2687190-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="edb62730-ddb5-4734-841e-d579198b779f" />
+    <UnitTestResult executionId="49fd0b12-6eec-44d2-b4ca-604e5a648d4d" testId="b80a8412-b0fa-57f2-b6cb-2971ac957b3d" testName="ShoppingCartTests.Clear_ShouldEmptyCart" computerName="COMETBASE" duration="00:00:00.0000932" startTime="2026-05-11T14:24:07.2713391-04:00" endTime="2026-05-11T14:24:07.2713906-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49fd0b12-6eec-44d2-b4ca-604e5a648d4d" />
+    <UnitTestResult executionId="602c9471-63dc-4a84-9065-2741f9ab47c4" testId="1c4dccd2-ea5c-cccd-14b5-c5fa1f1c26ae" testName="ShoppingCartTests.UpdateQuantity_ShouldChangeQuantity" computerName="COMETBASE" duration="00:00:00.0003251" startTime="2026-05-11T14:24:07.2708142-04:00" endTime="2026-05-11T14:24:07.2708636-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="602c9471-63dc-4a84-9065-2741f9ab47c4" />
+    <UnitTestResult executionId="73fd8949-5ddd-4ec4-93b6-ad570caa188c" testId="40f21e60-6771-8cb9-879d-e8e29125663e" testName="BuyerTests.Buyer_ShouldHaveCorrectUserType" computerName="COMETBASE" duration="00:00:00.1576667" startTime="2026-05-11T14:24:07.0693859-04:00" endTime="2026-05-11T14:24:07.2340161-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73fd8949-5ddd-4ec4-93b6-ad570caa188c" />
+    <UnitTestResult executionId="070d3798-20c2-4612-bef7-2ea7806b8afa" testId="9c56c39a-a182-3304-932f-5b741b90d27c" testName="WishlistTests.Wishlist_DefaultIds_ShouldBeZero" computerName="COMETBASE" duration="00:00:00.0021885" startTime="2026-05-11T14:24:07.2596546-04:00" endTime="2026-05-11T14:24:07.2661795-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="070d3798-20c2-4612-bef7-2ea7806b8afa" />
+    <UnitTestResult executionId="d365013e-8007-4d10-82e9-9009c6b280a1" testId="3b854e68-435c-3a93-efcf-d5bbf9de51cb" testName="OrderTests.Order_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.1576683" startTime="2026-05-11T14:24:07.0690577-04:00" endTime="2026-05-11T14:24:07.2341556-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d365013e-8007-4d10-82e9-9009c6b280a1" />
+    <UnitTestResult executionId="b4fc3d38-a65d-45e1-a21e-2c246ac442cb" testId="c6248235-e770-e2f1-8b79-5a031cc7cc98" testName="ShoppingCartTests.RemoveItem_ShouldRemoveProduct" computerName="COMETBASE" duration="00:00:00.0002504" startTime="2026-05-11T14:24:07.2706331-04:00" endTime="2026-05-11T14:24:07.2706846-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b4fc3d38-a65d-45e1-a21e-2c246ac442cb" />
+    <UnitTestResult executionId="a2c0f7c3-5484-43c7-9709-5a2682a84c35" testId="3efc59a4-b501-fdd7-2f23-cfe6bc02440b" testName="CartItemTests.CartItem_ZeroQuantity_ShouldGiveZeroSubtotal" computerName="COMETBASE" duration="00:00:00.0000734" startTime="2026-05-11T14:24:07.2677551-04:00" endTime="2026-05-11T14:24:07.2689070-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a2c0f7c3-5484-43c7-9709-5a2682a84c35" />
+    <UnitTestResult executionId="622cfb2e-df32-4ce8-82b8-1f8f60b1da81" testId="b5b2cdf5-678b-de46-0a75-0e54f4cadf7b" testName="ProductTests.Product_NegativePrice_ShouldStillStore" computerName="COMETBASE" duration="00:00:00.0017128" startTime="2026-05-11T14:24:07.2636786-04:00" endTime="2026-05-11T14:24:07.2658512-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="622cfb2e-df32-4ce8-82b8-1f8f60b1da81" />
+    <UnitTestResult executionId="c72f492d-5d8a-4718-8f42-45e87b3d24fd" testId="e4e93c20-c107-2541-44da-781758641140" testName="OrderTests.Order_ShouldSetProperties" computerName="COMETBASE" duration="00:00:00.0001740" startTime="2026-05-11T14:24:07.2685058-04:00" endTime="2026-05-11T14:24:07.2690943-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c72f492d-5d8a-4718-8f42-45e87b3d24fd" />
+    <UnitTestResult executionId="33ab169d-65bc-4ec0-9053-598ccd1d2bed" testId="cb551afe-9a04-82fc-a35b-086f012006b2" testName="UserTests.User_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.0000660" startTime="2026-05-11T14:24:07.2596294-04:00" endTime="2026-05-11T14:24:07.2602766-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33ab169d-65bc-4ec0-9053-598ccd1d2bed" />
+    <UnitTestResult executionId="257fa305-571c-49c4-a045-2cc88e0d2d5a" testId="41b37226-613e-f25d-933a-df847688bdef" testName="CartItemTests.CartItem_Subtotal_ShouldCalculateCorrectly" computerName="COMETBASE" duration="00:00:00.0021576" startTime="2026-05-11T14:24:07.2597235-04:00" endTime="2026-05-11T14:24:07.2657801-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="257fa305-571c-49c4-a045-2cc88e0d2d5a" />
+    <UnitTestResult executionId="f4e42a3a-fcf6-4191-9c3d-eba0b50e982d" testId="26f14f34-2a01-aa58-d543-b71fcea3098c" testName="WishlistTests.Wishlist_ShouldBeCreated" computerName="COMETBASE" duration="00:00:00.1576869" startTime="2026-05-11T14:24:07.0693656-04:00" endTime="2026-05-11T14:24:07.2340911-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f4e42a3a-fcf6-4191-9c3d-eba0b50e982d" />
+    <UnitTestResult executionId="61b5f976-4e34-4517-9d56-97014e5c3585" testId="242074d7-0ee7-f004-0d72-cf4523439121" testName="UserTests.User_NullEmail_ShouldBeNull" computerName="COMETBASE" duration="00:00:00.0000602" startTime="2026-05-11T14:24:07.2693599-04:00" endTime="2026-05-11T14:24:07.2694883-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61b5f976-4e34-4517-9d56-97014e5c3585" />
+    <UnitTestResult executionId="6763460c-d2e6-46dd-89c7-238d05d39c30" testId="4e6e1b1e-3932-6d10-bb91-0c8694650db9" testName="BuyerTests.Buyer_ShouldNotBeAdmin" computerName="COMETBASE" duration="00:00:00.0018143" startTime="2026-05-11T14:24:07.2634029-04:00" endTime="2026-05-11T14:24:07.2672224-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6763460c-d2e6-46dd-89c7-238d05d39c30" />
+    <UnitTestResult executionId="0e0406fa-21e9-4084-88b9-04cfa054690a" testId="57733e08-7e12-5dcf-4428-28c47d501d94" testName="UserTests.User_AdminType_ShouldNotBeBuyer" computerName="COMETBASE" duration="00:00:00.0021356" startTime="2026-05-11T14:24:07.2605478-04:00" endTime="2026-05-11T14:24:07.2671923-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0e0406fa-21e9-4084-88b9-04cfa054690a" />
+    <UnitTestResult executionId="1995c214-3f95-4f1c-843c-bcf2b1b58395" testId="e38e0772-55e2-f394-583d-bbd33abe98f8" testName="ProductTests.Product_ShouldSetPropertiesCorrectly" computerName="COMETBASE" duration="00:00:00.0002850" startTime="2026-05-11T14:24:07.2685596-04:00" endTime="2026-05-11T14:24:07.2695842-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1995c214-3f95-4f1c-843c-bcf2b1b58395" />
+    <UnitTestResult executionId="2d4f780f-7321-42cf-be4a-5117cd4c3db7" testId="217c4ae8-7357-e957-5f57-0aee435d885f" testName="ShoppingCartTests.Cart_ShouldStartEmpty" computerName="COMETBASE" duration="00:00:00.0008151" startTime="2026-05-11T14:24:07.2644560-04:00" endTime="2026-05-11T14:24:07.2646026-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d4f780f-7321-42cf-be4a-5117cd4c3db7" />
+    <UnitTestResult executionId="9804ce10-22ad-4807-b745-ca5744b69c3b" testId="1f3aa40b-d489-6d60-31c8-d1973f25298c" testName="ProductTests.Product_IsWishlisted_ShouldToggle" computerName="COMETBASE" duration="00:00:00.0003190" startTime="2026-05-11T14:24:07.2605894-04:00" endTime="2026-05-11T14:24:07.2635037-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9804ce10-22ad-4807-b745-ca5744b69c3b" />
+    <UnitTestResult executionId="3d821321-4bb1-4414-b2e0-d30dec4a0433" testId="19ae65b5-0e46-679a-a98b-ce83801e629c" testName="ShoppingCartTests.RemoveItem_ProductNotInCart_ShouldNotThrow" computerName="COMETBASE" duration="00:00:00.0005372" startTime="2026-05-11T14:24:07.2597664-04:00" endTime="2026-05-11T14:24:07.2637321-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d821321-4bb1-4414-b2e0-d30dec4a0433" />
+    <UnitTestResult executionId="bc2c6c1d-daf5-4dc2-abab-05b86ad5a5af" testId="6b0f5562-9358-39e2-9bed-d94610e57a9f" testName="UserTests.User_ShouldSetProperties" computerName="COMETBASE" duration="00:00:00.0001439" startTime="2026-05-11T14:24:07.2688571-04:00" endTime="2026-05-11T14:24:07.2692014-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc2c6c1d-daf5-4dc2-abab-05b86ad5a5af" />
+    <UnitTestResult executionId="c344f503-3a6b-459e-a72e-c926fe4f0220" testId="823d131a-813f-6b98-d3f6-005da80f31e4" testName="CartItemTests.CartItem_ShouldSetProperties" computerName="COMETBASE" duration="00:00:00.0001393" startTime="2026-05-11T14:24:07.2690378-04:00" endTime="2026-05-11T14:24:07.2693277-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c344f503-3a6b-459e-a72e-c926fe4f0220" />
+    <UnitTestResult executionId="ea39a7d1-93c2-4dad-90ee-760bdace76e4" testId="82c326df-4405-c19e-32c7-80a287e21c17" testName="OrderTests.Order_DefaultStatus_ShouldBeNull" computerName="COMETBASE" duration="00:00:00.0000810" startTime="2026-05-11T14:24:07.2669122-04:00" endTime="2026-05-11T14:24:07.2676513-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea39a7d1-93c2-4dad-90ee-760bdace76e4" />
+    <UnitTestResult executionId="60f2773c-a398-4117-9abf-7a621d5fbd6f" testId="90ef728c-0ada-74a3-79e3-6a1d6acca832" testName="ShoppingCartTests.AddItem_ShouldAddProduct" computerName="COMETBASE" duration="00:00:00.1586080" startTime="2026-05-11T14:24:07.0694330-04:00" endTime="2026-05-11T14:24:07.2341828-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60f2773c-a398-4117-9abf-7a621d5fbd6f" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="WishlistTests.Wishlist_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="26f14f34-2a01-aa58-d543-b71fcea3098c">
+      <Execution id="f4e42a3a-fcf6-4191-9c3d-eba0b50e982d" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WishlistTests" name="Wishlist_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="SecurityLogTests.SecurityLog_ShouldSetProperties" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="4abd0c0e-ac92-6fb0-c946-8edffdf34f7a">
+      <Execution id="0ab36feb-f355-451b-abfd-bbd8a0a43602" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SecurityLogTests" name="SecurityLog_ShouldSetProperties" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.GetTotal_ShouldCalculateCorrectly" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="0195f33f-f3c0-5115-6799-8d98ef715f1e">
+      <Execution id="2b86a1cd-f245-4bc8-8daf-51d8027bad29" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="GetTotal_ShouldCalculateCorrectly" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.UpdateQuantity_NonExistentProduct_ShouldNotThrow" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="4af39800-5e65-75a0-588c-ff403445a051">
+      <Execution id="b33c27ff-d3f8-45dd-9731-5954b082a9fb" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="UpdateQuantity_NonExistentProduct_ShouldNotThrow" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.GetTotal_EmptyCart_ShouldBeZero" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="45b70144-826d-ea0b-600f-933dfdbae623">
+      <Execution id="8dea59b2-cf04-4f03-a680-18aee1c383cd" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="GetTotal_EmptyCart_ShouldBeZero" />
+    </UnitTest>
+    <UnitTest name="BuyerTests.Buyer_ShouldNotBeAdmin" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="4e6e1b1e-3932-6d10-bb91-0c8694650db9">
+      <Execution id="6763460c-d2e6-46dd-89c7-238d05d39c30" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BuyerTests" name="Buyer_ShouldNotBeAdmin" />
+    </UnitTest>
+    <UnitTest name="CartItemTests.CartItem_DefaultQuantity_ShouldBeZero" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="02a5b23e-4af9-f90c-3fa6-a5ae4c57319f">
+      <Execution id="ad82fe9b-c459-4e8f-8502-67519d6bd5e3" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CartItemTests" name="CartItem_DefaultQuantity_ShouldBeZero" />
+    </UnitTest>
+    <UnitTest name="CartItemTests.CartItem_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="5fbaea03-72f1-e9d4-f11c-0993fb75c9c2">
+      <Execution id="ed0bd6fd-1009-463b-98e3-4f697b3dd46f" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CartItemTests" name="CartItem_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="UserTests.User_NullEmail_ShouldBeNull" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="242074d7-0ee7-f004-0d72-cf4523439121">
+      <Execution id="61b5f976-4e34-4517-9d56-97014e5c3585" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="UserTests" name="User_NullEmail_ShouldBeNull" />
+    </UnitTest>
+    <UnitTest name="UserTests.User_CanBeBanned" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="caced11f-66a5-8260-7ec6-0aa530fa83af">
+      <Execution id="edb62730-ddb5-4734-841e-d579198b779f" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="UserTests" name="User_CanBeBanned" />
+    </UnitTest>
+    <UnitTest name="UserTests.User_IsBanned_DefaultShouldBeFalse" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="73a1b656-b4de-2c49-9665-60622bc53e06">
+      <Execution id="c7164dad-475b-46cc-9487-895b1a4f0fce" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="UserTests" name="User_IsBanned_DefaultShouldBeFalse" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.UpdateQuantity_ShouldChangeQuantity" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="1c4dccd2-ea5c-cccd-14b5-c5fa1f1c26ae">
+      <Execution id="602c9471-63dc-4a84-9065-2741f9ab47c4" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="UpdateQuantity_ShouldChangeQuantity" />
+    </UnitTest>
+    <UnitTest name="BuyerTests.Buyer_ShippingAddress_ShouldBeSettable" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="ea7cca34-9700-f353-1b09-59d6b7c3585a">
+      <Execution id="35cc86b0-cbca-47be-91ab-6ddc8d03acc5" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BuyerTests" name="Buyer_ShippingAddress_ShouldBeSettable" />
+    </UnitTest>
+    <UnitTest name="OrderTests.Order_ZeroTotal_ShouldBeValid" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="d08d1074-c769-2aef-76bd-c5ea834a1f05">
+      <Execution id="0f6270d4-ef77-486f-b557-d470d88f8958" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="OrderTests" name="Order_ZeroTotal_ShouldBeValid" />
+    </UnitTest>
+    <UnitTest name="ProductTests.Product_IsWishlisted_ShouldToggle" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="1f3aa40b-d489-6d60-31c8-d1973f25298c">
+      <Execution id="9804ce10-22ad-4807-b745-ca5744b69c3b" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="Product_IsWishlisted_ShouldToggle" />
+    </UnitTest>
+    <UnitTest name="OrderTests.Order_DefaultStatus_ShouldBeNull" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="82c326df-4405-c19e-32c7-80a287e21c17">
+      <Execution id="ea39a7d1-93c2-4dad-90ee-760bdace76e4" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="OrderTests" name="Order_DefaultStatus_ShouldBeNull" />
+    </UnitTest>
+    <UnitTest name="CartItemTests.CartItem_ShouldSetProperties" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="823d131a-813f-6b98-d3f6-005da80f31e4">
+      <Execution id="c344f503-3a6b-459e-a72e-c926fe4f0220" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CartItemTests" name="CartItem_ShouldSetProperties" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.RemoveItem_ShouldRemoveProduct" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="c6248235-e770-e2f1-8b79-5a031cc7cc98">
+      <Execution id="b4fc3d38-a65d-45e1-a21e-2c246ac442cb" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="RemoveItem_ShouldRemoveProduct" />
+    </UnitTest>
+    <UnitTest name="BuyerTests.Buyer_ShouldHaveCorrectUserType" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="40f21e60-6771-8cb9-879d-e8e29125663e">
+      <Execution id="73fd8949-5ddd-4ec4-93b6-ad570caa188c" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BuyerTests" name="Buyer_ShouldHaveCorrectUserType" />
+    </UnitTest>
+    <UnitTest name="CartItemTests.CartItem_ZeroQuantity_ShouldGiveZeroSubtotal" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="3efc59a4-b501-fdd7-2f23-cfe6bc02440b">
+      <Execution id="a2c0f7c3-5484-43c7-9709-5a2682a84c35" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CartItemTests" name="CartItem_ZeroQuantity_ShouldGiveZeroSubtotal" />
+    </UnitTest>
+    <UnitTest name="UserTests.User_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="cb551afe-9a04-82fc-a35b-086f012006b2">
+      <Execution id="33ab169d-65bc-4ec0-9053-598ccd1d2bed" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="UserTests" name="User_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="CartItemTests.CartItem_Subtotal_ShouldCalculateCorrectly" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="41b37226-613e-f25d-933a-df847688bdef">
+      <Execution id="257fa305-571c-49c4-a045-2cc88e0d2d5a" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CartItemTests" name="CartItem_Subtotal_ShouldCalculateCorrectly" />
+    </UnitTest>
+    <UnitTest name="ProductTests.Product_ShouldSetPropertiesCorrectly" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="e38e0772-55e2-f394-583d-bbd33abe98f8">
+      <Execution id="1995c214-3f95-4f1c-843c-bcf2b1b58395" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="Product_ShouldSetPropertiesCorrectly" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.AddItem_ShouldIncrementQuantityIfAlreadyInCart" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="95145357-b060-ca3a-7cf0-da3927bbd5d1">
+      <Execution id="9cf62396-7a0e-4752-ab23-59b327d1e14a" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="AddItem_ShouldIncrementQuantityIfAlreadyInCart" />
+    </UnitTest>
+    <UnitTest name="SecurityLogTests.SecurityLog_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="19277c57-5866-c455-23cf-f2d8af5dded3">
+      <Execution id="e4037119-bec7-4019-be89-d6a0468763db" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SecurityLogTests" name="SecurityLog_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="OrderTests.Order_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="3b854e68-435c-3a93-efcf-d5bbf9de51cb">
+      <Execution id="d365013e-8007-4d10-82e9-9009c6b280a1" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="OrderTests" name="Order_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="OrderTests.Order_ShouldSetProperties" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="e4e93c20-c107-2541-44da-781758641140">
+      <Execution id="c72f492d-5d8a-4718-8f42-45e87b3d24fd" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="OrderTests" name="Order_ShouldSetProperties" />
+    </UnitTest>
+    <UnitTest name="WishlistTests.Wishlist_DefaultIds_ShouldBeZero" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="9c56c39a-a182-3304-932f-5b741b90d27c">
+      <Execution id="070d3798-20c2-4612-bef7-2ea7806b8afa" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WishlistTests" name="Wishlist_DefaultIds_ShouldBeZero" />
+    </UnitTest>
+    <UnitTest name="UserTests.User_AdminType_ShouldNotBeBuyer" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="57733e08-7e12-5dcf-4428-28c47d501d94">
+      <Execution id="0e0406fa-21e9-4084-88b9-04cfa054690a" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="UserTests" name="User_AdminType_ShouldNotBeBuyer" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.RemoveItem_ProductNotInCart_ShouldNotThrow" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="19ae65b5-0e46-679a-a98b-ce83801e629c">
+      <Execution id="3d821321-4bb1-4414-b2e0-d30dec4a0433" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="RemoveItem_ProductNotInCart_ShouldNotThrow" />
+    </UnitTest>
+    <UnitTest name="ProductTests.Product_NullName_ShouldBeNull" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="dd0de70a-4494-64f7-ff2d-34d7bdb56cac">
+      <Execution id="a2a68ac4-2f47-4cd0-82f4-af71b235a954" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="Product_NullName_ShouldBeNull" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.AddItem_ShouldAddProduct" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="90ef728c-0ada-74a3-79e3-6a1d6acca832">
+      <Execution id="60f2773c-a398-4117-9abf-7a621d5fbd6f" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="AddItem_ShouldAddProduct" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.Clear_ShouldEmptyCart" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="b80a8412-b0fa-57f2-b6cb-2971ac957b3d">
+      <Execution id="49fd0b12-6eec-44d2-b4ca-604e5a648d4d" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="Clear_ShouldEmptyCart" />
+    </UnitTest>
+    <UnitTest name="ProductTests.UpdateDetails_ShouldRunWithoutException" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="55cfd9f7-f096-ae68-567f-aa0651d062f4">
+      <Execution id="b9d56aab-3a50-4671-bd9c-582f3824a7bf" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="UpdateDetails_ShouldRunWithoutException" />
+    </UnitTest>
+    <UnitTest name="ShoppingCartTests.Cart_ShouldStartEmpty" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="217c4ae8-7357-e957-5f57-0aee435d885f">
+      <Execution id="2d4f780f-7321-42cf-be4a-5117cd4c3db7" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ShoppingCartTests" name="Cart_ShouldStartEmpty" />
+    </UnitTest>
+    <UnitTest name="WishlistTests.Wishlist_ShouldSetBuyerAndProduct" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="54fea671-a3ed-f477-4fd4-81bd1b77c8d9">
+      <Execution id="8e12f31d-2a32-41ff-8081-cab1762be4e4" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WishlistTests" name="Wishlist_ShouldSetBuyerAndProduct" />
+    </UnitTest>
+    <UnitTest name="BuyerTests.Buyer_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="106573af-d963-a6b6-2b10-e1363a6a1fe4">
+      <Execution id="ca31fe78-2495-4c6f-ae5f-6dcfb4c47ffa" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BuyerTests" name="Buyer_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="ProductTests.Product_IsWishlisted_DefaultShouldBeFalse" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="96758cd2-40a0-ea9b-3739-b81191bfd39e">
+      <Execution id="bba09a9a-2a77-41d4-a359-45fafedcb4a4" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="Product_IsWishlisted_DefaultShouldBeFalse" />
+    </UnitTest>
+    <UnitTest name="SecurityLogTests.SecurityLog_NullUserId_ShouldBeAllowed" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="e4e84df3-93ea-5579-4de3-2b8faf820bbd">
+      <Execution id="a170f124-3e4b-4258-b2c1-c77731e2839d" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SecurityLogTests" name="SecurityLog_NullUserId_ShouldBeAllowed" />
+    </UnitTest>
+    <UnitTest name="SecurityLogTests.SecurityLog_DefaultIsRead_ShouldBeFalse" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="e0cc4205-f480-c547-e8c6-4fe49a672a43">
+      <Execution id="9b398d1d-b9d5-4b35-b852-f86951633c33" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SecurityLogTests" name="SecurityLog_DefaultIsRead_ShouldBeFalse" />
+    </UnitTest>
+    <UnitTest name="BuyerTests.Buyer_DefaultShippingAddress_ShouldBeNull" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="afb96855-416b-1933-a492-becf7ca49d83">
+      <Execution id="b22e759b-7d4f-49ba-8e09-e0861e115c4a" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BuyerTests" name="Buyer_DefaultShippingAddress_ShouldBeNull" />
+    </UnitTest>
+    <UnitTest name="UserTests.User_ShouldSetProperties" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="6b0f5562-9358-39e2-9bed-d94610e57a9f">
+      <Execution id="bc2c6c1d-daf5-4dc2-abab-05b86ad5a5af" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="UserTests" name="User_ShouldSetProperties" />
+    </UnitTest>
+    <UnitTest name="ProductTests.Product_ShouldBeCreated" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="5f15c4ba-4bfa-8005-a4bc-b8f06556135d">
+      <Execution id="18bb3b26-85d0-4cdb-bdea-46bb009ecbd6" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="Product_ShouldBeCreated" />
+    </UnitTest>
+    <UnitTest name="ProductTests.Product_NegativePrice_ShouldStillStore" storage="c:\users\djmax\softwareengineeringproject\softwareengineeringfinalproject\tests\bin\debug\net9.0\tests.dll" id="b5b2cdf5-678b-de46-0a75-0e54f4cadf7b">
+      <Execution id="622cfb2e-df32-4ce8-82b8-1f8f60b1da81" />
+      <TestMethod codeBase="C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ProductTests" name="Product_NegativePrice_ShouldStillStore" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="73a1b656-b4de-2c49-9665-60622bc53e06" executionId="c7164dad-475b-46cc-9487-895b1a4f0fce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0195f33f-f3c0-5115-6799-8d98ef715f1e" executionId="2b86a1cd-f245-4bc8-8daf-51d8027bad29" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e4e84df3-93ea-5579-4de3-2b8faf820bbd" executionId="a170f124-3e4b-4258-b2c1-c77731e2839d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="106573af-d963-a6b6-2b10-e1363a6a1fe4" executionId="ca31fe78-2495-4c6f-ae5f-6dcfb4c47ffa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5f15c4ba-4bfa-8005-a4bc-b8f06556135d" executionId="18bb3b26-85d0-4cdb-bdea-46bb009ecbd6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea7cca34-9700-f353-1b09-59d6b7c3585a" executionId="35cc86b0-cbca-47be-91ab-6ddc8d03acc5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d08d1074-c769-2aef-76bd-c5ea834a1f05" executionId="0f6270d4-ef77-486f-b557-d470d88f8958" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fbaea03-72f1-e9d4-f11c-0993fb75c9c2" executionId="ed0bd6fd-1009-463b-98e3-4f697b3dd46f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dd0de70a-4494-64f7-ff2d-34d7bdb56cac" executionId="a2a68ac4-2f47-4cd0-82f4-af71b235a954" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19277c57-5866-c455-23cf-f2d8af5dded3" executionId="e4037119-bec7-4019-be89-d6a0468763db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02a5b23e-4af9-f90c-3fa6-a5ae4c57319f" executionId="ad82fe9b-c459-4e8f-8502-67519d6bd5e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4abd0c0e-ac92-6fb0-c946-8edffdf34f7a" executionId="0ab36feb-f355-451b-abfd-bbd8a0a43602" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="95145357-b060-ca3a-7cf0-da3927bbd5d1" executionId="9cf62396-7a0e-4752-ab23-59b327d1e14a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="45b70144-826d-ea0b-600f-933dfdbae623" executionId="8dea59b2-cf04-4f03-a680-18aee1c383cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e0cc4205-f480-c547-e8c6-4fe49a672a43" executionId="9b398d1d-b9d5-4b35-b852-f86951633c33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4af39800-5e65-75a0-588c-ff403445a051" executionId="b33c27ff-d3f8-45dd-9731-5954b082a9fb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afb96855-416b-1933-a492-becf7ca49d83" executionId="b22e759b-7d4f-49ba-8e09-e0861e115c4a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55cfd9f7-f096-ae68-567f-aa0651d062f4" executionId="b9d56aab-3a50-4671-bd9c-582f3824a7bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54fea671-a3ed-f477-4fd4-81bd1b77c8d9" executionId="8e12f31d-2a32-41ff-8081-cab1762be4e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="96758cd2-40a0-ea9b-3739-b81191bfd39e" executionId="bba09a9a-2a77-41d4-a359-45fafedcb4a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="caced11f-66a5-8260-7ec6-0aa530fa83af" executionId="edb62730-ddb5-4734-841e-d579198b779f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b80a8412-b0fa-57f2-b6cb-2971ac957b3d" executionId="49fd0b12-6eec-44d2-b4ca-604e5a648d4d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c4dccd2-ea5c-cccd-14b5-c5fa1f1c26ae" executionId="602c9471-63dc-4a84-9065-2741f9ab47c4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="40f21e60-6771-8cb9-879d-e8e29125663e" executionId="73fd8949-5ddd-4ec4-93b6-ad570caa188c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9c56c39a-a182-3304-932f-5b741b90d27c" executionId="070d3798-20c2-4612-bef7-2ea7806b8afa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b854e68-435c-3a93-efcf-d5bbf9de51cb" executionId="d365013e-8007-4d10-82e9-9009c6b280a1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6248235-e770-e2f1-8b79-5a031cc7cc98" executionId="b4fc3d38-a65d-45e1-a21e-2c246ac442cb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3efc59a4-b501-fdd7-2f23-cfe6bc02440b" executionId="a2c0f7c3-5484-43c7-9709-5a2682a84c35" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b5b2cdf5-678b-de46-0a75-0e54f4cadf7b" executionId="622cfb2e-df32-4ce8-82b8-1f8f60b1da81" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e4e93c20-c107-2541-44da-781758641140" executionId="c72f492d-5d8a-4718-8f42-45e87b3d24fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cb551afe-9a04-82fc-a35b-086f012006b2" executionId="33ab169d-65bc-4ec0-9053-598ccd1d2bed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="41b37226-613e-f25d-933a-df847688bdef" executionId="257fa305-571c-49c4-a045-2cc88e0d2d5a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26f14f34-2a01-aa58-d543-b71fcea3098c" executionId="f4e42a3a-fcf6-4191-9c3d-eba0b50e982d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="242074d7-0ee7-f004-0d72-cf4523439121" executionId="61b5f976-4e34-4517-9d56-97014e5c3585" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4e6e1b1e-3932-6d10-bb91-0c8694650db9" executionId="6763460c-d2e6-46dd-89c7-238d05d39c30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57733e08-7e12-5dcf-4428-28c47d501d94" executionId="0e0406fa-21e9-4084-88b9-04cfa054690a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e38e0772-55e2-f394-583d-bbd33abe98f8" executionId="1995c214-3f95-4f1c-843c-bcf2b1b58395" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="217c4ae8-7357-e957-5f57-0aee435d885f" executionId="2d4f780f-7321-42cf-be4a-5117cd4c3db7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f3aa40b-d489-6d60-31c8-d1973f25298c" executionId="9804ce10-22ad-4807-b745-ca5744b69c3b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19ae65b5-0e46-679a-a98b-ce83801e629c" executionId="3d821321-4bb1-4414-b2e0-d30dec4a0433" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b0f5562-9358-39e2-9bed-d94610e57a9f" executionId="bc2c6c1d-daf5-4dc2-abab-05b86ad5a5af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="823d131a-813f-6b98-d3f6-005da80f31e4" executionId="c344f503-3a6b-459e-a72e-c926fe4f0220" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="82c326df-4405-c19e-32c7-80a287e21c17" executionId="ea39a7d1-93c2-4dad-90ee-760bdace76e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90ef728c-0ada-74a3-79e3-6a1d6acca832" executionId="60f2773c-a398-4117-9abf-7a621d5fbd6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="44" executed="44" passed="44" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 9.0.15)&#xD;
+[xUnit.net 00:00:00.33]   Discovering: Tests&#xD;
+[xUnit.net 00:00:00.37]   Discovered:  Tests&#xD;
+[xUnit.net 00:00:00.39]   Starting:    Tests&#xD;
+Product details have been updated!&#xD;
+[xUnit.net 00:00:00.61]   Finished:    Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

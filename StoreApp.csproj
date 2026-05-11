@@ -3,7 +3,8 @@
     <PropertyGroup>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">net9.0-windows10.0.19041.0</TargetFrameworks>
         <TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('windows'))">net9.0;net9.0-maccatalyst</TargetFrameworks>
-    
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <OutputType>Exe</OutputType>
         <UseMaui>true</UseMaui>
         <SingleProject>true</SingleProject>
@@ -46,6 +47,13 @@
       <None Remove="Resources\Images\quietstreet.jpg" />
       <None Remove="Resources\Images\stylehub.png" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="StoreApp.Core\Factories\**" />
+      <Compile Remove="StoreApp.Core\Models\**" />
+      <Compile Remove="StoreApp.Core\Services\**" />
+    </ItemGroup>
+
+
 
     <ItemGroup>
         <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
@@ -77,6 +85,10 @@
       <MauiXaml Update="Resources\Styles\StoreStyles.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="StoreApp.Core\StoreApp.Core.csproj" />
     </ItemGroup>
 
 </Project>

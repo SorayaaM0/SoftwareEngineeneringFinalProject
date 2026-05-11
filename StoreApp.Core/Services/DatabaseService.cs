@@ -17,7 +17,11 @@ public class DatabaseService
     public async Task InitAsync()
     {
         if (_db != null) return;
-        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "storeapp.db");
+        var dbPath = Path.Combine(
+                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                     "storeapp.db");
+        Console.WriteLine($"Database path: {dbPath}");
+
         _db = new SQLiteAsyncConnection(dbPath);
         await _db.CreateTableAsync<User>();
         await _db.CreateTableAsync<ReportedProduct>();

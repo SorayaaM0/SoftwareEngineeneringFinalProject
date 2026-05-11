@@ -1,41 +1,100 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.AdminProductModerationPage"
-             Background="{StaticResource BackgroundGradient}">
+             Background="{StaticResource BackgroundGradient}"
+             NavigationPage.HasNavigationBar="False">
 
+    <Border 
+        BackgroundColor="{StaticResource Surface}"
+        Margin="20"
+        Padding="20"
+        StrokeShape="RoundRectangle 15">
 
-    <CollectionView x:Name="ProductList">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Frame BorderColor="#E0E0E0" CornerRadius="8" Padding="12" Margin="0,6">
-                    <VerticalStackLayout Spacing="6">
-                        <Label Text="{Binding ProductName}" FontAttributes="Bold" FontSize="16"/>
-                        <Label Text="{Binding SellerEmail}" FontSize="13" TextColor="Gray"/>
-                        <Label Text="{Binding Reason}" FontSize="13" TextColor="#888"/>
-                        <Label Text="{Binding ReportCount, StringFormat='Total Reports: {0}'}"
-                           TextColor="Red" FontAttributes="Bold"/>
-                        <Label Text="{Binding ReportedAt, StringFormat='Last reported: {0:MM/dd/yyyy}'}"
-                           FontSize="11" TextColor="Gray"/>
-                        <HorizontalStackLayout Spacing="10">
-                            <Button Text="Remove Product"
-                                BackgroundColor="DarkRed"
-                                TextColor="White"
-                                CommandParameter="{Binding .}"
-                                Clicked="OnRemoveProductClicked"/>
-                            <Button Text="Remove Seller"
-                                BackgroundColor="Red"
-                                TextColor="White"
-                                CommandParameter="{Binding .}"
-                                Clicked="OnRemoveSellerClicked"/>
-                            <Button Text="Mark Resolved"
-                                BackgroundColor="Green"
-                                TextColor="White"
-                                CommandParameter="{Binding .}"
-                                Clicked="OnMarkResolvedClicked"/>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </Frame>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Opacity="0.60"
+                    Offset="-10,10"/>
+        </Border.Shadow>
+
+        <VerticalStackLayout Spacing="20">
+
+            <CollectionView x:Name="ProductList">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Border Stroke="{StaticResource PrimaryDark}"
+                                StrokeThickness="3"
+                                BackgroundColor="{StaticResource Primary}"
+                                StrokeShape="RoundRectangle 15"
+                                Padding="10"
+                                Margin="0,20,0,0">
+
+                            <VerticalStackLayout Spacing="6">
+
+                                <Label Text="{Binding ProductName}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"/>
+
+                                <Label Text="{Binding SellerEmail}"
+                                       FontSize="13"
+                                       TextColor="Gray"/>
+
+                                <Label Text="{Binding Reason}"
+                                       FontSize="13"
+                                       TextColor="#888"/>
+
+                                <Label Text="{Binding ReportCount,
+                                       StringFormat='Total Reports: {0}'}"
+                                       TextColor="Red"
+                                       FontAttributes="Bold"/>
+
+                                <Label Text="{Binding ReportedAt,
+                                       StringFormat='Last reported: {0:MM/dd/yyyy}'}"
+                                       FontSize="11"
+                                       TextColor="Gray"/>
+
+                                <HorizontalStackLayout Spacing="10">
+
+                                    <Button Text="Remove Product"
+                                            BackgroundColor="DarkRed"
+                                            TextColor="White"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnRemoveProductClicked"/>
+
+                                    <Button Text="Remove Seller"
+                                            BackgroundColor="Red"
+                                            TextColor="White"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnRemoveSellerClicked"/>
+
+                                    <Button Text="Mark Resolved"
+                                            BackgroundColor="Green"
+                                            TextColor="White"
+                                            CommandParameter="{Binding .}"
+                                            Clicked="OnMarkResolvedClicked"/>
+
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            <!-- BACK BUTTON -->
+            <Button Text="Back"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    BackgroundColor="{StaticResource PrimaryDark}"
+                    TextColor="White"
+                    Clicked="OnBackClicked"/>
+
+        </VerticalStackLayout>
+
+    </Border>
+
 </ContentPage>

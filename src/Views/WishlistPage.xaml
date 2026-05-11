@@ -2,25 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.WishlistPage"
-             Title="My Collections"
-             BackgroundColor="White">
+             Background="{StaticResource BackgroundGradient}"
+             NavigationPage.HasNavigationBar="False">
+    <Border BackgroundColor="{StaticResource Surface}"
+            MaximumWidthRequest="1400"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            StrokeShape="RoundRectangle 25"
+            >
+        <Border.Shadow>
+            <Shadow Brush="{StaticResource Black}"
+                    Opacity="0.60"
+                    Offset="-5,10"/>
+        </Border.Shadow>
+        <VerticalStackLayout Padding="20">
+            <Label Text="My Collections" FontSize="28" FontAttributes="Bold" Margin="20,20,20,20"/>
 
-    <VerticalStackLayout Padding="20">
-        <Label Text="My Collections" FontSize="28" FontAttributes="Bold" Margin="0,0,0,20"/>
+            <CollectionView x:Name="WishlistCollection" 
+                        EmptyView="No items saved yet!" >
 
-        <CollectionView x:Name="WishlistCollection" EmptyView="No items saved yet!">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="10" ColumnDefinitions="Auto, *, Auto">
-                        <Image Source="{Binding ImageUrl}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit"/>
-                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
-                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
-                            <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="Gray"/>
-                        </VerticalStackLayout>
-                        <Button Grid.Column="2" Text="Remove" Clicked="OnRemoveClicked" CommandParameter="{Binding .}" BackgroundColor="Transparent" TextColor="Red"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                       ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+                        <Border Background="{StaticResource Primary}"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="5"
+                                Margin="0,15,0,15"
+                                Stroke="{StaticResource PrimaryDark}"
+                                StrokeThickness="3">
+
+                            <Grid Padding="10" ColumnDefinitions="Auto, *, Auto">
+                                <Border StrokeShape="RoundRectangle 10"
+                                    BackgroundColor="{StaticResource White}">
+                                    <Image Source="{Binding ImageUrl}" WidthRequest="80" HeightRequest="80" Aspect="AspectFit"/>
+                                </Border>
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0">
+                                    <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                                    <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="Gray"/>
+                                </VerticalStackLayout>
+                                <Button Grid.Column="2" Text="Remove" Clicked="OnRemoveClicked" CommandParameter="{Binding .}" BackgroundColor="Transparent" TextColor="{StaticResource Danger}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Margin="200,20,200,20"
+                    Text="Back"
+                    Clicked="OnBackClicked">
+                    
+            </Button>
+        </VerticalStackLayout>
+    </Border>
 </ContentPage>

@@ -1,29 +1,35 @@
+// WishlistTests.cs
 using Xunit;
 using StoreApp.Models;
+
 public class WishlistTests
 {
+    // Sunny day
     [Fact]
-    public void AddProduct_ShouldAddToWishlist()
+    public void Wishlist_ShouldBeCreated()
     {
-        var buyer = new Buyer();
         var wishlist = new Wishlist();
-        var product = new Product();
-
-        wishlist.addProduct(product.ProductId);
-
-        //Assert.Single(wishlist.ProductId);
+        Assert.NotNull(wishlist);
     }
 
     [Fact]
-    public void RemoveProduct_ShouldRemoveFromWishlist()
+    public void Wishlist_ShouldSetBuyerAndProduct()
     {
-        var buyer = new Buyer();
+        var wishlist = new Wishlist
+        {
+            BuyerId = 1,
+            ProductId = 5
+        };
+        Assert.Equal(1, wishlist.BuyerId);
+        Assert.Equal(5, wishlist.ProductId);
+    }
+
+    // Rainy day
+    [Fact]
+    public void Wishlist_DefaultIds_ShouldBeZero()
+    {
         var wishlist = new Wishlist();
-        var product = new Product();
-
-        wishlist.addProduct(product.ProductId);
-        wishlist.removeProduct(product.ProductId);
-
-        //Assert.Empty(wishlist.ProductId);
+        Assert.Equal(0, wishlist.BuyerId);
+        Assert.Equal(0, wishlist.ProductId);
     }
 }
