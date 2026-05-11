@@ -159,6 +159,7 @@ public partial class AccountPage : ContentPage
         await CloseSidebarAsync();
         UserSession.Logout();
         await DisplayAlert("Logged Out", "You have been logged out successfully.", "OK");
+        await Navigation.PopToRootAsync();
     }
 
     private async void OnHomeClicked(object sender, EventArgs e)

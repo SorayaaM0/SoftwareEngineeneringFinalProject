@@ -1,17 +1,20 @@
+using StoreApp.src.Models;
+using StoreApp.src.Services;
 using System.Collections.ObjectModel;
 using System.Dynamic;
-using StoreApp.src.Services;
 
 namespace StoreApp.Views;
 
 public partial class AdminSecurityLogsPage : ContentPage
 {
-    private ObservableCollection<dynamic> _securityLogs;
-
-    public AdminSecurityLogsPage()
+    private ObservableCollection<dynamic> _securityLogs = new();
+    private readonly DatabaseService _db;
+    public AdminSecurityLogsPage(DatabaseService db)
     {
+        
         InitializeComponent();
-        LoadStubLogs();
+        _db = db;
+        LogList.ItemsSource = _securityLogs;
     }
 
     protected override async void OnAppearing()
@@ -21,76 +24,64 @@ public partial class AdminSecurityLogsPage : ContentPage
         // Admin-only access guard
         if (UserSession.CurrentUser?.UserType != "Admin")
         {
+            await _db.LogSecurityEventAsync(
+            "Unauthorized Admin Access",
+            UserSession.CurrentUser?.Email ?? "Unknown",
+            $"Attempted to access {GetType().Name}",
+            UserSession.CurrentUser?.Id);
+
             await DisplayAlert(
                 "Access Denied",
                 "You are not authorized to view this page.",
                 "OK"
             );
             await Navigation.PopAsync();
+            return;
         }
+        await LoadLogsAsync();
     }
 
-    private void LoadStubLogs()
-    {
-        _securityLogs = new ObservableCollection<dynamic>
-        {
-            CreateLog(
-                "Unauthorized Admin Access",
-                "user1@test.com",
-                "2026-04-15 14:22"
-            ),
-            CreateLog(
-                "Failed Login Attempt",
-                "unknown@test.com",
-                "2026-04-16 09:10"
-            ),
-            CreateLog(
-                "Multiple Failed Logins",
-                "seller2@test.com",
-                "2026-04-16 18:45"
-            )
-        };
 
-        LogList.ItemsSource = _securityLogs;
-    }
 
-    private dynamic CreateLog(string type, string email, string time)
+    private async Task LoadLogsAsync()
     {
-        dynamic log = new ExpandoObject();
-        log.Type = type;
-        log.Email = email;
-        log.Time = time;
-        return log;
+        var logs = await _db.GetSecurityLogsAsync();
+        _securityLogs.Clear();
+        foreach (var log in logs)
+            _securityLogs.Add(log);
+
+        // Update unread count label
+        UnreadLabel.Text = $"{logs.Count(l => !l.IsRead)} unread events";
     }
 
     private async void OnViewDetailsClicked(object sender, EventArgs e)
     {
-        dynamic log = ((Button)sender).CommandParameter;
+        var log = (SecurityLog)((Button)sender).CommandParameter;
 
-        await DisplayAlert(
-            "Security Event",
-            $"Type: {log.Type}\nEmail: {log.Email}\nTime: {log.Time}",
-            "OK"
-        );
+        await DisplayAlert("Security Event",
+            $"Type: {log.Type}\n" +
+            $"Email: {log.Email}\n" +
+            $"Time: {log.OccurredAt:MM/dd/yyyy HH:mm}\n" +
+            $"Details: {log.Details}", "OK");
+
+        // Mark as read
+        if (!log.IsRead)
+        {
+            await _db.MarkLogReadAsync(log);
+            await LoadLogsAsync();
+        }
     }
 
     private async void OnClearLogsClicked(object sender, EventArgs e)
     {
-        bool confirm = await DisplayAlert(
-            "Clear Logs",
-            "Clear all security logs?",
-            "Clear",
-            "Cancel"
-        );
+        bool confirm = await DisplayAlert("Clear Logs",
+            "Permanently delete all security logs?", "Clear", "Cancel");
+        if (!confirm) return;
 
-        if (confirm)
-        {
-            _securityLogs.Clear();
-        }
+        await _db.ClearSecurityLogsAsync();
+        _securityLogs.Clear();
+        UnreadLabel.Text = "0 unread events";
     }
 
-    private async void OnBackClicked(object sender, EventArgs e)
-    {
-        await Navigation.PopAsync();
-    }
+    private async void OnBackClicked(object sender, EventArgs e) => await Navigation.PopAsync();
 }

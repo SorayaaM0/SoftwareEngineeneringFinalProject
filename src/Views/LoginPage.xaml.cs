@@ -19,7 +19,19 @@ public partial class LoginPage : ContentPage
 		var password = PasswordEntry.Text?.Trim() ?? "";
         try
         {
+
+
             var user = await _userFactory.LoginAsync(email, password);
+            // UserFactory.LoginAsync — add after password check
+            if (user.IsBanned)
+            {
+                await _db.LogSecurityEventAsync(
+                    "Banned User Login Attempt",
+                    email,
+                    "Banned seller attempted to log in.",
+                    user.Id);
+                throw new Exception("This account has been suspended.");
+            }
             UserSession.Login(user, user.Email, password);
 
             await DisplayAlert("Welcome", $"Hello, {user.Name}!", "OK");

@@ -1,74 +1,67 @@
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="StoreApp.Views.AdminSecurityLogsPage"
-    Title="Security Logs">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:StoreApp.Converters"
+             x:Class="StoreApp.Views.AdminSecurityLogsPage"
+             Title="Security Logs"
+             Background="{StaticResource BackgroundGradient}">
+    <ContentPage.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+    </ContentPage.Resources>
 
     <VerticalStackLayout Padding="20" Spacing="12">
+        <Label Text="Security Logs"
+               FontSize="24" FontAttributes="Bold"
+               TextColor="White"/>
 
-        <Label
-            Text="Security and Access Logs"
-            FontSize="24"
-            FontAttributes="Bold" />
-
-        <Label
-            Text="Unauthorized access attempts and security events.
-Logging is simulated for Sprint 1."
-            FontSize="14"
-            TextColor="#555555" />
+        <Label x:Name="UnreadLabel"
+               Text="0 unread events"
+               FontSize="13"
+               TextColor="{StaticResource Danger}"/>
 
         <CollectionView x:Name="LogList">
-
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame
-                        BorderColor="#E0E0E0"
-                        CornerRadius="8"
-                        Padding="12"
-                        Margin="0,6">
-
+                    <Frame BorderColor="#E0E0E0" CornerRadius="8"
+                           Padding="24" Margin="0,6">
                         <VerticalStackLayout Spacing="4">
 
-                            <Label
-                                Text="{Binding Type}"
-                                FontAttributes="Bold"
-                                TextColor="Red"/>
+                            <!-- Red dot for unread -->
+                            <HorizontalStackLayout Spacing="8">
+                                <BoxView WidthRequest="8" HeightRequest="8"
+                                         CornerRadius="4"
+                                         BackgroundColor="{StaticResource Danger}"
+                                         VerticalOptions="Center"
+                                         IsVisible="{Binding IsRead, Converter={StaticResource InverseBoolConverter}}"/>
+                                <Label Text="{Binding Type}"
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource Danger}"/>
+                            </HorizontalStackLayout>
 
-                            <Label
-                                Text="{Binding Email}"
-                                FontSize="13"
-                                TextColor="Black"/>
+                            <Label Text="{Binding Email}"
+                                   FontSize="13" TextColor="White"/>
+                            <Label Text="{Binding OccurredAt, StringFormat='{0:MM/dd/yyyy HH:mm}'}"
+                                   FontSize="12" TextColor="{StaticResource Gray400}"/>
+                            <Label Text="{Binding Details}"
+                                   FontSize="12" TextColor="{StaticResource Gray400}"
+                                   LineBreakMode="TailTruncation" MaxLines="1"/>
 
-                            <Label
-                                Text="{Binding Time}"
-                                FontSize="12"
-                                TextColor="Black"/>
-
-                            <Button
-                                Text="View Details"
-                                CommandParameter="{Binding}"
-                                Clicked="OnViewDetailsClicked"
-                                FontSize="12"/>
-
+                            <Button Text="View Details"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="OnViewDetailsClicked"
+                                    FontSize="12"
+                                    HeightRequest="36"/>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
         </CollectionView>
 
         <HorizontalStackLayout Spacing="10">
-
-            <Button
-                Text="Clear Logs"
-                BackgroundColor="#DDDDDD"
-                Clicked="OnClearLogsClicked"/>
-
-            <Button
-                Text="Back"
-                Clicked="OnBackClicked"/>
-
+            <Button Text="Clear All Logs"
+                    BackgroundColor="{StaticResource Danger}"
+                    TextColor="White"
+                    Clicked="OnClearLogsClicked"/>
+            <Button Text="Back" Clicked="OnBackClicked"/>
         </HorizontalStackLayout>
-
     </VerticalStackLayout>
 </ContentPage>

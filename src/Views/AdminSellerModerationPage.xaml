@@ -2,62 +2,78 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoreApp.Views.AdminSellerModerationPage"
-             Title="AdminSellerModerationPage"
-             Background="White">
-    <VerticalStackLayout>
+             Title="Seller Moderation"
+             Background="{StaticResource Background}">
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+
         <Label Text="Seller Moderation"
-               FontSize="24"
-               FontAttributes="Bold"/>
-        <Label Text="Registered sellers with reported activity"
+               FontSize="24" FontAttributes="Bold"
+               TextColor="White"/>
+
+        <Label Text="All registered sellers and their activity."
                FontSize="14"
-               TextColor="Black"/>
+               TextColor="{StaticResource Gray400}"/>
+
         <CollectionView x:Name="SellerList">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame
-                        BorderColor="Blue"
-                        CornerRadius="8"
-                        Padding="5"
-                        Margin="0,5">
+                    <Frame BorderColor="{StaticResource Gray600}"
+                           CornerRadius="8"
+                           Padding="12"
+                           Margin="0,6"
+                           BackgroundColor="{StaticResource Surface}">
                         <VerticalStackLayout Spacing="6">
-                            <Label 
-                                Text="{Binding Name}"
-                                FontAttributes="Bold"/>
 
-                            <Label
-                                Text="{Binding Email}"
-                                FontSize="13"
-                                TextColor="Black"/>
+                            <Label Text="{Binding Name}"
+                                   FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="White"/>
 
-                            <Label
-                                Text="{Binding Reports, StringFormat='Reports: {0}'}"
-                                TextColor="Red"/>
-                            <HorizontalStackLayout>
-                                <Button
-                                    Text="Remove Listing"
-                                    CommandParameter="{Binding}"
-                                    Clicked="OnRemoveListingsClicked"/>
+                            <Label Text="{Binding StoreName}"
+                                   FontSize="13"
+                                   TextColor="{StaticResource Secondary}"/>
 
-                                <Button
-                                    Text="Ban Seller"
-                                    BackgroundColor="Red"
-                                    TextColor="White"
-                                    CommandParameter="{Binding}"
-                                    Clicked="OnBanSellerClicked"/>
+                            <Label Text="{Binding Email}"
+                                   FontSize="13"
+                                   TextColor="{StaticResource Gray400}"/>
 
+                            <HorizontalStackLayout Spacing="16">
+                                <Label Text="{Binding ProductCount, StringFormat='Products: {0}'}"
+                                       FontSize="12"
+                                       TextColor="{StaticResource Gray400}"/>
+                                <Label Text="{Binding ReportCount, StringFormat='Reports: {0}'}"
+                                       FontSize="12"
+                                       TextColor="{StaticResource Danger}"/>
                             </HorizontalStackLayout>
+
+                            <HorizontalStackLayout Spacing="10" Margin="0,6,0,0">
+                                <Button Text="Remove Listings"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        TextColor="White"
+                                        CornerRadius="6"
+                                        FontSize="12"
+                                        HeightRequest="36"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="OnRemoveListingsClicked"/>
+
+                                <Button Text="Ban Seller"
+                                        BackgroundColor="{StaticResource Danger}"
+                                        TextColor="White"
+                                        CornerRadius="6"
+                                        FontSize="12"
+                                        HeightRequest="36"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="OnBanSellerClicked"/>
+                            </HorizontalStackLayout>
+
                         </VerticalStackLayout>
-
                     </Frame>
-
-
-
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button
-            Text="Back"
-            Clicked="OnBackClicked"/>
+        <Button Text="Back" Clicked="OnBackClicked"/>
+
     </VerticalStackLayout>
 </ContentPage>

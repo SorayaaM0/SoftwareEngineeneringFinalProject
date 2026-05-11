@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using StoreApp.Models;
 using SQLite;
+namespace StoreApp.Models;
 
 [Table("CartItems")]
 public class CartItem

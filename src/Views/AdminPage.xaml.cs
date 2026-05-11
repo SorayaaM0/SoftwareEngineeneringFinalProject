@@ -19,7 +19,13 @@ public partial class AdminPage : ContentPage
 
 		if(UserSession.CurrentUser?.UserType != "Admin")
 		{
-			await DisplayAlert(
+            await _db.LogSecurityEventAsync(
+            "Unauthorized Admin Access",
+            UserSession.CurrentUser?.Email ?? "Unknown",
+            $"Attempted to access {GetType().Name}",
+            UserSession.CurrentUser?.Id);
+
+            await DisplayAlert(
 				"Access Denied",
 				"You are not authorized for this page",
 				"OK"
@@ -36,12 +42,12 @@ public partial class AdminPage : ContentPage
 
     private async void OnManageUsersClicked(object sender, EventArgs e)
     {
-		await Navigation.PushAsync(new AdminSellerModerationPage());
+		await Navigation.PushAsync(new AdminSellerModerationPage(_db));
     }
 
     private async void OnUnauthorizedAccessClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new AdminSecurityLogsPage());
+        await Navigation.PushAsync(new AdminSecurityLogsPage(_db));
     }
 
 	private async void OnBackClicked(object sender, EventArgs e)

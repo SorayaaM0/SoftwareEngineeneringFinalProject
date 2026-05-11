@@ -54,12 +54,20 @@ public class UserFactory
         var user = await _db.GetUserByEmailAsync(email);
         if (user == null)
         {
+            await _db.LogSecurityEventAsync(
+                "Failed Login Attempt",
+                email,
+                "No account found with this email.");
             throw new Exception("No Account Found");
         }
         bool valid = BCrypt.Net.BCrypt.Verify(passwordHash, user.PasswordHash);
         if (!valid)
         {
-            throw new Exception("Invalid email or password.");
+            await _db.LogSecurityEventAsync(
+                "Failed Login Attempt",
+                email,
+                "Incorrect Password entered.");
+            throw new Exception("Invalid password.");
         }
         return user;
     }

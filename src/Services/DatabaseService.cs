@@ -23,6 +23,7 @@ public class DatabaseService
         await _db.CreateTableAsync<ReportedProduct>();
         await _db.CreateTableAsync<Order>();
         await _db.CreateTableAsync<OrderItem>();
+        await _db.CreateTableAsync<SecurityLog>();
         await _db.CreateTableAsync<Payment>();
         await _db.CreateTableAsync<Product>();
         await _db.CreateTableAsync<Wishlist>();
@@ -177,12 +178,23 @@ public class DatabaseService
         await InitAsync();
         return await _db.Table<Order>()
                         .Where(o => o.BuyerId == buyerId)
+                        .OrderByDescending(o => o.OrderDate)
                         .ToListAsync();
     }
     public async Task<int> AddOrder(Order order)
     {
+        await InitAsync();
         await _db.InsertAsync(order);
-        return order.OrderId; // Return the generated OrderId
+
+        // Fetch back the inserted order to get DB-assigned OrderId
+        var inserted = await _db.Table<Order>()
+                                .Where(o => o.BuyerId == order.BuyerId)
+                                .OrderByDescending(o => o.OrderDate)
+                                .FirstOrDefaultAsync();
+
+        // Copy the generated ID back to the passed object
+        order.OrderId = inserted.OrderId;
+        return order.OrderId;
     }
      public async Task AddOrderItem(OrderItem orderItem)
     {
@@ -232,6 +244,62 @@ public class DatabaseService
             ReportedAt = DateTime.Now,
             IsResolved = false
         });
+    }
+
+    //Security logs
+
+    public async Task LogSecurityEventAsync(string type, string email,
+                                        string details, int? userId = null)
+    {
+        await InitAsync();
+        await _db.InsertAsync(new SecurityLog
+        {
+            Type = type,
+            Email = email,
+            UserId = userId,
+            Details = details,
+            OccurredAt = DateTime.Now,
+            IsRead = false
+        });
+    }
+
+    public async Task<List<SecurityLog>> GetSecurityLogsAsync()
+    {
+        await InitAsync();
+        return await _db.Table<SecurityLog>()
+                        .OrderByDescending(l => l.OccurredAt)
+                        .ToListAsync();
+    }
+
+    public async Task ClearSecurityLogsAsync()
+    {
+        await InitAsync();
+        await _db.DeleteAllAsync<SecurityLog>();
+    }
+
+    public async Task MarkLogReadAsync(SecurityLog log)
+    {
+        await InitAsync();
+        log.IsRead = true;
+        await _db.UpdateAsync(log);
+    }
+
+    //seller moderation
+
+    public async Task<List<User>> GetAllSellersAsync()
+    {
+        await InitAsync();
+        return await _db.Table<User>()
+                        .Where(u => u.UserType == "Seller" && !u.IsBanned)
+                        .ToListAsync();
+    }
+
+    public async Task<List<User>> GetBannedSellersAsync()
+    {
+        await InitAsync();
+        return await _db.Table<User>()
+                        .Where(u => u.UserType == "Seller" && u.IsBanned)
+                        .ToListAsync();
     }
 
 }

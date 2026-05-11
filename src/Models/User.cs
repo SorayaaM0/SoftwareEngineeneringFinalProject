@@ -27,6 +27,7 @@ public class User
 
     //seller specific
 
+    public bool IsBanned {  get; set; }
     public string StoreName { get; set; }
     public User() { }
 

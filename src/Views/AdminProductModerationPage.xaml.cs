@@ -23,6 +23,14 @@ public partial class AdminProductModerationPage : ContentPage
 
         if (UserSession.CurrentUser?.UserType != "Admin")
         {
+
+            await _db.LogSecurityEventAsync(
+            "Unauthorized Admin Access",
+            UserSession.CurrentUser?.Email ?? "Unknown",
+            $"Attempted to access {GetType().Name}",
+            UserSession.CurrentUser?.Id);
+
+
             await DisplayAlert("Access Denied",
                 "You are not authorized to view this page.", "OK");
             await Navigation.PopAsync();

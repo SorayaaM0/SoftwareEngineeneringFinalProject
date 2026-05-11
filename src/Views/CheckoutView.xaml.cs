@@ -75,6 +75,8 @@ public partial class CheckoutView : ContentPage
 		};
 		await _db.AddOrder(order);
 
+
+
 		// Create OrderItems
 		foreach (var item in _displayItems)
 		{
@@ -89,6 +91,16 @@ public partial class CheckoutView : ContentPage
 			await _db.AddOrderItem(orderItem);
         }
 
+        await _db.AddPayment(new Payment
+        {
+            OrderId = order.OrderId,
+            Amount = _displayItems.Sum(i => i.Price * i.Quantity),
+            PaymentMethod = "Card",    // you can make this dynamic later
+            PaymentStatus = "Paid",
+            PaidAt = DateTime.Now
+        });
+
+		//clear cart from db
         var cartItems = await _db.GetCartAsync(UserSession.CurrentUser.Id);
 		foreach (var cartItem in cartItems)
 		{

@@ -85,6 +85,31 @@
                                     Opacity="0.20"/>
                             </Border.Shadow>
                         </Border>
+                        
+                        <Border x:Name="OrderBorder"
+                            BackgroundColor="{StaticResource Primary}"
+                            Margin="0,25,0,0"
+                            StrokeShape="RoundRectangle 10"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Center"
+                            HeightRequest="200"
+                            WidthRequest="300"
+                            Grid.Column="1">
+                            <Button Text="Orders"
+                                TextColor="{StaticResource Black}"
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                BackgroundColor="Transparent"
+                                Clicked="OnMyOrdersClicked"/>
+
+                            <Border.Shadow>
+                                <Shadow Brush="{StaticResource Black}"
+                                    Offset="0,10"
+                                    Opacity="0.20"/>
+                            </Border.Shadow>
+                        </Border>
 
                     </Grid>
                 </Border>
