@@ -5,43 +5,259 @@
              Background="{StaticResource BackgroundGradient}"
              NavigationPage.HasNavigationBar="False">
 
-    <ScrollView>
-        <VerticalStackLayout>
+    <Border StrokeShape="RoundRectangle 20"
+            BackgroundColor="{StaticResource White}"
+            HeightRequest="675"
+            WidthRequest="1350"
+            HorizontalOptions="Center">
+        <Border.Shadow>
+            <Shadow Brush="{StaticResource Black}"
+                    Offset="-10,10"
+                    Opacity="0.60"/>
 
-        <CollectionView x:Name="OrderItems">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding name}" />
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-            <Label x:Name="TotalLabel" FontSize="18" FontAttributes="Bold"/>
-            <Label x:Name="ShippingLabel" FontSize="20" FontAttributes="Bold"/>
-            
-            <!--Shipping Info-->
-            <VerticalStackLayout Spacing="15" Padding="20">
-                <Entry x:Name="NameEntry" Placeholder="Full Name" />
-                <HorizontalStackLayout Spacing="10" Padding="5">
-                    
-                    <Entry x:Name="AddressEntry" Placeholder="Shipping Address" />
-                    <Entry x:Name="CityEntry" Placeholder="City" />
-                </HorizontalStackLayout>
-                <Entry x:Name="PostalCodeEntry" Placeholder="Postal Code" />
-                <Entry x:Name="CountryEntry" Placeholder="Country" />
-            </VerticalStackLayout>
-            
-            <!--Payment Info-->
-            <Label Text="Payment Information" FontSize="20" FontAttributes="Bold" Padding="20,10"/>
+        </Border.Shadow>
+        <ScrollView>
+            <Grid>
+                <Grid ColumnDefinitions="Auto,*"
+                      Margin="40,0,20,0">
+                    <!--Shipping + payment card-->
+                    <Border Grid.Column="0"
+                        StrokeShape="RoundRectangle 20"
+                        Stroke="{StaticResource Primary}"
+                        StrokeThickness="3"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="600"
+                        WidthRequest="850"
+                        Opacity="0.45">
+                        <Grid>
+                            <Grid ColumnDefinitions="Auto,*,*"
+                                  Margin="25"
+                                  >
+                                <!--Shipping info grid-->
+                                <VerticalStackLayout Grid.Column="0" Spacing="15" WidthRequest="450">
+                                    <Label 
+                                           Text="Shipping Information"
+                                           TextColor="{StaticResource Primary}"
+                                           FontAttributes="Bold"
+                                           FontSize="22"/>
+                                    <Border Stroke="{StaticResource Black}"
+                                            StrokeThickness="2"
+                                            StrokeShape="RoundRectangle 15"
+                                            Opacity="0.5">
+                                        <Entry x:Name="ShippingEntry"
+                                           Placeholder="Shipping Address"
+                                           Keyboard="Text"
+                                           TextColor="{StaticResource Black}"
+                                           />
+                                    </Border>
+                                    <Border Stroke="{StaticResource Black}"
+                                            StrokeThickness="2"
+                                            StrokeShape="RoundRectangle 15"
+                                            Opacity="0.5">
+                                        <Entry x:Name="CityEntry"
+                                           Placeholder="City"
+                                           Keyboard="Text"
+                                           TextColor="{StaticResource Black}" />
+                                    </Border>
+                                    <Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Border Grid.Column="0"
+                                                    Stroke="{StaticResource Black}"
+                                                    StrokeThickness="2"
+                                                    StrokeShape="RoundRectangle 15"
+                                                    Opacity="0.5"
+                                                    Margin="0,0,100,0">
+                                                <Entry x:Name="ZipCodeEntry"
+                                                   Placeholder="Zip"
+                                                       TextColor="{StaticResource Black}"/>
+                                                
+                                            </Border>
+                                            
+                                            <Border Grid.Column="1"
+                                                    Stroke="{StaticResource Black}"
+                                                    StrokeThickness="2"
+                                                    StrokeShape="RoundRectangle 15"
+                                                    Opacity="0.5"
+                                                    
+                                                    Margin="0,0,0,0">
+                                                <Entry x:Name="StateEntry"
+                                                   Placeholder="State"
+                                                       TextColor="{StaticResource Black}"/>
+                                                
+                                            </Border>
+                                            
+                                            
+                                        </Grid>
+                                    </Grid>
+                                    <Border Stroke="{StaticResource Black}"
+                                            StrokeThickness="2"
+                                            StrokeShape="RoundRectangle 15"
+                                            Opacity="0.5">
+                                        <Entry x:Name="CountryEntry"
+                                               Placeholder="Country"
+                                               TextColor="{StaticResource Black}"/>
 
-            <HorizontalStackLayout Spacing="10" Padding="5">
-                <Entry x:Name="CardNumberEntry" Placeholder="Card Number" Keyboard="Numeric" />
-                <Entry x:Name="ExpiryEntry" Placeholder="MM/YY" Keyboard="Numeric" />
-                <Entry x:Name="CVVEntry" Placeholder="CVV" Keyboard="Numeric" IsPassword="True" />
-            </HorizontalStackLayout>
+                                    </Border>
+                                    <Button Text="Continue Shopping"
+                                            TextColor="{StaticResource Black}"
+                                            Background="{StaticResource Surface}"
+                                            FontAttributes="Bold"
+                                            Clicked="OnContinueShoppingClicked"
+                                            Margin="0,202,0,0"> 
+                                        
+                                    </Button>
+                                </VerticalStackLayout>
+                                <!--Payment info grid-->
+                                <BoxView WidthRequest="1"
+                                         Grid.Column="1"
+                                         Color="{StaticResource Gray600}"
+                                         HorizontalOptions="Start"
+                                         Margin="20,0,0,0"/>
+                                <VerticalStackLayout Grid.Column="2"
+                                                     WidthRequest="300"
+                                                     HorizontalOptions="End"
+                                                     Spacing="15">
 
-            <Button Text="Place Order" BackgroundColor="Red" TextColor="Black" FontAttributes="Bold" CornerRadius="8" HeightRequest="50" Clicked="OnPlaceOrderClicked"/>
+                                    <Label Text="Payment Information"
+                                            TextColor="{StaticResource Primary}"
+                                            FontAttributes="Bold"
+                                            FontSize="22"/>
+                                    <Border Stroke="{StaticResource Black}"
+                                            StrokeThickness="2"
+                                            StrokeShape="RoundRectangle 15"
+                                            Opacity="0.5">
+                                        <Entry x:Name="CardholderNameEntry"
+                                           Placeholder="Name on card"
+                                           TextColor="{StaticResource Black}"/>
+                                    </Border>
+                                    
+                                    <Border Stroke="{StaticResource Black}"
+                                            StrokeThickness="2"
+                                            StrokeShape="RoundRectangle 15"
+                                            Opacity="0.5">
+                                        <Entry x:Name="CardNumberEntry"
+                                           Placeholder="Card Number"
+                                           TextColor="{StaticResource Black}"/>
+                                    </Border>
+                                    <Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Border Grid.Column="0"
+                                                    Stroke="{StaticResource Black}"
+                                                    StrokeThickness="2"
+                                                    StrokeShape="RoundRectangle 15"
+                                                    Opacity="0.5"
+                                                    Margin="0,0,75,0">
+                                                <Entry x:Name="ExpirationEntry"
+                                                       Placeholder="MM/YY"
+                                                       TextColor="{StaticResource Black}"/>
+
+                                            </Border>
+
+                                            <Border Grid.Column="1"
+                                                    Stroke="{StaticResource Black}"
+                                                    StrokeThickness="2"
+                                                    StrokeShape="RoundRectangle 15"
+                                                    Opacity="0.5"
+                                                    HorizontalOptions="Start"
+                                                    WidthRequest="150"
+                                                    Margin="0,0,0,0">
+                                                <Entry x:Name="CSVEntry"
+                                                       Placeholder="CSV"
+                                                        TextColor="{StaticResource Black}"/>
+
+                                            </Border>
 
 
-        </VerticalStackLayout>
-    </ScrollView>
+                                        </Grid>
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </Grid>
+                            
+                        </Grid>
+                    </Border>
+                    <!--Cart preview-->
+                    <Border Grid.Column="1"
+                            StrokeShape="RoundRectangle 20"
+                            HeightRequest="600"
+                            WidthRequest="400"
+                            BackgroundColor="{StaticResource White}"
+                            Margin="5">
+                        <Grid RowDefinitions="Auto,*,*">
+                            <Border Grid.Row="0"
+                                    BackgroundColor="{StaticResource Surface}"
+                                    StrokeShape="RoundRectangle 15"
+                                    Margin="10,10,10,10"
+                                    HeightRequest="400">
+                                <CollectionView x:Name="OrderItems" EmptyView="Empty Cart">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="Auto,*"
+                                                  Padding="5">
+                                                <Border StrokeShape="RoundRectangle 5"
+                                                        HeightRequest="50"
+                                                        WidthRequest="50"
+                                                        Grid.Column="0"
+                                                        BackgroundColor="{StaticResource White}">
+                                                    <Image Source="{Binding ImageUrl}" WidthRequest="40" HeightRequest="40"/>
+                                                </Border>
+                                                <VerticalStackLayout Grid.Column="1"
+                                                             Margin="5"
+                                                             Spacing="5">
+                                                    <Label Text="{Binding Name}"
+                                                           TextColor="{StaticResource Black}"
+                                                           FontAttributes="Bold"
+                                                           FontSize="15"/>
+
+                                                    <Label Text="{Binding Quantity,StringFormat='Quantity: {0}'}"
+                                                           TextColor="{StaticResource Black}"
+                                                           FontAttributes="Bold"
+                                                           FontSize="10"/>
+
+                                                    <Label Text="{Binding Price,StringFormat='${0}'}"
+                                                   TextColor="{StaticResource Black}"
+                                                   FontAttributes="Bold"
+                                                           FontSize="10"/>
+
+                                                </VerticalStackLayout>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Border>
+                            <Label Grid.Row="1"
+                                   Text="Total"
+                                   HorizontalOptions="End"
+                                   VerticalOptions="FillAndExpand"
+                                   TextColor="{StaticResource Black}"
+                                   FontSize="30"
+                                   FontAttributes="Bold"
+                                   Margin="0,50,30,0"
+                                   x:Name="TotalLabel">
+                                
+                            </Label>
+                            <Border
+                                    Grid.Row="2"
+                                    StrokeShape="RoundRectangle 15"
+                                    Margin="10,10,10,10">
+                                <Button Text="Place Order"
+                                        TextColor="{StaticResource Black}"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Clicked="OnPlaceOrderClicked"/>
+                            </Border>
+                        </Grid>
+                        <Border.Shadow>
+                            <Shadow Brush="{StaticResource Black}"
+                                    Opacity="0.65"
+                                    />
+                        </Border.Shadow>
+                    </Border>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </Border>
 </ContentPage>

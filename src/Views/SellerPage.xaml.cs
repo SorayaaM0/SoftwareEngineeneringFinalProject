@@ -20,7 +20,8 @@ public partial class SellerPage : ContentPage
 
         if (UserSession.CurrentUser.UserType == "Seller")
         {
-            StoreLabel.Text = (UserSession.CurrentUser as User)?.StoreName ?? "My Store";
+            StoreLabel.Text = UserSession.CurrentUser?.StoreName ?? "My Store";
+
         }
 
         _db = db;
@@ -35,7 +36,8 @@ public partial class SellerPage : ContentPage
             await Navigation.PopAsync();
             return;
         }
-        StoreLabel.Text = (UserSession.CurrentUser as Seller)?.StoreName ?? "My Store";
+        StoreLabel.Text = UserSession.CurrentUser?.StoreName ?? "My Store";
+
         await LoadProductAsync();
     }
 
@@ -68,7 +70,7 @@ public partial class SellerPage : ContentPage
 
     private async void OnCreateProductClicked(object sender, EventArgs e)
     {
-        if (UserSession.CurrentUser is Seller seller)
+        if (UserSession.CurrentUser.UserType == "Seller")
         {
             if (string.IsNullOrWhiteSpace(ProductNameEntry.Text) || !double.TryParse(ProductPriceEntry.Text, out double price) || price <= 0)
             {
@@ -83,7 +85,7 @@ public partial class SellerPage : ContentPage
                 Price = price,
                 ImageUrl = _pickedImagePath ?? ProductImageEntry.Text?.Trim() ?? "dotnet_bot.png",
                 Category = ProductCategoryEntry.Text?.Trim() ?? "General",
-                SellerId = seller.Id
+                SellerId = UserSession.CurrentUser.Id
             };
 
             await _db.AddProduct(newProd);
@@ -104,7 +106,7 @@ public partial class SellerPage : ContentPage
             return;
         }
 
-        if (UserSession.CurrentUser is Seller seller)
+        if (UserSession.CurrentUser.UserType == "Seller")
         {
             if (string.IsNullOrWhiteSpace(ProductNameEntry.Text) || !double.TryParse(ProductPriceEntry.Text, out double newPrice) || newPrice <= 0)
             {

@@ -116,8 +116,6 @@ C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\
 C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\bin\Debug\net9.0\StoreApp.Core.pdb
 C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.csproj.AssemblyReference.cache
 C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.AssemblyInfoInputs.cache
-C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.AssemblyInfo.cs
 C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.csproj.CoreCompileInputs.cache
 C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.sourcelink.json
 C:\Users\djmax\SoftwareEngineeringProject\SoftwareEngineeringFinalProject\tests\obj\Debug\net9.0\Tests.csproj.Up2Date

@@ -29,6 +29,7 @@ public class User
 
     public bool IsBanned {  get; set; }
     public string StoreName { get; set; }
+
     public User() { }
 
     public void register()

@@ -11,18 +11,30 @@ namespace StoreApp.src.Services;
 public class DatabaseService
 {
     private SQLiteAsyncConnection _db;
+    private readonly string _dbPath;
+    private readonly bool _isTestMode;
 
-    
+    public DatabaseService()
+    {
+        _dbPath = Path.Combine(
+                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                     "storeapp.db");
+    }
+    public DatabaseService(string dbPath)
+    {
+        _dbPath = dbPath;
+        _db = null;
+    }
 
     public async Task InitAsync()
     {
         if (_db != null) return;
-        var dbPath = Path.Combine(
-                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                     "storeapp.db");
-        Console.WriteLine($"Database path: {dbPath}");
+        //var dbPath = Path.Combine(
+                     //Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    // "storeapp.db");
+      //  Console.WriteLine($"Database path: {dbPath}");
 
-        _db = new SQLiteAsyncConnection(dbPath);
+        _db = new SQLiteAsyncConnection(_dbPath);
         await _db.CreateTableAsync<User>();
         await _db.CreateTableAsync<ReportedProduct>();
         await _db.CreateTableAsync<Order>();
@@ -33,8 +45,10 @@ public class DatabaseService
         await _db.CreateTableAsync<Wishlist>();
         await _db.CreateTableAsync<CartItem>();
 
-        await SeedDataAsync();
-
+        if (!_isTestMode)
+        {
+            await SeedDataAsync();
+        }
     }
 
     private async Task SeedDataAsync()
@@ -306,6 +320,14 @@ public class DatabaseService
                         .ToListAsync();
     }
 
+
+    public async Task DisposeAsync()
+    {
+        await _db.CloseAsync();  // close connection before file delete
+
+        if (File.Exists(_dbPath))
+            File.Delete(_dbPath);
+    }
 }
 
 

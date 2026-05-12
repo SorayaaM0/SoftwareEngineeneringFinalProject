@@ -19,7 +19,13 @@ public partial class CheckoutView : ContentPage
 	{
 		base.OnAppearing();
 		await LoadCheckoutData();
-	}
+
+        if (UserSession.IsLoggedIn &&
+            !string.IsNullOrEmpty(UserSession.CurrentUser.ShippingAddress))
+        {
+            ShippingEntry.Text = UserSession.CurrentUser.ShippingAddress;
+        }
+    }
 	
 	private async Task LoadCheckoutData()
 	{
@@ -60,56 +66,95 @@ public partial class CheckoutView : ContentPage
 	private async void OnPlaceOrderClicked(object sender, EventArgs e)
 	{
         if (!_displayItems.Any())
-		{
-			await DisplayAlert("Empty Cart", "Your cart is empty. Please add items before placing an order.", "OK");
-			return;
+        {
+            await DisplayAlert("Empty Cart",
+                "Please add items before placing an order.", "OK");
+            return;
         }
 
-        // Create a new order
+        // Validate shipping fields
+        if (string.IsNullOrWhiteSpace(ShippingEntry.Text) ||
+            string.IsNullOrWhiteSpace(CityEntry.Text) ||
+            string.IsNullOrWhiteSpace(ZipCodeEntry.Text) ||
+            string.IsNullOrWhiteSpace(StateEntry.Text) ||
+            string.IsNullOrWhiteSpace(CountryEntry.Text))
+        {
+            await DisplayAlert("Missing Shipping Info",
+                "Please fill in all shipping fields.", "OK");
+            return;
+        }
+
+        // Validate payment fields
+        if (string.IsNullOrWhiteSpace(CardholderNameEntry.Text) ||
+            string.IsNullOrWhiteSpace(CardNumberEntry.Text) ||
+            string.IsNullOrWhiteSpace(ExpirationEntry.Text) ||
+            string.IsNullOrWhiteSpace(CSVEntry.Text))
+        {
+            await DisplayAlert("Missing Payment Info",
+                "Please fill in all payment fields.", "OK");
+            return;
+        }
+
+        // Basic card number validation
+        if (CardNumberEntry.Text.Replace(" ", "").Length != 16)
+        {
+            await DisplayAlert("Invalid Card",
+                "Please enter a valid 16-digit card number.", "OK");
+            return;
+        }
+
+        double total = _displayItems.Sum(i => i.Price * i.Quantity);
+
+        // Create order
         var order = new Order
-		{
-			BuyerId = UserSession.CurrentUser.Id,
-			OrderDate = DateTime.Now,
-			TotalAmount = _displayItems.Sum(i => i.Price * i.Quantity),
-			Status = "Placed"
-		};
-		await _db.AddOrder(order);
+        {
+            BuyerId = UserSession.CurrentUser.Id,
+            OrderDate = DateTime.Now,
+            TotalAmount = total,
+            Status = "Placed"
+        };
+        await _db.AddOrder(order);
 
-
-
-		// Create OrderItems
-		foreach (var item in _displayItems)
-		{
-			var orderItem = new OrderItem
-			{
-				OrderId = order.OrderId,
-				ProductId = item.Product.ProductId,
-				Quantity = item.Quantity,
-				Price = item.Price,
-				AddedAt = DateTime.Now
-            };
-			await _db.AddOrderItem(orderItem);
+        // Create order items
+        foreach (var item in _displayItems)
+        {
+            await _db.AddOrderItem(new OrderItem
+            {
+                OrderId = order.OrderId,
+                ProductId = item.Product.ProductId,
+                Quantity = item.Quantity,
+                Price = item.Price,
+                AddedAt = DateTime.Now
+            });
         }
 
+        // Create payment record
         await _db.AddPayment(new Payment
         {
             OrderId = order.OrderId,
-            Amount = _displayItems.Sum(i => i.Price * i.Quantity),
-            PaymentMethod = "Card",    // you can make this dynamic later
+            Amount = total,
+            PaymentMethod = "Card",
             PaymentStatus = "Paid",
             PaidAt = DateTime.Now
         });
 
-		//clear cart from db
+        // Save shipping address to user profile
+        UserSession.CurrentUser.ShippingAddress =
+            $"{ShippingEntry.Text}, {CityEntry.Text}, " +
+            $"{StateEntry.Text} {ZipCodeEntry.Text}, {CountryEntry.Text}";
+        await _db.UpdateAsync(UserSession.CurrentUser);
+
+        // Clear cart
         var cartItems = await _db.GetCartAsync(UserSession.CurrentUser.Id);
-		foreach (var cartItem in cartItems)
-		{
-			await _db.DeleteAsync(cartItem);
-        }
+        foreach (var cartItem in cartItems)
+            await _db.DeleteAsync(cartItem);
+
         _displayItems.Clear();
 
-        await DisplayAlert("Order Placed", "Your order has been placed successfully!", "OK");
-
+        await DisplayAlert("Order Placed!",
+            $"Order #{order.OrderId} confirmed!\nTotal: ${total:F2}", "OK");
         await Navigation.PopToRootAsync();
     }
+
+    private async void OnContinueShoppingClicked(object sender, EventArgs e) => await Navigation.PopToRootAsync();
 }
